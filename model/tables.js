@@ -71,6 +71,12 @@ const _order = sequelize.define("_order", {
 });
 DimensionProduct.hasMany(_order);
 
-module.exports = sequelize.sync({force:true}).then(()=>{
+sequelize.sync({force:true}).then(()=>{
     console.log("Tables have been created");
 }).catch(err=>console.error(err));
+
+module.exports = {
+  Product,
+  DimensionProduct,
+  _order
+}
