@@ -66,5 +66,9 @@ class Product{
     async GetAllCategories(){
         return await pool.category.findAll({raw: true})
     }
+    
+    async GetProductByCategoryId(categoryId){
+        return await pool.Product.findAll({where:{categoryId}, raw: true})
+    }
 }
 module.exports = Product

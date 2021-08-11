@@ -64,6 +64,9 @@ class Product{
     async GetAllCategories(){
         return await this.product.GetAllCategories()
     }
+    async GetProductByCategoryId(categoryId){
+        return await this.product.GetProductByCategoryId(categoryId)
+    }
 }
 
 module.exports = Product
