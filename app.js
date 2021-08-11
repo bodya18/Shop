@@ -2,7 +2,20 @@ const express = require('express')
 const app = express()
 var xlsx = require('node-xlsx').default;
 var AdmZip = require('adm-zip');
+const exphbs = require('express-handlebars')
 const pool = require('./model/tables');
+const path = require('path');
+
+const hbs = exphbs.create({
+    defaultLayout: 'main',
+    layoutsDir: path.join(__dirname, "views/layouts"),
+    extname: 'hbs'
+})
+
+app.engine('hbs', hbs.engine)
+app.set('view engine', 'hbs');
+app.set('views', 'views')
+app.use(express.static(__dirname))
 
 app.get('/', async (req, res)=>{
     const workSheetsFromFile = xlsx.parse(`${__dirname}/Прайс LBS 27.07.xlsx`);
@@ -12,17 +25,25 @@ app.get('/', async (req, res)=>{
     // console.log(data);
     let img = 2;
     let thisProductId;
+    let thisCategoryId;
     for (let i = 0; i < data.length; i++) {
         data[i] = data[i].filter(n => n)
         if(!data[i].length) continue;
         if(data[i].length === 1){//category
-            pool.category.findAll({where:{title: data[i][0]}, raw: true })
-            .then(category=>{
+            thisCategoryId = await pool.category.findAll({where:{title: data[i][0]}, raw: true })
+            .then(async (category)=>{
               if(!category.length){
-                pool.category.create({
+                thisCategoryId = await pool.category
+                .create({
                     title: data[i][0]
-                }).catch(err=>console.log(err));
-              }
+                })
+                .then(res=>{
+                    return res.id
+                })
+                .catch(err=>console.log(err));
+              }else
+                thisCategoryId = category[0].id
+              return thisCategoryId
             }).catch(err=>console.log(err));
             continue;
         }
@@ -32,11 +53,14 @@ app.get('/', async (req, res)=>{
                 // console.log(product);
                 let temp;
               if(!product.length){
+                if(img === 25)
+                    img++
                 temp = await pool.Product
                 .create({
                     title: data[i][0],
                     article: data[i][1],
-                    image: `image${img}.png`
+                    image: `image${img}.png`,
+                    categoryId: thisCategoryId
                 })
                 .then(async (res)=>{ 
                     pool.DimensionProduct.create({
@@ -73,11 +97,16 @@ app.get('/', async (req, res)=>{
     }
     var zip = new AdmZip(`${__dirname}/Прайс LBS 27.07.xlsx`);
     zip.extractEntryTo("xl/media/", `${__dirname}/media`, /*maintainEntryPath*/false, /*overwrite*/true);
-    res.end('hi')
+    res.render('index.hbs', {
+        title: 'перезапись данных'
+    })
 })
 
-app.get('/a', (req, res)=>{
-    
-    res.end('12321')
+app.get('/a', async(req, res)=>{
+    let Product = await pool.Product.findAll({raw: true})
+    res.render('view.hbs', {
+        title: 'вывод данных',
+        Product
+    })
 })
 app.listen(3000)

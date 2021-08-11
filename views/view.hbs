@@ -1,0 +1,12 @@
+<h1>view</h1>
+{{#each Product}}
+    <img src="../media/{{this.image}}">
+    <div style="position: absolute;
+    margin-top: -150px;
+    margin-left: 250px;">
+    {{this.title}}<br><br><br>
+    {{this.article}}
+    </div>
+    <br>
+    <br>
+{{/each}}
