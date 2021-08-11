@@ -12,7 +12,8 @@ const app = express()
 const hbs = exphbs.create({
     defaultLayout: 'main',
     layoutsDir: path.join(__dirname, "views/layouts"),
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: require('./utils/hbs-helper')
 })
 
 app.engine('hbs', hbs.engine)

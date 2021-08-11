@@ -5,7 +5,5 @@ exports.ParseData = async (req, res)=>{
     let data = await main.product.ParseData()
     await main.product.SetDataInDB(data)
     
-    res.render('index.hbs', {
-        title: 'перезапись данных'
-    })
+    res.redirect('/')
 }

@@ -20,7 +20,7 @@ class Product{
         data.splice(0, 6)
         data[0][8] = undefined
         let img = 2, thisProductId, thisCategoryId;
-        
+
         for (const i in data) {
             data[i] = data[i].filter(n => n)
             if(!data[i].length) continue;
@@ -56,6 +56,13 @@ class Product{
 
     async GetAllProduct(){
         return await this.product.GetAllProduct()
+    }
+
+    async GetAllDimensionProducts(){
+        return await this.product.GetAllDimensionProducts()
+    }
+    async GetAllCategories(){
+        return await this.product.GetAllCategories()
     }
 }
 

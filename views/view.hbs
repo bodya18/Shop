@@ -1,12 +1,41 @@
-<h1>view</h1>
-{{#each Product}}
-    <img src="../media/{{this.image}}">
-    <div style="position: absolute;
-    margin-top: -150px;
-    margin-left: 250px;">
-    {{this.title}}<br><br><br>
-    {{this.article}}
-    </div>
-    <br>
-    <br>
-{{/each}}
+<table>
+    <tr>
+        <td>Изображение</td>
+        <td>Название</td>
+        <td>Артикул</td>
+        <td>Размер</td>
+        <td>Цена</td>
+        <td>Колличество</td>
+    </tr>
+    
+    {{#each Product}}
+    {{#each @root.categories}}
+        {{#ifeq this.id ../this.categoryId}}
+            <tr>
+                <td>
+                    <h2>{{this.title}}</h2>
+                </td>
+            </tr>
+        {{/ifeq}}
+    {{/each}}
+    <tr>
+        <td><img src="../media/{{this.image}}"></td>
+        <td valign="top">{{this.title}}</td>
+        <td valign="top">{{this.article}}</td>
+    </tr> 
+    {{#each @root.DimensionProducts}}
+        {{#ifeq this.productId ../this.id}}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="position: absolute; margin-top: -200px;">{{this.dimension}}</td>
+                <td style="position: absolute; margin-top: -200px; margin-left: 55px;">{{this.price}}</td>
+                <td style="position: absolute; margin-top: -200px; margin-left: 122px;">{{this.count}}</td>
+                <td><br></td>
+            </tr>
+        {{/ifeq}}
+    {{/each}}
+    
+    {{/each}}
+</table>

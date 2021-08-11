@@ -60,5 +60,11 @@ class Product{
     async GetAllProduct(){
         return await pool.Product.findAll({raw: true})
     }
+    async GetAllDimensionProducts(){
+        return await pool.DimensionProduct.findAll({raw: true})
+    }
+    async GetAllCategories(){
+        return await pool.category.findAll({raw: true})
+    }
 }
 module.exports = Product
