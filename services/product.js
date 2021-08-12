@@ -38,9 +38,12 @@ class Product{
                 let product = await this.product.GetProductByTitile(data[i][0])
                 
                 if(!product.length){
-                    var stats = fs.lstatSync(`${config.dirname}/media/image${img}.png`);
-                    if(stats.size < 1000)
-                        img++
+                    while (true) {
+                        var stats = fs.lstatSync(`${config.dirname}/media/image${img}.png`);
+                        if(stats.size > 1000)
+                            break;
+                        else img++
+                    }
                     thisProductId = await this.product.CreateProduct(data[i][0], data[i][1], `image${img}.png`, thisCategoryId)
                     await this.product.CreateDimensionProduct(data[i][2], data[i][4], data[i][3], thisProductId)
                     img++;
