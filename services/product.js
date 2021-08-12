@@ -1,5 +1,6 @@
 const xlsx = require('node-xlsx').default;
 const AdmZip = require('adm-zip');
+var fs = require('fs');
 
 const config = require('../middleware/config');
 const productModel = require('../model/ProducRequests');
@@ -19,7 +20,7 @@ class Product{
     async SetDataInDB(data){
         data.splice(0, 6)
         data[0][8] = undefined
-        let img = 2, thisProductId, thisCategoryId;
+        let img = 1, thisProductId, thisCategoryId;
 
         for (const i in data) {
             data[i] = data[i].filter(n => n)
@@ -37,7 +38,8 @@ class Product{
                 let product = await this.product.GetProductByTitile(data[i][0])
                 
                 if(!product.length){
-                    if(img === 25)
+                    var stats = fs.lstatSync(`${config.dirname}/media/image${img}.png`);
+                    if(stats.size < 1000)
                         img++
                     thisProductId = await this.product.CreateProduct(data[i][0], data[i][1], `image${img}.png`, thisCategoryId)
                     await this.product.CreateDimensionProduct(data[i][2], data[i][4], data[i][3], thisProductId)
