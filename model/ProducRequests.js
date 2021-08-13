@@ -25,6 +25,12 @@ class Product{
         .catch(err=>console.log(err));
     }
 
+    async GetProductById(id){
+        return await pool.Product
+        .findAll({where:{id}, raw: true })
+        .catch(err=>console.log(err));
+    }
+
     async CreateProduct(title, article, image, categoryId){
         return await pool.Product
         .create({
