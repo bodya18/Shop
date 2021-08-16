@@ -1,4 +1,4 @@
-const pool = require('../model/tables')
+const pool = require('./tables')
 
 class Product{
 
