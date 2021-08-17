@@ -24,5 +24,9 @@ app.use(express.static(__dirname))
 app.use('/parsing', parsingRouter)
 app.use('/', indexRouter)
 
+app.get('/admin', (req, res)=>{
+    res.render('AdminLTE-3.1.0/index.hbs')
+})
+
 
 app.listen(3000)

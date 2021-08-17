@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-</head>
+{{> head}}
 <body>
-    <br>
+    {{!-- <br>
     <a href="/"><button><h2>Main</h2></button></a><br>
     <form method="POST" action="/parsing">
         <input type="submit" value="Парсинг">
-    </form>
-    {{{body}}}
+    </form> --}}
+    <div class="wrapper">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4 admin-panel">
+            <!-- Sidebar -->
+            <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+
+                    </div>
+                    <div class="info">
+                       
+                    </div>
+                </div>
+
+                <!-- SidebarSearch Form -->
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Поиск" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                        </button>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                {{> adminPanel}}
+            </div>
+        </aside>
+
+        <div class="content-wrapper">
+            <section class="content">
+            <div class="container-fluid">
+                {{!-- {{> phoneAdminPanel}} --}}
+                {{!-- {{{body}}} --}}
+
+            </div>
+            </section>
+        </div>
+    </div>
+    {{>scripts}}
 </body>
 </html>

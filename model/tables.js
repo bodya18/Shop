@@ -2,10 +2,10 @@ const Sequelize = require("sequelize");
  
 const sequelize = new Sequelize("shop", "root", "ZAQwsxz1.", {
     dialect: "mysql",
-    host: "localhost",
-    define: {
-      timestamps: false
-    }
+    host: "localhost"
+//     ,define: {
+//       timestamps: false
+//     }
     ,logging: false
 });
 
@@ -59,7 +59,10 @@ const DimensionProduct = sequelize.define("DimensionProducts", {
     count: {
       type: Sequelize.INTEGER
     },
-    price: {
+    OldPrice: {
+      type: Sequelize.INTEGER
+    },
+    NewPrice: {
       type: Sequelize.INTEGER
     }
 });
@@ -84,7 +87,87 @@ const _order = sequelize.define("_orders", {
 });
 DimensionProduct.hasMany(_order);
 
-sequelize.sync({force:false}).then(()=>{
+const user = sequelize.define("users",{
+  id: {
+    type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  status: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 1
+  },
+  token:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  }
+});
+
+const role = sequelize.define('roles', {
+  role:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  }
+})
+
+const premission = sequelize.define('premissions', {
+  premission:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  }
+}) 
+
+const settings = sequelize.define('settings', {
+  percent:{
+    type: Sequelize.INTEGER,
+    allowNull: false
+  }
+})
+
+const RolePermission = sequelize.define('RolePermissions',{
+  id: {
+    type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false
+  }
+})
+
+const RoleUser = sequelize.define('RoleUsers',{
+  id: {
+    type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false
+  }
+})
+
+premission.belongsToMany(role, { through: 'RolePermissions' });
+role.belongsToMany(premission, { through: 'RolePermissions' });
+
+role.belongsToMany(user, { through: 'RoleUsers' });
+user.belongsToMany(role, { through: 'RoleUsers' });
+
+
+sequelize.sync({force:true}).then(()=>{
     console.log("Tables have been created");
 }).catch(err=>console.error(err));
 
@@ -92,5 +175,11 @@ module.exports = {
   Product,
   DimensionProduct,
   _order,
-  category
+  category,
+  user,
+  role,
+  premission,
+  RolePermission,
+  RoleUser,
+  settings
 }
