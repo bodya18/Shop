@@ -172,7 +172,7 @@ role.belongsToMany(user, { through: 'RoleUsers' });
 user.belongsToMany(role, { through: 'RoleUsers' });
 
 
-sequelize.sync({force:true}).then(()=>{
+sequelize.sync({force:false}).then(()=>{
     console.log("Tables have been created");
 }).catch(err=>console.error(err));
 

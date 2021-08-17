@@ -2,11 +2,9 @@
 <html lang="en">
 {{> head}}
 <body>
-    <a href="/user/login"><button>Войти</button></a>
-    <form action="/user/logout" method="POST">
-        <input type="submit" value="Выйти">
-    </form>
-    <a href="/user/register"><button>Регистрация</button></a>
+    <a href="/login"><button>Войти</button></a>
+    <a href="/logout"><button>Выйти</button></a>
+    <a href="/register"><button>Регистрация</button></a>
     {{#if isAuth}}
         <div class="wrapper">
             <aside class="main-sidebar sidebar-dark-primary elevation-4 admin-panel">

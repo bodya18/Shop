@@ -1,10 +1,18 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const session = require('express-session')
+const SessionStore = require('express-mysql-session')
+const flash = require('connect-flash')
 const path = require('path');
 
+const varMiddleware = require('./middleware/variables')
 const errorHandler = require('./middleware/error')
 const config = require('./middleware/config');
 config.dirname = __dirname
+
+const loginRouter = require('./routes/login')
+const registerRouter = require('./routes/register')
+const logoutRouter = require('./routes/logout')
 
 const parsingRouter = require('./routes/parsing');
 const indexRouter = require('./routes/index');
@@ -24,15 +32,30 @@ app.set('view engine', 'hbs');
 app.set('views', 'views')
 app.use(express.static(__dirname))
 
+var options = {
+    host: config.host,
+    user: 'root',
+    password: 'ZAQwsxz1.',
+    database: 'shop'
+}
+
+app.use(session({
+    secret: config.sessionSecretKey,
+    resave: false,
+    saveUninitialized: false,
+    store: new SessionStore(options)
+}))
+
+app.use(flash())
+app.use(varMiddleware)
 
 app.use('/', indexRouter)
 app.use('/admin', adminRouter)
 app.use('/parsing', parsingRouter)
-
-app.get('/admin', (req, res)=>{
-    
-})
+app.use('/login', loginRouter)
+app.use('/logout', logoutRouter)
+app.use('/register', registerRouter)
 
 app.use(errorHandler)
 
-app.listen(3000)
+app.listen(config.port)

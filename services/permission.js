@@ -1,14 +1,14 @@
 // const config = require('../middleware/config')
-// const RuleModel = require(`../models/${config.database}/rule`)
-// const ConnectionModel = require(`../models/${config.database}/connection`)
-// const PermissionModel = require(`../models/${config.database}/permission`)
+const RoleModel = require('../model/requests/role');
+const PermissionModel = require('../model/requests/permission');
+const ConnectionModel = require('../model/requests/connection');
 
 class Permission{
 
     constructor(){
         this.is = false
         this.permission = new PermissionModel
-        this.rule = new RuleModel
+        this.role = new RoleModel
         this.connection = new ConnectionModel
     } 
 

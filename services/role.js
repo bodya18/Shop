@@ -1,13 +1,13 @@
 // const config = require('../middleware/config')
-// const RuleModel = require(`../models/${config.database}/rule`)
-// const ConnectionModel = require(`../models/${config.database}/connection`)
-// const UserModel = require(`../models/${config.database}/user`)
+const RoleModel = require('../model/requests/role');
+const UserModel = require('../model/requests/user');
+const ConnectionModel = require('../model/requests/connection');
 
 class Role{
 
     constructor(){
         this.is = false
-        this.rule = new RuleModel
+        this.role = new RoleModel
         this.user = new UserModel
         this.connection = new ConnectionModel
     }  
