@@ -1,11 +1,14 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const path = require('path');
+
+const errorHandler = require('./middleware/error')
 const config = require('./middleware/config');
 config.dirname = __dirname
 
 const parsingRouter = require('./routes/parsing');
 const indexRouter = require('./routes/index');
+const adminRouter = require('./routes/admin');
 
 const app = express()
 
@@ -21,12 +24,15 @@ app.set('view engine', 'hbs');
 app.set('views', 'views')
 app.use(express.static(__dirname))
 
-app.use('/parsing', parsingRouter)
+
 app.use('/', indexRouter)
+app.use('/admin', adminRouter)
+app.use('/parsing', parsingRouter)
 
 app.get('/admin', (req, res)=>{
-    res.render('AdminLTE-3.1.0/index.hbs')
+    
 })
 
+app.use(errorHandler)
 
 app.listen(3000)

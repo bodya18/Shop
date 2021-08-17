@@ -83,6 +83,11 @@ const _order = sequelize.define("_orders", {
     address: {
       type: Sequelize.STRING,
       allowNull: false
+    },
+    status: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaultValue: 1
     }
 });
 DimensionProduct.hasMany(_order);

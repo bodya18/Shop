@@ -1,4 +1,4 @@
-const pool = require('./tables');
+const pool = require("../tables/tables");
 
 class Order{
     async GetOrders(){

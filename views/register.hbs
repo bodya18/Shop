@@ -1,0 +1,23 @@
+<div align='center'>
+    <h1>Создание пользователя</h1>
+    
+    {{#if error}}
+        <br>
+        <font color='red'>{{error}}</font>
+    {{else}}
+        <br><br>
+    {{/if}}
+    <form method="POST" action="/register">
+        
+        <div class="col-sm-3">
+            <input name="email" type="email" class="form-control" placeholder="email">
+            <input name="name" class="form-control" placeholder="Имя">
+            <input name="age" type="number" min="1" max="110" class="form-control" placeholder="Возрааст">
+            <input name="password" type="password" min="6" max="32" class="form-control" placeholder="Пароль">
+            <input name="repeat" type="password" min="6" max="32" class="form-control" placeholder="Пароль еще раз">
+            <br>
+            <input type="submit" class="btn btn-outline-success" value="Отправить">
+        </div>
+    </form>
+    
+</div>

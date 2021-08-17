@@ -3,7 +3,7 @@ const AdmZip = require('adm-zip');
 var fs = require('fs');
 
 const config = require('../middleware/config');
-const productModel = require('../model/ProducRequests');
+const productModel = require('../model/requests/Produc');
 
 class Product{
     constructor(){
