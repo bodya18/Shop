@@ -131,3 +131,21 @@ exports.DeletePermission = async (req, res)=>{
     await main.permission.DeletePermission(req.params.permissionId)
     return res.redirect('/admin/permissions')
 }
+
+exports.GetSettings = async (req, res)=>{
+    const main = new Main
+    const data = await main.product.getSettings()
+    res.render('settings.hbs', {
+        percent: data.percent,
+        title: 'Настройки',
+        isAdmin: true,
+        isSetting: true,
+        error: req.flash('error')
+    })
+}
+
+exports.EditSettings = async(req, res)=>{
+    const main = new Main
+    await main.product.EditSettings(req.body.percent)
+    res.redirect('/admin/settings')
+}

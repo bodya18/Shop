@@ -45,11 +45,14 @@ class Product{
         .catch(err=>console.log(err));
     }
 
-    async CreateDimensionProduct(dimension, count, price, productId){
+    async CreateDimensionProduct(dimension, count, OldPrice, productId){
+        const percent = await pool.settings.findOne({raw:true})
+        const NewPrice = OldPrice * (percent.percent / 100 + 1)
         await pool.DimensionProduct.create({
             dimension,
             count,
-            price,
+            NewPrice,
+            OldPrice,
             productId
         })
         .catch(err=>console.log(err));
@@ -75,6 +78,13 @@ class Product{
     
     async GetProductByCategoryId(categoryId){
         return await pool.Product.findAll({where:{categoryId}, raw: true})
+    }
+
+    async getSettings(){
+        return await pool.settings.findOne({raw: true})
+    }
+    async EditSettings(percent){
+        return await pool.settings.update({percent}, {where:{id: 1}})
     }
 }
 module.exports = Product

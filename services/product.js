@@ -72,6 +72,13 @@ class Product{
     async GetProductByCategoryId(categoryId){
         return await this.product.GetProductByCategoryId(categoryId)
     }
+
+    async getSettings(){
+        return await this.product.getSettings();
+    }
+    async EditSettings(percent){
+        return await this.product.EditSettings(percent)
+    }
 }
 
 module.exports = Product
