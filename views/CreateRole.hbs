@@ -3,10 +3,10 @@
     {{#if error}}
         <font color='red'>{{error}}</font>
     {{/if}}
-    <form method="POST" action="/rules/newRole">
+    <form method="POST" action="/admin/roles/create">
         <div class="col-sm-6">
             
-            <input name="rule" type="text" class="form-control" placeholder="Название роли" maxlength="30" minlength="2" autocomplete="off">
+            <input name="role" type="text" class="form-control" placeholder="Название роли" maxlength="30" minlength="2" autocomplete="off">
             
             <input type="submit" class="btn btn-secondary" value="Отправить">
 

@@ -13,15 +13,7 @@ class Permission{
     } 
 
     async GetPermissions (){
-        const rules = await this.rule.GetRoles()
-        const permissions = await this.permission.GetPermissions()
-
-        return{
-            isGet: true,
-            rules,
-            permissions
-        }
-        
+        return await this.permission.GetPermissions()        
     }
 
     async ShowAllPermissions(id){
@@ -45,18 +37,11 @@ class Permission{
 
     async CreatePermission(Permission){
         if(Permission.length<3)
-            return {
-                is: false,
-                error: 'Разрешение должно быть больше 2 символов'
-            }   
-        const data = await this.permission.GetPermissionBy('permission', Permission)
+            return 'Разрешение должно быть больше 2 символов'
+        const data = await this.permission.GetPermissionByTitile(Permission)
         if(data)
-            return {
-                is:false,
-                error: 'Данное разрешение уже есть'
-            }
-        await this.permission.CreatePermission(Permission)
-        return {is:true}
+            return 'Данное разрешение уже есть'
+        await this.permission.create(Permission)
     }
 
     async DeletePermissionFromUser(id) {

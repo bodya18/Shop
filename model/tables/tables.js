@@ -132,8 +132,8 @@ const role = sequelize.define('roles', {
   }
 })
 
-const premission = sequelize.define('premissions', {
-  premission:{
+const permission = sequelize.define('permissions', {
+  permission:{
     type: Sequelize.STRING,
     allowNull: false,
     unique: true
@@ -165,8 +165,8 @@ const RoleUser = sequelize.define('RoleUsers',{
   }
 })
 
-premission.belongsToMany(role, { through: 'RolePermissions' });
-role.belongsToMany(premission, { through: 'RolePermissions' });
+permission.belongsToMany(role, { through: 'RolePermissions' });
+role.belongsToMany(permission, { through: 'RolePermissions' });
 
 role.belongsToMany(user, { through: 'RoleUsers' });
 user.belongsToMany(role, { through: 'RoleUsers' });
@@ -183,7 +183,7 @@ module.exports = {
   category,
   user,
   role,
-  premission,
+  permission,
   RolePermission,
   RoleUser,
   settings

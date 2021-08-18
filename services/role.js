@@ -13,40 +13,27 @@ class Role{
     }  
 
     async GetRoles() {
-        const rules = await this.rule.GetRoles()
-        const users = await this.user.GetUsers()
-        return{
-            rules,
-            users,
-            isGet: true
-        }
+        return await this.role.GetRoles()
         
     }
 
     async GetUserRoles(id) {
-        const rules = await this.rule.GetRoles()
+        const roles = await this.rule.GetRoles()
         const users = await this.user.GetUserRoles(id)
         return{
-            rules,
+            roles,
             users
         }
         
     }
 
-    async CreateRule(Rol){
-        if(Rol.length<3)
-            return {
-                is:false,
-                error: 'Роль должна быть больше 2 символов'
-            }
-        const data = await this.rule.GetRoleBy('rule', Rol)
+    async CreateRole(Role){
+        if(Role.length<3)
+            return 'Роль должна быть больше 2 символов'
+        const data = await this.role.GetRoleByTitle(Role)
         if(data)
-            return {
-                is:false,
-                error: 'Данная роль уже есть'
-            }
-        await this.rule.create(Rol)
-        return {is: true}
+            return 'Данная роль уже есть'
+        await this.role.create(Role)
     }
 
     async DeleteRule(id){
