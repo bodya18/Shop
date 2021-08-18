@@ -1,6 +1,9 @@
 
 <div class="container">
     <h1>Выдача разрешений</h1>
+    {{#if error}}
+        <font color='red'>{{error}}</font>
+    {{/if}}
     <div class="row">
         <div class="col-lg-6">
             <form action="/admin/permissions/give" method="POST">

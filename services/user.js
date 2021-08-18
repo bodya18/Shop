@@ -73,12 +73,12 @@ class User{
             if(!areSame)
                 return {isAuth: false, error: 'Неверный пароль'}
             
-            const permissions = await this.permission.ShowAllPermissions(user.id)
+            const Perm = await this.permission.ShowAllPermissions(user.id)
             return {
                 isAuth: true,
                 user,
                 isAuthenticated: true,
-                Perm: permissions
+                Perm
             }
         }
     }

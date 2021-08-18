@@ -13,6 +13,8 @@ router.get('/permissions/create', isAuth,   isAdmin, adminControllerr.GetCreateP
 router.get('/permissions/give', isAuth,   isAdmin, adminControllerr.GetGivePermission)
 router.get('/roles/give', isAuth,   isAdmin, adminControllerr.GetGiveRole)
 
+router.post('/roles/delete/:roleId', isAuth,   isAdmin, adminControllerr.DeleteRole)
+router.post('/permissions/delete/:permissionId', isAuth,   isAdmin, adminControllerr.DeletePermission)
 router.post('/roles/create', isAuth,   isAdmin, urlencodedParser, adminControllerr.CreateRole)
 router.post('/permissions/create', isAuth,   isAdmin, urlencodedParser, adminControllerr.CreatePermission)
 router.post('/permissions/give', isAuth,   isAdmin, urlencodedParser, adminControllerr.GivePermission)

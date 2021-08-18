@@ -88,8 +88,12 @@ exports.GetGivePermission = async (req, res) => {
 
 exports.GivePermission = async (req, res) =>{
     const main = new Main
-    await main.permission.GivePermission(req.body.permissionId, req.body.roleId)
-    return res.redirect('/admin/roles') 
+    const error = await main.permission.GivePermission(req.body.permissionId, req.body.roleId)
+    if(error){
+        req.flash('error', error)
+        return res.redirect(`/admin/permissions/give`)
+    }
+    return res.redirect('/admin/permissions') 
 }
 
 exports.GetGiveRole = async (req, res) => {
@@ -114,4 +118,16 @@ exports.GiveRole = async (req, res) =>{
         return res.redirect(`/admin/roles/give`)
     }
     return res.redirect('/admin/roles') 
+}
+
+exports.DeleteRole = async (req, res)=>{
+    const main = new Main
+    await main.role.DeleteRole(req.params.roleId)
+    return res.redirect('/admin/roles')
+}
+
+exports.DeletePermission = async (req, res)=>{
+    const main = new Main
+    await main.permission.DeletePermission(req.params.permissionId)
+    return res.redirect('/admin/permissions')
 }

@@ -32,6 +32,14 @@ class Permission{
     }
 
     async GivePermission(permissionId, roleId){
+        if (!permissionId || !roleId)
+            return 'Выберите роль и разрешение'
+        const role = await this.role.GetRoleById(roleId)
+        if(!role)
+            return 'Данной роли не существует либо она удалена'
+        const RolePerm = await this.connection.GetRoleRerm(permissionId, roleId)
+        if(RolePerm)
+            return 'Данное разрешение уже принадлежит роли'
         await this.connection.GivePermission(permissionId,roleId)
     }
 
@@ -49,9 +57,7 @@ class Permission{
     }
 
     async DeletePermission(id){
-        const data = await this.permission.DeletePermission(id)
-        if(data === false)
-            return{isDel: false}
+        await this.permission.DeletePermission(id)
     }
 }
 

@@ -37,6 +37,10 @@ class Permission{
         }
         return permission
     }
+
+    async DeletePermission(id){
+        await pool.permission.destroy({where:{id}})
+    }
 }
 
 module.exports = Permission

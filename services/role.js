@@ -36,10 +36,8 @@ class Role{
         await this.role.create(Role)
     }
 
-    async DeleteRule(id){
-        const data = await this.rule.delete(id)
-        if(data === false)
-            return{isDel: false}
+    async DeleteRole(id){
+        await this.role.delete(id)
     }
 
     async GiveRule(user, rule){
