@@ -2,7 +2,8 @@ const Main = require("../services/main")
 
 exports.GetStartPage = async (req, res)=>{
     res.render('adminIndex.hbs', {
-        title: 'Панель администрации'
+        title: 'Панель администрации',
+        isAdmin: true
     })
 }
 
@@ -69,4 +70,48 @@ exports.GetCreatePermission = async (req, res) =>{
         isPermissionCreate: true,
         error: req.flash('error')
     })
+}
+
+exports.GetGivePermission = async (req, res) => {
+    const main = new Main
+    const permissions = await main.permission.GetPermissions()
+    const roles = await main.role.GetRoles()
+    res.render('GivePermission.hbs', {
+        roles, 
+        permissions, 
+        title: 'Выдача разрешения',
+        isAdmin: true,
+        isGivePermission: true,
+        error: req.flash('error')
+    })
+}
+
+exports.GivePermission = async (req, res) =>{
+    const main = new Main
+    await main.permission.GivePermission(req.body.permissionId, req.body.roleId)
+    return res.redirect('/admin/roles') 
+}
+
+exports.GetGiveRole = async (req, res) => {
+    const main = new Main
+    const users = await main.user.GetUsers()
+    const roles = await main.role.GetRoles()
+    res.render('GiveRole.hbs', {
+        roles, 
+        users, 
+        title: 'Выдача ролей',
+        isAdmin: true,
+        isGiveRole: true,
+        error: req.flash('error')
+    })
+}
+
+exports.GiveRole = async (req, res) =>{
+    const main = new Main
+    const error = await main.user.GiveRole(req.body.userId, req.body.roleId)
+    if(error){
+        req.flash('error', error)
+        return res.redirect(`/admin/roles/give`)
+    }
+    return res.redirect('/admin/roles') 
 }

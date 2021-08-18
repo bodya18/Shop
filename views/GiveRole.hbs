@@ -1,0 +1,27 @@
+
+<div class="container">
+    <h1>Выдача ролей</h1>
+    {{#if error}}
+        <font color='red'>{{error}}</font>
+    {{/if}}
+    <div class="row">
+        <div class="col-lg-6">
+            <form action="/admin/roles/give" method="POST">
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="userId">
+                    <option disabled selected>Выберите пользователя</option>
+                    {{#each users}}
+                        <option value="{{this.id}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="roleId">
+                    <option disabled selected>Выберите роль</option>
+                    {{#each roles}}
+                        <option value="{{this.id}}">{{this.role}}</option>
+                    {{/each}}
+                </select><BR><BR>
+                <input type="submit" class="btn btn-secondary" value="Выдать роль">
+            </form>
+        </div>
+    </div>
+</div>

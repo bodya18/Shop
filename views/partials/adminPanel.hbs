@@ -94,6 +94,19 @@
                     {{/if}}
                 </li>
                 <li class="nav-item">
+                    {{#if isGiveRole}}
+                        <a href="/admin/roles/give" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Выдача ролей</p>
+                        </a>
+                    {{else}}
+                        <a href="/admin/roles/give" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Выдача ролей</p>
+                        </a>
+                    {{/if}}
+                </li>
+                <li class="nav-item">
                     {{#if isSettings}}
                         <a href="/admin/settings" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>

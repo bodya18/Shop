@@ -12,6 +12,18 @@ class User{
         this.connection = new ConnectionModel
     }
 
+    async GiveRole(userId, roleId){
+        if(!userId || !roleId)
+            return 'Выберите роль и пользователя'
+        const user = await this.user.getById(userId)
+        if(!user)
+            return 'Данного пользователя не существует либо он удален'
+        const RoleFromUser = await this.user.getUserRole(userId, roleId)
+        if (RoleFromUser.length)
+            return 'Данная роль уже принадлежит пользователю'
+        await this.user.AddRoleToUser(userId, roleId)
+    }
+
     async SetStatus(token, num){
         return await this.user.SetStatus(token, num)
     }
@@ -51,23 +63,22 @@ class User{
     }
 
     async loginLogic(email, passwordBody){
-
-        const data = await this.user.getByEmail(email)
-        if(!data)
+        const user = await this.user.getByEmail(email)
+        if(!user)
             return {isAuth: false, error: 'Данного email не существует'}
         else {
-            const password = data.password
+            const password = user.password
             const areSame = await bcrypt.compare(passwordBody, password)
             
             if(!areSame)
                 return {isAuth: false, error: 'Неверный пароль'}
             
-            // const permissions = await this.permission.ShowAllPermissions(id)
+            const permissions = await this.permission.ShowAllPermissions(user.id)
             return {
                 isAuth: true,
-                user: data,
+                user,
                 isAuthenticated: true,
-                // Perm: permissions
+                Perm: permissions
             }
         }
     }
@@ -130,7 +141,7 @@ class User{
 
             const token = buffer.toString('hex')
             const user = await this.user.create(hashPassword, email, name, token)
-            // await this.connection.AddRuleToUser(id, 1)
+            await this.user.AddRoleToUser(user.id, 2)
 
             return {
                 user,

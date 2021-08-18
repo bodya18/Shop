@@ -24,8 +24,12 @@ exports.loginLogic = async(req,res) => {
     
     req.session.user = UserData.user
     req.session.isAuthenticated = UserData.isAuthenticated
-    // req.session.Perm = UserData.Perm
-    
+    req.session.Perm = UserData.Perm
+    req.session.Admin = false
+    for (const i in UserData.Perm) {
+        if(UserData.Perm[i] === 'GIVE')
+            req.session.Admin = true
+    }
     req.session.save(err =>{
         if(err){
             throw err

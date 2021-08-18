@@ -3,12 +3,15 @@
 {{> head}}
 <body>
     {{#if isAuth}}
-        <a href="/logout"><button>Выйти</button></a>
+        <a href="/logout"><button class="btn btn-dark">Выйти</button></a>
     {{else}}
-        <a href="/login"><button>Войти</button></a>
-        <a href="/register"><button>Регистрация</button></a>
+        <a href="/login"><button class="btn btn-dark">Войти</button></a>
+        <a href="/register"><button class="btn btn-dark">Регистрация</button></a>
     {{/if}}
-    {{#if isAuth}}
+    {{#if isAdministrator}}
+        <a href="/admin"><button class="btn btn-dark">Админ панель</button></a>
+    {{/if}}
+    {{#if isAdmin}}
         <div class="wrapper">
             <aside class="main-sidebar sidebar-dark-primary elevation-4 admin-panel">
                 <div class="sidebar">

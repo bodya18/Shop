@@ -31,8 +31,8 @@ class Permission{
         }
     }
 
-    async GivePermission(permissionId, ruleId){
-        await this.connection.GivePermission(permissionId,ruleId)
+    async GivePermission(permissionId, roleId){
+        await this.connection.GivePermission(permissionId,roleId)
     }
 
     async CreatePermission(Permission){

@@ -2,11 +2,11 @@ const Sequelize = require("sequelize");
  
 const sequelize = new Sequelize("shop", "root", "ZAQwsxz1.", {
     dialect: "mysql",
-    host: "localhost"
-//     ,define: {
+    host: "localhost",
+//     define: {
 //       timestamps: false
-//     }
-    ,logging: false
+//     },
+    logging: false,
 });
 
 const category = sequelize.define('categories', {
@@ -186,5 +186,6 @@ module.exports = {
   permission,
   RolePermission,
   RoleUser,
-  settings
+  settings,
+  sequelize
 }
