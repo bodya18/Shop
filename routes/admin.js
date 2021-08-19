@@ -4,6 +4,7 @@ const adminControllerr = require('../controllers/admin')
 const isAdmin = require('../middleware/isAdmin');
 const isAuth = require('../middleware/auth');
 const urlencodedParser = require('../middleware/urlencodedParser');
+const file = require('../middleware/file')
 
 router.get('/', isAuth,   isAdmin, adminControllerr.GetStartPage)
 router.get('/roles/create', isAuth,   isAdmin, adminControllerr.GetCreateRole)
@@ -17,6 +18,7 @@ router.get('/users', isAuth,   isAdmin, adminControllerr.GetUsers)
 router.get('/orders/getNew', isAuth,   isAdmin, adminControllerr.GetNewOrders)
 router.get('/orders/getOld', isAuth,   isAdmin, adminControllerr.GetOldOrders)
 
+router.post('/parse', isAuth,   isAdmin, urlencodedParser, file.upload.single("parsingFile"), adminControllerr.ParseData)
 router.post('/orders/delete/:id', isAuth,   isAdmin, adminControllerr.DeleteOrder)
 router.post('/orders/good/:id', isAuth,   isAdmin, adminControllerr.DoneOrder)
 router.post('/orders/set/:id', isAuth,   isAdmin, adminControllerr.SetOrder)

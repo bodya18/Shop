@@ -1,10 +1,11 @@
-const isAdmin = require("../middleware/isAdmin")
 const Main = require("../services/main")
 const main = new Main;
+
 exports.GetStartPage = async (req, res)=>{
     res.render('adminIndex.hbs', {
         title: 'Панель администрации',
-        isAdmin: true
+        isAdmin: true,
+        error: req.flash('error')
     })
 }
 
@@ -188,5 +189,16 @@ exports.SetOrder = async(req, res)=>{
 
 exports.CreateOrder = async(req, res)=>{
     await main.product.CreateOrder(req.body.number, req.body.address, req.body.DimensionProductId)
+    res.redirect('/')
+}
+
+exports.ParseData = async (req, res)=>{
+    let data = await main.product.ParseData(req.file)
+    if (!data.perm) {
+        req.flash('error', data.error)
+        return res.redirect(`/admin`)
+    }
+    await main.product.SetDataInDB(data.data)
+    
     res.redirect('/')
 }

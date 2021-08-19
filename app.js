@@ -13,8 +13,6 @@ config.dirname = __dirname
 const loginRouter = require('./routes/login')
 const registerRouter = require('./routes/register')
 const logoutRouter = require('./routes/logout')
-
-const parsingRouter = require('./routes/parsing');
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
 
@@ -51,7 +49,6 @@ app.use(varMiddleware)
 
 app.use('/', indexRouter)
 app.use('/admin', adminRouter)
-app.use('/parsing', parsingRouter)
 app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
 app.use('/register', registerRouter)

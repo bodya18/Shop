@@ -1,12 +1,16 @@
 <table class="table table-striped">
     <tr>
         <th>Твоар</th>
+        <th>Размер</th>
+        <th>Цена</th>
         <th>Адресс</th>
         <th>Номер</th>
     </tr>
     {{#each orders}}
         <tr> 
-            <td><h5>{{this.DimensionProductId}}</h5></td>
+            <td><h5>{{this.title}}</h5></td>
+            <td><h5>{{this.dimension}}</h5></td>
+            <td><h5>{{this.NewPrice}}</h5></td>
             <td><h5>{{this.address}}</h5></td>
             <td><h5>{{this.number}}</h5></td>
             {{#if @root.isNewOrder}}

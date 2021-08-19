@@ -1,7 +1,12 @@
-Admin Panel
-
-<br>
-<a href="/"><button><h2>Main</h2></button></a><br>
-<form method="POST" action="/parsing">
-    <input type="submit" value="Парсинг">
+<br><br><br><br>
+{{#if error}}
+<font color="red">{{error}}</font>
+{{/if}}
+<form method="POST" action="/admin/parse" enctype="multipart/form-data">
+    <div class="col col-lg-6">
+        <label for="formFile" class="form-label">Загрузите .xslx файл для обновления каталога товаров</label>
+        <input name="parsingFile" class="form-control" type="file" id="formFile">
+    </div>
+    <br><br>
+    <input class="btn btn-warning" type="submit" value="Парсинг">
 </form>

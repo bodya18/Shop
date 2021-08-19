@@ -1,7 +1,7 @@
 const xlsx = require('node-xlsx').default;
 const AdmZip = require('adm-zip');
 var fs = require('fs');
-
+const file = require('../middleware/file')
 const config = require('../middleware/config');
 const productModel = require('../model/requests/Produc');
 const orderModel = require('../model/requests/order');
@@ -12,11 +12,14 @@ class Product{
         this.order = new orderModel
     }
 
-    async ParseData(){
-        const workSheetsFromFile = xlsx.parse(`${config.dirname}/Прайс LBS 27.07.xlsx`);
-        var zip = new AdmZip(`${config.dirname}/Прайс LBS 27.07.xlsx`);
+    async ParseData(filedata){
+        if(!filedata){
+            return {perm: false, error: 'Файл должен быть разшерением .xlsx или .xls'}
+        }
+        const workSheetsFromFile = xlsx.parse(`${config.dirname}/${filedata.path}`);
+        var zip = new AdmZip(`${config.dirname}/${filedata.path}`);
         zip.extractEntryTo("xl/media/", `${config.dirname}/media`, /*maintainEntryPath*/false, /*overwrite*/true);
-        return workSheetsFromFile[0].data;
+        return {perm: true, data: workSheetsFromFile[0].data}
     }
 
     async SetDataInDB(data){
