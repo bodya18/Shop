@@ -20,15 +20,8 @@ class Permission{
         return await this.permission.ShowAllPermissions(id)
     }
 
-    async GetAllConnection(){
-        const Alldata = await this.connection.GetAllConnection()
-        const rule_permission = await this.connection.GetRulePermission()
-        const rule_user = await this.connection.GetRuleUser()
-        return {
-            Alldata,
-            rule_permission,
-            rule_user
-        }
+    async GetRoleUser(){
+        return await this.connection.GetRoleUser()
     }
 
     async GivePermission(permissionId, roleId){

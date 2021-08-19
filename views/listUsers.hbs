@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <tr>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <th width="200">Имя</th>
+        </div>
+        <th class="table-list-users" width="250">Email</th>
+        <th class="table-list-users">Роль</th>
+    </tr>
+    {{#each users}}
+        <tr> 
+            <td><h5>{{this.name}}</h5></td>
+            <td class="table-list-users"><h5>{{this.email}}</h5></td>
+            <td class="table-list-users">
+                {{#each @root.roleUser}}
+                    {{#ifeq this.userId ../this.id}}
+                        <h5 class="float-left">{{this.role}}&nbsp;&nbsp;&nbsp;</h5>
+                    {{/ifeq}}
+                {{/each}}
+            </td>
+        </tr>
+    {{/each}}
+</table>

@@ -149,3 +149,16 @@ exports.EditSettings = async(req, res)=>{
     await main.product.EditSettings(req.body.percent)
     res.redirect('/admin/settings')
 }
+
+exports.GetUsers = async (req, res)=>{
+    const main = new Main
+    const users = await main.user.GetUsers()
+    const roleUser = await main.permission.GetRoleUser()
+    res.render('listUsers.hbs', {
+        users,
+        roleUser,
+        title: 'Список пользователей',
+        isAdmin: true,
+        isUsers: true
+    })
+}

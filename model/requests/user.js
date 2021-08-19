@@ -3,7 +3,11 @@ const pool = require('../tables/tables')
 class User{
 
     async GetUsers(){
-        return await pool.user.findAll({raw: true})
+        return await pool.user.findAll({
+            order: [
+                ['createdAt', 'DESC']
+            ],
+            raw: true})
     }
 
     async getById(id){
