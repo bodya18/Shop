@@ -14,7 +14,13 @@ router.get('/permissions/give', isAuth,   isAdmin, adminControllerr.GetGivePermi
 router.get('/roles/give', isAuth,   isAdmin, adminControllerr.GetGiveRole)
 router.get('/settings', isAuth,   isAdmin, adminControllerr.GetSettings)
 router.get('/users', isAuth,   isAdmin, adminControllerr.GetUsers)
+router.get('/orders/getNew', isAuth,   isAdmin, adminControllerr.GetNewOrders)
+router.get('/orders/getOld', isAuth,   isAdmin, adminControllerr.GetOldOrders)
 
+router.post('/orders/delete/:id', isAuth,   isAdmin, adminControllerr.DeleteOrder)
+router.post('/orders/good/:id', isAuth,   isAdmin, adminControllerr.DoneOrder)
+router.post('/orders/set/:id', isAuth,   isAdmin, adminControllerr.SetOrder)
+router.post('/orders/create', isAuth,   isAdmin, adminControllerr.CreateOrder)
 router.post('/settings/set', isAuth,   isAdmin, urlencodedParser, adminControllerr.EditSettings)
 router.post('/roles/delete/:roleId', isAuth,   isAdmin, adminControllerr.DeleteRole)
 router.post('/permissions/delete/:permissionId', isAuth,   isAdmin, adminControllerr.DeletePermission)

@@ -1,5 +1,6 @@
+const isAdmin = require("../middleware/isAdmin")
 const Main = require("../services/main")
-
+const main = new Main;
 exports.GetStartPage = async (req, res)=>{
     res.render('adminIndex.hbs', {
         title: 'Панель администрации',
@@ -19,7 +20,6 @@ exports.GetCreateRole = async (req, res) =>{
 exports.CreateRole = async (req, res) => {
     if(!req.body) return res.sendStatus(400)
 
-    const main = new Main
     const data = await main.role.CreateRole(req.body.role)
     
     if(data){
@@ -30,7 +30,6 @@ exports.CreateRole = async (req, res) => {
 }
 
 exports.GetRoles = async (req,res) => {
-    const main = new Main
     const roles = await main.role.GetRoles()
     res.render('roles.hbs', {
         roles,
@@ -42,7 +41,6 @@ exports.GetRoles = async (req,res) => {
 
 exports.CreatePermission = async (req, res) => {
     if(!req.body) return res.sendStatus(400)
-    const main = new Main
     const data = await main.permission.CreatePermission(req.body.permission)
     
     if(data){
@@ -53,7 +51,6 @@ exports.CreatePermission = async (req, res) => {
 }
 
 exports.GetPermissions = async (req,res) => {
-    const main = new Main
     const permissions = await main.permission.GetPermissions()
     res.render('permissions.hbs', {
         permissions,
@@ -73,7 +70,6 @@ exports.GetCreatePermission = async (req, res) =>{
 }
 
 exports.GetGivePermission = async (req, res) => {
-    const main = new Main
     const permissions = await main.permission.GetPermissions()
     const roles = await main.role.GetRoles()
     res.render('GivePermission.hbs', {
@@ -87,7 +83,6 @@ exports.GetGivePermission = async (req, res) => {
 }
 
 exports.GivePermission = async (req, res) =>{
-    const main = new Main
     const error = await main.permission.GivePermission(req.body.permissionId, req.body.roleId)
     if(error){
         req.flash('error', error)
@@ -97,7 +92,6 @@ exports.GivePermission = async (req, res) =>{
 }
 
 exports.GetGiveRole = async (req, res) => {
-    const main = new Main
     const users = await main.user.GetUsers()
     const roles = await main.role.GetRoles()
     res.render('GiveRole.hbs', {
@@ -111,7 +105,6 @@ exports.GetGiveRole = async (req, res) => {
 }
 
 exports.GiveRole = async (req, res) =>{
-    const main = new Main
     const error = await main.user.GiveRole(req.body.userId, req.body.roleId)
     if(error){
         req.flash('error', error)
@@ -121,19 +114,16 @@ exports.GiveRole = async (req, res) =>{
 }
 
 exports.DeleteRole = async (req, res)=>{
-    const main = new Main
     await main.role.DeleteRole(req.params.roleId)
     return res.redirect('/admin/roles')
 }
 
 exports.DeletePermission = async (req, res)=>{
-    const main = new Main
     await main.permission.DeletePermission(req.params.permissionId)
     return res.redirect('/admin/permissions')
 }
 
 exports.GetSettings = async (req, res)=>{
-    const main = new Main
     const data = await main.product.getSettings()
     res.render('settings.hbs', {
         percent: data.percent,
@@ -145,13 +135,11 @@ exports.GetSettings = async (req, res)=>{
 }
 
 exports.EditSettings = async(req, res)=>{
-    const main = new Main
     await main.product.EditSettings(req.body.percent)
     res.redirect('/admin/settings')
 }
 
 exports.GetUsers = async (req, res)=>{
-    const main = new Main
     const users = await main.user.GetUsers()
     const roleUser = await main.permission.GetRoleUser()
     res.render('listUsers.hbs', {
@@ -161,4 +149,44 @@ exports.GetUsers = async (req, res)=>{
         isAdmin: true,
         isUsers: true
     })
+}
+
+exports.GetNewOrders = async(req, res)=>{
+    const orders = await main.product.GetNewOrders()
+    res.render('listOrders.hbs', {
+        isNewOrder: true,
+        title: 'Не обработанные заказы',
+        orders,
+        isAdmin:true
+    })
+}
+
+exports.GetOldOrders = async(req, res)=>{
+    const orders = await main.product.GetOldOrders()
+    res.render('listOrders.hbs', {
+        isOldOrder: true,
+        title: 'Заказы, ожидающие доставку',
+        orders,
+        isAdmin:true
+    })
+}
+
+exports.DeleteOrder = async(req, res)=>{
+    await main.product.DeleteOrder(req.params.id)
+    res.redirect(req.headers.referer)
+}
+
+exports.DoneOrder = async(req, res)=>{
+    await main.product.UpdateOrderStatus(3, req.params.id)
+    res.redirect(req.headers.referer)
+}
+
+exports.SetOrder = async(req, res)=>{
+    await main.product.UpdateOrderStatus(2, req.params.id)
+    res.redirect(req.headers.referer)
+}
+
+exports.CreateOrder = async(req, res)=>{
+    await main.product.CreateOrder(req.body.number, req.body.address, req.body.DimensionProductId)
+    res.redirect('/')
 }

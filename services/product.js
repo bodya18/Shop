@@ -4,10 +4,12 @@ var fs = require('fs');
 
 const config = require('../middleware/config');
 const productModel = require('../model/requests/Produc');
+const orderModel = require('../model/requests/order');
 
 class Product{
     constructor(){
         this.product = new productModel
+        this.order = new orderModel
     }
 
     async ParseData(){
@@ -78,6 +80,22 @@ class Product{
     }
     async EditSettings(percent){
         return await this.product.EditSettings(percent)
+    }
+
+    async GetNewOrders(){
+        return await this.order.GetNewOrders()
+    }
+    async GetOldOrders(){
+        return await this.order.GetOldOrders()
+    }
+    async CreateOrder(number, address, DimensionProductId){
+        await this.order.CreateOrder(number, address, DimensionProductId)
+    }
+    async DeleteOrder(id){
+        await this.order.DeleteOrder(id)
+    }
+    async UpdateOrderStatus(status, id){
+        await this.order.UpdateStatus(status, id)
     }
 }
 

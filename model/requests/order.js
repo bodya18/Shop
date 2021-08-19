@@ -19,11 +19,12 @@ class Order{
             })
     }
 
-    async CreateOrder(number, address){
+    async CreateOrder(number, address, DimensionProductId){
         return await pool._order
             .create({
                 number,
-                address
+                address,
+                DimensionProductId
             })
             .then(res=>{
                 return res.id
@@ -32,7 +33,6 @@ class Order{
                 console.error(e);
             })
     }
-
     async DeleteOrder(id){
         await pool._order
             .destroy({
@@ -44,6 +44,16 @@ class Order{
             .catch(e=>{
                 console.error(e);
             })
+    }
+
+    async GetNewOrders(){
+        return await pool._order.findAll({where:{status:1}, raw:true})
+    }
+    async GetOldOrders(){
+        return await pool._order.findAll({where:{status:2}, raw:true})
+    }
+    async UpdateStatus(status, id){
+        await pool._order.update({status},{where:{id}})
     }
 
 }

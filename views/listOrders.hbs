@@ -1,0 +1,32 @@
+<table class="table table-striped">
+    <tr>
+        <th>Твоар</th>
+        <th>Адресс</th>
+        <th>Номер</th>
+    </tr>
+    {{#each orders}}
+        <tr> 
+            <td><h5>{{this.DimensionProductId}}</h5></td>
+            <td><h5>{{this.address}}</h5></td>
+            <td><h5>{{this.number}}</h5></td>
+            {{#if @root.isNewOrder}}
+                <td>
+                    <form action="/admin/orders/set/{{this.id}}" method="POST">
+                        <input type="submit" class="btn btn-success" value="Обработать заказ">
+                    </form>
+                </td>
+            {{else}}
+                <td>
+                    <form action="/admin/orders/good/{{this.id}}" method="POST">
+                        <input type="submit" class="btn btn-success" value="Заказ доставлен">
+                    </form>
+                </td>
+            {{/if}}
+            <td>
+                <form action="/admin/orders/delete/{{this.id}}" method="POST">
+                    <input type="submit" class="btn btn-danger" value="Удалить заказ">
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+</table>
