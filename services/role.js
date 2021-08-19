@@ -1,7 +1,7 @@
 // const config = require('../middleware/config')
 const RoleModel = require('../model/requests/role');
 const UserModel = require('../model/requests/user');
-const ConnectionModel = require('../model/requests/connection');
+const ConnectionModel = require('../model/requests/connection')
 
 class Role{
 
