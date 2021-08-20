@@ -143,7 +143,7 @@ class User{
 
             const token = buffer.toString('hex')
             const user = await this.user.create(hashPassword, email, name, token)
-            let standartRole = await this.role.GetRoleByTitle('Standart')
+            let standartRole = await this.role.GetRoleByTitle('User')
             await this.user.AddRoleToUser(user.id, standartRole.id)
 
             return {
