@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const UserModel = require('../model/requests/user');
 const PermissionModel = require('../model/requests/permission');
 const ConnectionModel = require('../model/requests/connection');
+const RoleModel = require('../model/requests/role');
 
 class User{
 
@@ -10,6 +11,7 @@ class User{
         this.user = new UserModel
         this.permission = new PermissionModel
         this.connection = new ConnectionModel
+        this.role = new RoleModel
     }
 
     async GiveRole(userId, roleId){
@@ -141,7 +143,8 @@ class User{
 
             const token = buffer.toString('hex')
             const user = await this.user.create(hashPassword, email, name, token)
-            await this.user.AddRoleToUser(user.id, 1)
+            let standartRole = await this.role.GetRoleByTitle('Standart')
+            await this.user.AddRoleToUser(user.id, standartRole.id)
 
             return {
                 user,

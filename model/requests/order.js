@@ -54,6 +54,15 @@ class Order{
             AND DimensionProducts.productId = products.id`)
         return data[0]
     }
+    async GetOrdersByUserId(userId){
+        const data = await pool.sequelize.query(`
+            select _orders.id, _orders.status, DimensionProducts.dimension, DimensionProducts.NewPrice, products.title
+            from _orders, DimensionProducts, products, users 
+            where users.id = ${userId} 
+            AND _orders.DimensionProductId = DimensionProducts.id 
+            AND DimensionProducts.productId = products.id`)
+        return data[0]
+    }
     async UpdateStatus(status, id){
         await pool._order.update({status},{where:{id}})
     }

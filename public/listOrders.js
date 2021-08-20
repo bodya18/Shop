@@ -1,4 +1,4 @@
-const countShowOrders = 1;
+const countShowOrders = 100;
 let nowIndexShowOrders = countShowOrders;
 function AddMoreOrders(e){
     e.preventDefault()

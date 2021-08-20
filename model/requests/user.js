@@ -38,6 +38,12 @@ class User{
             roleId
         }, raw: true})
     }
+
+    async GetUserRoles(userId){
+        return await pool.RoleUser.findAll({where:{
+            userId
+        }, raw: true})
+    }
 }
 
 module.exports = User

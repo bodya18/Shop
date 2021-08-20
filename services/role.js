@@ -14,11 +14,10 @@ class Role{
 
     async GetRoles() {
         return await this.role.GetRoles()
-        
     }
 
     async GetUserRoles(id) {
-        const roles = await this.rule.GetRoles()
+        const roles = await this.role.GetRoles()
         const users = await this.user.GetUserRoles(id)
         return{
             roles,

@@ -8,7 +8,7 @@
     </tr>
     {{#each users}}
         <tr> 
-            <td><h5>{{this.name}}</h5></td>
+            <td><a href="/profile/{{this.id}}"><h5>{{this.name}}</h5></a></td>
             <td class="table-list-users"><h5>{{this.email}}</h5></td>
             <td class="table-list-users">
                 {{#each @root.roleUser}}

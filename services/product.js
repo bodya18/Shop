@@ -87,6 +87,9 @@ class Product{
     async GetOrdersByStatus(status){
         return await this.order.GetOrdersByStatus(status)
     }
+    async GetOrdersByUserId(userId){
+        return await this.order.GetOrdersByUserId(userId)
+    }
     async CreateOrder(number, address, DimensionProductId){
         await this.order.CreateOrder(number, address, DimensionProductId)
     }

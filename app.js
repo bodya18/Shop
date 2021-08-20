@@ -16,6 +16,7 @@ const logoutRouter = require('./routes/logout')
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
 const apiRouter = require('./routes/api')
+const profileRouter = require('./routes/user');
 
 const app = express()
 
@@ -53,6 +54,7 @@ app.use('/api', apiRouter)
 app.use('/admin', adminRouter)
 app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
+app.use('/profile', profileRouter)
 app.use('/register', registerRouter)
 
 app.use(errorHandler)

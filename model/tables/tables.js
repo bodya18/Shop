@@ -123,7 +123,7 @@ const user = sequelize.define("users",{
     unique: true
   }
 });
-
+user.hasMany(_order);
 const role = sequelize.define('roles', {
   role:{
     type: Sequelize.STRING,
