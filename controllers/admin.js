@@ -153,7 +153,7 @@ exports.GetUsers = async (req, res)=>{
 }
 
 exports.GetNewOrders = async(req, res)=>{
-    const orders = await main.product.GetNewOrders()
+    const orders = await main.product.GetOrdersByStatus(1)
     res.render('listOrders.hbs', {
         isNewOrder: true,
         title: 'Не обработанные заказы',
@@ -163,10 +163,20 @@ exports.GetNewOrders = async(req, res)=>{
 }
 
 exports.GetOldOrders = async(req, res)=>{
-    const orders = await main.product.GetOldOrders()
+    const orders = await main.product.GetOrdersByStatus(2)
     res.render('listOrders.hbs', {
         isOldOrder: true,
         title: 'Заказы, ожидающие доставку',
+        orders,
+        isAdmin:true
+    })
+}
+
+exports.GetDoneOrders = async(req, res)=>{
+    const orders = await main.product.GetOrdersByStatus(3)
+    res.render('listOrders.hbs', {
+        isDoneOrder: true,
+        title: 'Доставленные заказы',
         orders,
         isAdmin:true
     })
@@ -186,7 +196,10 @@ exports.SetOrder = async(req, res)=>{
     await main.product.UpdateOrderStatus(2, req.params.id)
     res.redirect(req.headers.referer)
 }
-
+exports.RepeatOrder = async(req, res)=>{
+    await main.product.UpdateOrderStatus(1, req.params.id)
+    res.redirect(req.headers.referer)
+}
 exports.CreateOrder = async(req, res)=>{
     await main.product.CreateOrder(req.body.number, req.body.address, req.body.DimensionProductId)
     res.redirect('/')

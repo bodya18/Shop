@@ -45,21 +45,12 @@ class Order{
                 console.error(e);
             })
     }
-
-    async GetNewOrders(){
+    async GetOrdersByStatus(status){
+        console.log(status);
         const data = await pool.sequelize.query(`
             select _orders.id, _orders.number, _orders.address, DimensionProducts.dimension, DimensionProducts.NewPrice, products.title
             from _orders, DimensionProducts, products 
-            where _orders.status = ${1} 
-            AND _orders.DimensionProductId = DimensionProducts.id 
-            AND DimensionProducts.productId = products.id`)
-        return data[0]
-    }
-    async GetOldOrders(){
-        const data = await pool.sequelize.query(`
-            select _orders.id, _orders.number, _orders.address, DimensionProducts.dimension, DimensionProducts.NewPrice, products.title
-            from _orders, DimensionProducts, products 
-            where _orders.status = ${2} 
+            where _orders.status = ${status} 
             AND _orders.DimensionProductId = DimensionProducts.id 
             AND DimensionProducts.productId = products.id`)
         return data[0]

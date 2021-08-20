@@ -141,7 +141,7 @@ class User{
 
             const token = buffer.toString('hex')
             const user = await this.user.create(hashPassword, email, name, token)
-            await this.user.AddRoleToUser(user.id, 3)
+            await this.user.AddRoleToUser(user.id, 1)
 
             return {
                 user,

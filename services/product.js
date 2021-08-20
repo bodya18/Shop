@@ -84,12 +84,8 @@ class Product{
     async EditSettings(percent){
         return await this.product.EditSettings(percent)
     }
-
-    async GetNewOrders(){
-        return await this.order.GetNewOrders()
-    }
-    async GetOldOrders(){
-        return await this.order.GetOldOrders()
+    async GetOrdersByStatus(status){
+        return await this.order.GetOrdersByStatus(status)
     }
     async CreateOrder(number, address, DimensionProductId){
         await this.order.CreateOrder(number, address, DimensionProductId)
