@@ -5,7 +5,8 @@ exports.GetStartPage = async (req, res)=>{
     res.render('adminIndex.hbs', {
         title: 'Панель администрации',
         isAdmin: true,
-        error: req.flash('error')
+        error: req.flash('error'),
+        isParseData: true
     })
 }
 
@@ -173,11 +174,18 @@ exports.GetOldOrders = async(req, res)=>{
 }
 
 exports.GetDoneOrders = async(req, res)=>{
-    const orders = await main.product.GetOrdersByStatus(3)
+    let orders = await main.product.GetOrdersByStatus(3)
+    orders = orders.reverse();
+    let isMore = false
+    if(orders.length > 100){
+        orders = orders.splice(0, 100)
+        isMore = true
+    }
     res.render('listOrders.hbs', {
         isDoneOrder: true,
         title: 'Доставленные заказы',
         orders,
+        isMore,
         isAdmin:true
     })
 }

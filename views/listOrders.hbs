@@ -1,45 +1,52 @@
 <table class="table table-striped">
-    <tr>
-        <th>Твоар</th>
-        <th>Размер</th>
-        <th>Цена</th>
-        <th>Адресс</th>
-        <th>Номер</th>
-    </tr>
-    {{#each orders}}
-        <tr> 
-            <td><h5>{{this.title}}</h5></td>
-            <td><h5>{{this.dimension}}</h5></td>
-            <td><h5>{{this.NewPrice}}</h5></td>
-            <td><h5>{{this.address}}</h5></td>
-            <td><h5>{{this.number}}</h5></td>
+    <tbody id="showOrders">
+        <tr>
+            <th>Твоар</th>
+            <th>Размер</th>
+            <th>Цена</th>
+            <th>Адресс</th>
+            <th>Номер</th>
+        </tr>
+        {{#each orders}}
+            <tr> 
+                <td><h5>{{this.title}}</h5></td>
+                <td><h5>{{this.dimension}}</h5></td>
+                <td><h5>{{this.NewPrice}}</h5></td>
+                <td><h5>{{this.address}}</h5></td>
+                <td><h5>{{this.number}}</h5></td>
 
-            {{#if @root.isDoneOrder}}
-                <td>
-                    <form action="/admin/orders/repeat/{{this.id}}" method="POST">
-                        <input type="submit" class="btn btn-warning" value="Перевести в первую стадию обработки">
-                    </form>
-                </td>
-            {{else}}
-                {{#if @root.isNewOrder}}
+                {{#if @root.isDoneOrder}}
                     <td>
-                        <form action="/admin/orders/set/{{this.id}}" method="POST">
-                            <input type="submit" class="btn btn-success" value="Обработать заказ">
+                        <form action="/admin/orders/repeat/{{this.id}}" method="POST">
+                            <input type="submit" class="btn btn-warning" value="Перевести в первую стадию обработки">
                         </form>
                     </td>
                 {{else}}
-                    <td>
-                        <form action="/admin/orders/good/{{this.id}}" method="POST">
-                            <input type="submit" class="btn btn-success" value="Заказ доставлен">
-                        </form>
-                    </td>
+                    {{#if @root.isNewOrder}}
+                        <td>
+                            <form action="/admin/orders/set/{{this.id}}" method="POST">
+                                <input type="submit" class="btn btn-success" value="Обработать заказ">
+                            </form>
+                        </td>
+                    {{else}}
+                        <td>
+                            <form action="/admin/orders/good/{{this.id}}" method="POST">
+                                <input type="submit" class="btn btn-success" value="Заказ доставлен">
+                            </form>
+                        </td>
+                    {{/if}}
                 {{/if}}
-            {{/if}}
-            <td>
-                <form action="/admin/orders/delete/{{this.id}}" method="POST">
-                    <input type="submit" class="btn btn-danger" value="Удалить заказ">
-                </form>
-            </td>
-        </tr>
-    {{/each}}
+                <td>
+                    <form action="/admin/orders/delete/{{this.id}}" method="POST">
+                        <input type="submit" class="btn btn-danger" value="Удалить заказ">
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
 </table>
+<br><br>
+{{#if isMore}}
+    <button onclick="AddMoreOrders(event)" class="btn btn-success btn-list-more" id="show-more-orders">Загруить еще</button>
+{{/if}}
+<div id="will-be-btn"></div>

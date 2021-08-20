@@ -3,6 +3,19 @@
         <li class="nav-item menu-open">
             <ul class="nav nav-treeview">
                 <li class="nav-item">
+                    {{#if isParseData}}
+                        <a href="/admin" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Обновить товары</p>
+                        </a>
+                    {{else}}
+                        <a href="/admin" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Обновить товары</p>
+                        </a>
+                    {{/if}}
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>Заказы</p>

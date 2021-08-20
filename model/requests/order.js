@@ -46,7 +46,6 @@ class Order{
             })
     }
     async GetOrdersByStatus(status){
-        console.log(status);
         const data = await pool.sequelize.query(`
             select _orders.id, _orders.number, _orders.address, DimensionProducts.dimension, DimensionProducts.NewPrice, products.title
             from _orders, DimensionProducts, products 
