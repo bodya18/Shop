@@ -5,6 +5,7 @@
         </div>
         <th class="table-list-users" width="250">Email</th>
         <th class="table-list-users">Роль</th>
+        <th></th>
     </tr>
     {{#each users}}
         <tr> 
@@ -16,6 +17,12 @@
                         <h5 class="float-left">{{this.role}}&nbsp;&nbsp;&nbsp;</h5>
                     {{/ifeq}}
                 {{/each}}
+            </td>
+            <td>
+                <form action="/profile/delete" method="POST">
+                    <input type="hidden" name="userId" value="{{this.id}}">
+                    <input type="submit" class="btn btn-danger">
+                </form>
             </td>
         </tr>
     {{/each}}

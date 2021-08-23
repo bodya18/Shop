@@ -47,8 +47,8 @@ class Role{
         const data = await this.connection.GetRuleID(id, title)
         await this.connection.deleteFromUser(data.id)
     }
-    async UpdateRuleFromUser(id, value){
-        await this.connection.UpdateRuleFromUser(id, value)
+    async UpdateRoleFromUser(id, value){
+        await this.user.UpdateRoleFromUser(id, value)
     }
 }
 

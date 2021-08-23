@@ -223,3 +223,11 @@ exports.ParseData = async (req, res)=>{
     
     res.redirect('/')
 }
+
+exports.updateFromUser = async (req, res)=>{
+    await main.role.UpdateRoleFromUser(req.body.userId, req.body.roleId)
+    const data = await main.permission.ShowAllPermissions(req.body.userId)
+    if(req.session.userIden === req.body.userId)
+        req.session.Perm = data
+    return res.redirect('/profile/' + req.body.userId) 
+}

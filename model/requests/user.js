@@ -44,8 +44,8 @@ class User{
             userId
         }, raw: true})
     }
-    async SetStatus(token, num){
-        await pool.user.update({num},{where:{token}})
+    async SetStatus(token, status){
+        await pool.user.update({status},{where:{token}})
     }
     async recoveryPass(email, token, date){
         await pool.recovery.create({
@@ -62,6 +62,17 @@ class User{
     }
     async SetPass(password, token){
         return await pool.user.update({password}, {where:{token}})
+    }
+
+    async UpdateRoleFromUser(id, value){
+        await pool.RoleUser.destroy({where:{userId: id}})
+        for (const i in value) {
+            await pool.RoleUser.create({roleId: value[i], userId: id})
+        }
+    }
+
+    async delete(id){
+        await pool.user.destroy({where:{id}})
     }
 }
 

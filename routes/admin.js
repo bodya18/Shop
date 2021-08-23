@@ -19,6 +19,7 @@ router.get('/orders/getNew', isAuth,   isAdmin, adminControllerr.GetNewOrders)
 router.get('/orders/getOld', isAuth,   isAdmin, adminControllerr.GetOldOrders)
 router.get('/orders/getDone', isAuth,   isAdmin, adminControllerr.GetDoneOrders)
 
+router.post('/updateFromUser', isAuth,   isAdmin, urlencodedParser, adminControllerr.updateFromUser)
 router.post('/orders/repeat/:id', isAuth,   isAdmin, adminControllerr.RepeatOrder)
 router.post('/parse', isAuth,   isAdmin, urlencodedParser, file.upload.single("parsingFile"), adminControllerr.ParseData)
 router.post('/orders/delete/:id', isAuth,   isAdmin, adminControllerr.DeleteOrder)

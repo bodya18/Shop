@@ -47,16 +47,16 @@ class User{
     async deleteUser(id, sessionId, permission){
         if(sessionId === id){
             await this.user.delete(id)
-            return {isAcс: true}
+            return true
         }
         else{
             for (let i = 0; i < permission.length; i++) {
-                if (permission[i] === "DELETE") {
+                if (permission[i] === "GIVE") {
                     await this.user.delete(id)
                     break;
                 }
             }
-            return {isAcс: false}
+            return false
         }
     }
 

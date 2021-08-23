@@ -1,5 +1,5 @@
 const Main = require('../services/main')
-// const mail = require('../middleware/nodemailer')
+const mail = require('../middleware/nodemailer')
 
 exports.GetRegister = (req,res) => {
     if(req.session.isAuthenticated)
@@ -33,7 +33,7 @@ exports.registerLogic = async (req,res) => {
             throw err
         }
         res.redirect(`/`)
-        // mail.acceptAcc(UserData.user.token, UserData.user.email)
+        mail.acceptAcc(UserData.user.token, UserData.user.email)
     })
 
 }

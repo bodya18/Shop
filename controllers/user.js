@@ -49,3 +49,14 @@ exports.GetUser =async (req, res)=>{
     }
     else res.redirect('/profile/'+ req.session.user.id)
 }
+
+exports.Delete = async (req, res)=> {
+    const isAcc = main.user.deleteUser(req.body.userId, req.session.user.id, req.session.Perm)
+    if(!isAcc)
+        res.redirect(req.headers.referer)
+    else{
+        req.session.destroy(() =>{
+            res.redirect('/')
+        })
+    }
+}

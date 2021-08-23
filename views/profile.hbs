@@ -90,9 +90,9 @@
                     </div>
                     {{#each permissionsList}}
                       {{#ifeq this 'GIVE'}}
-                      <form action="/rules/updateFromUser" method="POST" >
-                        <input type="hidden" name="selectNameId" value="{{@root.users.id}}">
-                        <select class="js-example-basic-multiple" style="min-width: 100%;" name="selectRuleId" multiple="multiple">
+                      <form action="/admin/updateFromUser" method="POST" >
+                        <input type="hidden" name="userId" value="{{@root.users.id}}">
+                        <select class="js-example-basic-multiple" style="min-width: 100%;" name="roleId" multiple="multiple">
                             {{#each @root.SelectRoles}}
                               <option value="{{this.id}}" selected="selected">{{this.role}}</option>
                             {{/each}}
