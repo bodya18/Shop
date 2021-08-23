@@ -62,6 +62,9 @@ class Product{
             else
                 await this.product.CreateDimensionProduct(data[i][1], data[i][3], data[i][2], thisProductId)
         }
+        let CountProduct = await this.product.GetAllProduct()
+        CountProduct = CountProduct.reverse()[0].id
+        return CountProduct
     }
 
     async GetAllProduct(){

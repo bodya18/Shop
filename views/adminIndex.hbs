@@ -2,6 +2,9 @@
 {{#if error}}
 <font color="red">{{error}}</font>
 {{/if}}
+{{#if goodSet}}
+    <font color="green">Успешно загружено {{goodSet}} товаров</font>
+{{/if}}
 <form method="POST" action="/admin/parse" enctype="multipart/form-data">
     <div class="col col-lg-6">
         <label for="formFile" class="form-label">Загрузите .xslx или .xls файл для обновления каталога товаров</label>

@@ -6,6 +6,7 @@ exports.GetStartPage = async (req, res)=>{
         title: 'Панель администрации',
         isAdmin: true,
         error: req.flash('error'),
+        goodSet: req.flash('goodSet'),
         isParseData: true
     })
 }
@@ -219,9 +220,9 @@ exports.ParseData = async (req, res)=>{
         req.flash('error', data.error)
         return res.redirect(`/admin`)
     }
-    await main.product.SetDataInDB(data.data)
-    
-    res.redirect('/')
+    let count = await main.product.SetDataInDB(data.data)
+    req.flash('goodSet', count)
+    res.redirect('/admin')
 }
 
 exports.updateFromUser = async (req, res)=>{
