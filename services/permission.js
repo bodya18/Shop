@@ -45,10 +45,6 @@ class Permission{
         await this.permission.create(Permission)
     }
 
-    async DeletePermissionFromUser(id) {
-        await this.connection.DeletePermissionFromRule(id) 
-    }
-
     async DeletePermission(id){
         await this.permission.DeletePermission(id)
     }

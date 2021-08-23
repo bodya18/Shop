@@ -47,7 +47,7 @@ function AddMoreOrders(e){
             btn.className = 'btn btn-success btn-list-more'
             var t = document.createTextNode("Загрузить еще");
             btn.appendChild(t)
-            but = document.getElementById('will-be-btn')
+            let but = document.getElementById('will-be-btn')
             but.append(btn)
         }
     })

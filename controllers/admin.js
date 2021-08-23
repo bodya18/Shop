@@ -143,11 +143,18 @@ exports.EditSettings = async(req, res)=>{
 }
 
 exports.GetUsers = async (req, res)=>{
-    const users = await main.user.GetUsers()
+    let users = await main.user.GetUsers()
     const roleUser = await main.permission.GetRoleUser()
+    let isMore = false
+    if(users.length > 100){
+        users = users.splice(0, 100)
+        isMore = true
+    }
+        
     res.render('listUsers.hbs', {
         users,
         roleUser,
+        isMore,
         title: 'Список пользователей',
         isAdmin: true,
         isUsers: true

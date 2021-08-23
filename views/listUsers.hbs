@@ -1,4 +1,5 @@
 <table class="table table-striped">
+    <tbody id="showUsers">
     <tr>
         <div class="btn-group" role="group" aria-label="Basic outlined example">
             <th width="200">Имя</th>
@@ -26,4 +27,10 @@
             </td>
         </tr>
     {{/each}}
+    </tbody>
 </table>
+<br><br>
+{{#if isMore}}
+    <button onclick="AddMoreUsers(event)" class="btn btn-success btn-list-more" id="show-more-users">Загруить еще</button>
+{{/if}}
+<div id="will-be-btn-users"></div>
