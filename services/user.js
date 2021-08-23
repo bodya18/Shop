@@ -86,18 +86,25 @@ class User{
     }
 
     async NewPass(token){
-        const isToken = await this.user.GetRecToken(token)
-        if(!isToken)
+        const IsToken = await this.user.GetRecToken(token)
+        if(!IsToken)
             return 'Данного токена не существует'
-        const date = Date.now()
-        if(isToken.date < date){
+
+        let date = new Date
+        date.setHours(date.getHours()+3)
+        date = date.toISOString().replace(/T/, ' ').replace(/\..+/, '')
+        if(IsToken.date < date){
             await this.user.delPassToken(token)
             return 'Данный токен устарел'
         }
     }
     async setPass(token, password){
         const isToken = await this.user.GetRecToken(token)
-        const date = Date.now()
+
+        let date = new Date
+        date.setHours(date.getHours()+3)
+        date = date.toISOString().replace(/T/, ' ').replace(/\..+/, '')
+        
         if(isToken.date < date)
             return false
         else{
@@ -118,7 +125,10 @@ class User{
         const buffer = crypto.randomBytes(32)
         const token = buffer.toString('hex')
 
-        const date = Date.now() + 1000*60*60;
+        let date = new Date
+        date.setHours(date.getHours()+4)
+        date = date.toISOString().replace(/T/, ' ').replace(/\..+/, '')
+
         await this.user.recoveryPass(email, token, date)
 
         return token

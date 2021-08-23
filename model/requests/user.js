@@ -44,6 +44,25 @@ class User{
             userId
         }, raw: true})
     }
+    async SetStatus(token, num){
+        await pool.user.update({num},{where:{token}})
+    }
+    async recoveryPass(email, token, date){
+        await pool.recovery.create({
+            email,
+            date,
+            token
+        })
+    }
+    async GetRecToken(token){
+        return await pool.recovery.findOne({where: {token}, raw: true})
+    }
+    async delPassToken(token){
+        return await pool.recovery.destroy({where:{token}})
+    }
+    async SetPass(password, token){
+        return await pool.user.update({password}, {where:{token}})
+    }
 }
 
 module.exports = User

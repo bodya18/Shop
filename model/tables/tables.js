@@ -171,12 +171,29 @@ role.belongsToMany(permission, { through: 'RolePermissions' });
 role.belongsToMany(user, { through: 'RoleUsers' });
 user.belongsToMany(role, { through: 'RoleUsers' });
 
+const recovery = sequelize.define('recovery', {
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  },
+  date: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  token: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
+  }
+})
 
 sequelize.sync({force:false}).then(()=>{
     console.log("Tables have been created");
 }).catch(err=>console.error(err));
 
 module.exports = {
+  recovery,
   Product,
   DimensionProduct,
   _order,

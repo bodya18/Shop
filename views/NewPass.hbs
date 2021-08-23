@@ -3,7 +3,7 @@
     {{#if error}}
         <font color='red'>{{error}}</font><br><br><br><br><br><br>
     {{else}}
-    <form method="POST" action="/users/newPass">
+    <form method="POST" action="/login/newPass">
         <div class="col-sm-3">
             <input type="hidden" value="{{token}}" name="token">
             <input name="password" type="password" min="6" max="32" class="form-control" placeholder="password">
