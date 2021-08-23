@@ -34,7 +34,7 @@ function AddMoreUsers(e){
                     <td>
                         <form action="/profile/delete" method="POST">
                             <input type="hidden" name="userId" value="${thisUsers[i].id}">
-                            <input type="submit" class="btn btn-danger">
+                            <input type="submit" class="btn btn-danger" value="Удалить">
                         </form>
                     </td>
                 </tr>`
