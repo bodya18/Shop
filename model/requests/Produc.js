@@ -58,7 +58,20 @@ class Product{
         })
         .catch(err=>console.log(err));
     }
-
+    async GetDimensionProducts(productId){
+        await pool.DimensionProduct.findAll({where:{productId}, raw: true})
+    }
+    async UpdateDimensionProduct(id, dimension, count, OldPrice, productId){
+        const percent = await pool.settings.findOne({raw:true})
+        const NewPrice = OldPrice * (percent.percent / 100 + 1)
+        await pool.DimensionProduct.update({
+            dimension,
+            count,
+            NewPrice,
+            OldPrice,
+            productId
+        }, {where:{id}})
+    }
     async DeleteDimensionProduct(productId){
         await pool.DimensionProduct.destroy({
           where: {
@@ -98,6 +111,29 @@ class Product{
             },
             raw:true
         })
+    }
+    async update(id, title, article){
+        await pool.Product.update({title, article}, {where:{id}})
+    }
+    async destroyProd(){
+        await pool.Product.destroy({
+            where: {
+                id:{
+                    [Op.ne]: 0
+                }
+            }
+        })
+        await pool.sequelize.query('ALTER TABLE products AUTO_INCREMENT=0')
+    }
+    async destroyDim_Prod(){
+        await pool.DimensionProduct.destroy({
+            where: {
+                id:{
+                    [Op.ne]: 0
+                }
+            }
+        })
+        await pool.sequelize.query('ALTER TABLE DimensionProducts AUTO_INCREMENT=0')
     }
 }
 module.exports = Product

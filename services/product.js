@@ -24,9 +24,10 @@ class Product{
 
     async SetDataInDB(data){
         data.splice(0, 6)
+        await this.product.destroyDim_Prod()
+        await this.product.destroyProd()
         data[0][8] = undefined
         let img = 1, thisProductId, thisCategoryId;
-
         for (const i in data) {
             data[i] = data[i].filter(n => n)
             if(!data[i].length) continue;
@@ -40,8 +41,8 @@ class Product{
                 continue;
             }
             else if(typeof data[i][0] === 'string'){//product
+
                 let product = await this.product.GetProductByTitile(data[i][0])
-                
                 if(!product.length){
                     while (true) {
                         var stats = fs.lstatSync(`${config.dirname}/media/image${img}.png`);
@@ -51,16 +52,17 @@ class Product{
                     }
                     thisProductId = await this.product.CreateProduct(data[i][0], data[i][1], `image${img}.png`, thisCategoryId)
                     await this.product.CreateDimensionProduct(data[i][2], data[i][4], data[i][3], thisProductId)
-                    img++;
                 }
                 else{
                     thisProductId = product[0].id
                     await this.product.DeleteDimensionProduct(thisProductId)
+                    await this.product.CreateDimensionProduct(data[i][2], data[i][4], data[i][3], thisProductId)
                 }
-
+                img++;
             }
             else
                 await this.product.CreateDimensionProduct(data[i][1], data[i][3], data[i][2], thisProductId)
+            // console.log(data[i])
         }
         let CountProduct = await this.product.GetAllProduct()
         CountProduct = CountProduct.reverse()[0].id
