@@ -12,6 +12,12 @@
     {{#if isAdministrator}}
         <a href="/admin"><button class="btn btn-dark">Админ панель</button></a>
     {{/if}}
+    <div class="form-outline">
+        <form action="/search" method="POST">
+            <input type="search" style="max-width: 200px;" name="search" class="form-control" placeholder="Поиск по сайту"
+            aria-label="Search" />
+        </form>
+    </div>
     {{#if isAdmin}}
         <div class="wrapper">
             <aside class="main-sidebar sidebar-dark-primary elevation-4 admin-panel">

@@ -1,4 +1,5 @@
 const pool = require('../tables/tables')
+const { Op } = require("sequelize");
 
 class Product{
 
@@ -85,6 +86,18 @@ class Product{
     }
     async EditSettings(percent){
         return await pool.settings.update({percent}, {where:{id: 1}})
+    }
+    async search(search){
+        return await pool.Product.findAll({
+            where:{
+                [Op.or]: [{
+                    title: {[Op.like]: `%${search}%`}
+                },{
+                    article: {[Op.like]: `%${search}%`}
+                }]
+            },
+            raw:true
+        })
     }
 }
 module.exports = Product

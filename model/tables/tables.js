@@ -35,7 +35,7 @@ const Product = sequelize.define("products", {
       allowNull: false
     },
     article: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       allowNull: false
     },
     image: {

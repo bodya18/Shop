@@ -102,6 +102,9 @@ class Product{
     async UpdateOrderStatus(status, id){
         await this.order.UpdateStatus(status, id)
     }
+    async search(search){
+        return await this.product.search(search)
+    }
 }
 
 module.exports = Product
