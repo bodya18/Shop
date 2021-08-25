@@ -18,11 +18,13 @@
                   </div>
                     <ul class="list-group list-group-flush">
                       {{#each orders}}
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <h5>{{this.title}}</h5>
-                            <h5>{{this.dimension}}</h5>
-                            <h5>{{this.NewPrice}} руб.</h5>
-                        </li>
+                        {{#ifeq this.userId @root.users.id}}
+                          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                              <h5>{{this.title}}</h5>
+                              <h5>{{this.dimension}}</h5>
+                              <h5>{{this.NewPrice}} руб.</h5>
+                          </li>
+                        {{/ifeq}}
                       {{/each}}
                     </ul>
                 </div>

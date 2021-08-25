@@ -57,7 +57,7 @@ class Order{
     }
     async GetOrdersByUserId(userId){
         const data = await pool.sequelize.query(`
-            select _orders.id, _orders.status, DimensionProducts.dimension, DimensionProducts.NewPrice, products.title
+            select _orders.id, _orders.status, _orders.userId, users.name, DimensionProducts.dimension, DimensionProducts.NewPrice, products.title
             from _orders, DimensionProducts, products, users 
             where users.id = ${userId} 
             AND _orders.DimensionProductId = DimensionProducts.id 
