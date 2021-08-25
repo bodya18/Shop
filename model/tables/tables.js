@@ -88,9 +88,11 @@ const _order = sequelize.define("_orders", {
       type: Sequelize.INTEGER,
       allowNull: false,
       defaultValue: 1
+    },
+    DimensionProductId: {
+      type: Sequelize.INTEGER
     }
 });
-DimensionProduct.hasMany(_order);
 
 const user = sequelize.define("users",{
   id: {

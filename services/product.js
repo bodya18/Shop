@@ -19,6 +19,9 @@ class Product{
         const workSheetsFromFile = xlsx.parse(`${config.dirname}/${filedata.path}`);
         var zip = new AdmZip(`${config.dirname}/${filedata.path}`);
         zip.extractEntryTo("xl/media/", `${config.dirname}/media`, /*maintainEntryPath*/false, /*overwrite*/true);
+        fs.unlink(`${config.dirname}/${filedata.path}`, (err)=>{
+            if(err) throw err;
+        })
         return {perm: true, data: workSheetsFromFile[0].data}
     }
 
