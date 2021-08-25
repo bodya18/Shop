@@ -19,11 +19,16 @@
                     <ul class="list-group list-group-flush">
                       {{#each orders}}
                         {{#ifeq this.userId @root.users.id}}
-                          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <li class="list-group-item justify-content-between align-items-center flex-wrap">
                               <h5>{{this.title}}</h5>
-                              <h5>{{this.dimension}}</h5>
-                              <h5>{{this.NewPrice}} руб.</h5>
-                          </li>
+                              <h5><font color="blue">Размер:</font> {{this.dimension}}</h5>
+                              <h5><font color="blue">Цена:</font> {{this.NewPrice}} руб.</h5>
+                              <h5><font color="blue">Статус:</font>
+                              {{#ifeq this.status 1}}<font color="#819200">Ожидание обработки</font>{{/ifeq}}
+                              {{#ifeq this.status 2}}<font color="orange">Доставка</font>{{/ifeq}}
+                              {{#ifeq this.status 3}}<font color="green">Товар получен</font>{{/ifeq}}
+                              </h5>
+                            </li>
                         {{/ifeq}}
                       {{/each}}
                     </ul>
