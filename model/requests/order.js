@@ -19,12 +19,13 @@ class Order{
             })
     }
 
-    async CreateOrder(number, address, DimensionProductId){
+    async CreateOrder(number, address, DimensionProductId, userId = null){
         return await pool._order
             .create({
                 number,
                 address,
-                DimensionProductId
+                DimensionProductId,
+                userId
             })
             .then(res=>{
                 return res.id
@@ -47,7 +48,7 @@ class Order{
     }
     async GetOrdersByStatus(status){
         const data = await pool.sequelize.query(`
-            select _orders.id, _orders.number, _orders.address, DimensionProducts.dimension, DimensionProducts.NewPrice, products.title
+            select _orders.id, _orders.number, _orders.userId, _orders.address, DimensionProducts.dimension, DimensionProducts.NewPrice, products.title
             from _orders, DimensionProducts, products 
             where _orders.status = ${status} 
             AND _orders.DimensionProductId = DimensionProducts.id 

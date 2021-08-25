@@ -95,8 +95,15 @@ class Product{
     async GetOrdersByUserId(userId){
         return await this.order.GetOrdersByUserId(userId)
     }
-    async CreateOrder(number, address, DimensionProductId){
-        await this.order.CreateOrder(number, address, DimensionProductId)
+    async CreateOrder(number, address, DimensionProductId, userId){
+        if(address.length<5)
+            return 'Введите настоящий адресс'
+        if(number.length<9)
+            return 'Введите настоящий номер'
+        if(userId)
+            await this.order.CreateOrder(number, address, DimensionProductId, userId)
+        else
+            await this.order.CreateOrder(number, address, DimensionProductId)
     }
     async DeleteOrder(id){
         await this.order.DeleteOrder(id)

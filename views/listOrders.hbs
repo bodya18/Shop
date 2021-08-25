@@ -6,6 +6,7 @@
             <th>Цена</th>
             <th>Адресс</th>
             <th>Номер</th>
+            <th>Юзер</th>
         </tr>
         {{#each orders}}
             <tr> 
@@ -14,7 +15,7 @@
                 <td><h5>{{this.NewPrice}}</h5></td>
                 <td><h5>{{this.address}}</h5></td>
                 <td><h5>{{this.number}}</h5></td>
-
+                <td><h5>{{this.userId}}</h5></td>
                 {{#if @root.isDoneOrder}}
                     <td>
                         <form action="/admin/orders/repeat/{{this.id}}" method="POST">

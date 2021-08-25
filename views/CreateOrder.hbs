@@ -1,0 +1,17 @@
+<div align='center'>
+    <h1>Заказ товара</h1>
+    {{#if error}}
+        <font color='red'>{{error}}</font>
+    {{/if}}
+    <form method="POST" action="/product/create/orders">
+        <div class="col-sm-6">
+
+            <input name="address" type="text" class="form-control" placeholder="address" minlength="2" >
+            <input name="DimensionProductId" type="number" class="form-control" placeholder="DimPrId 1-1000" >
+            <input name="number" type="text" class="form-control" placeholder="number" minlength="2" >
+            
+            <input type="submit" class="btn btn-secondary" value="Заказать">
+
+        </div>
+    </form>
+</div>
