@@ -139,7 +139,7 @@ exports.GetSettings = async (req, res)=>{
 
 exports.GetThisSetting = async (req, res)=>{
     const settings = await main.settings.getSettingById(req.params.id)
-    let isPercent = 0, isSingleFile = 0, isMultiFile = 0
+    let isPercent, isSingleFile, isMultiFile, isTextEdit 
     switch (settings._key) {
         case 'percent':
             isPercent = true
@@ -150,6 +150,9 @@ exports.GetThisSetting = async (req, res)=>{
         case 'Main_slider':
             isMultiFile = true
             break;
+        case 'Main_quote':
+            isTextEdit = true
+            break;
         default:
             break;
     }
@@ -157,6 +160,7 @@ exports.GetThisSetting = async (req, res)=>{
         isPercent,
         isSingleFile,
         isMultiFile,
+        isTextEdit,
         settings,
         title: 'Настройки',
         isAdmin: true,
