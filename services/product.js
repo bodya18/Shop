@@ -1,7 +1,6 @@
 const xlsx = require('node-xlsx').default;
 const AdmZip = require('adm-zip');
 var fs = require('fs');
-const file = require('../middleware/file')
 const config = require('config');
 const productModel = require('../model/requests/Produc');
 const orderModel = require('../model/requests/order');
@@ -86,15 +85,6 @@ class Product{
         return await this.product.GetProductByCategoryId(categoryId)
     }
 
-    async getSettings(){
-        return await this.product.getSettings();
-    }
-    async getSettingById(id){
-        return await this.product.getSettingById(id);
-    }
-    async EditSettings(percent, title){
-        return await this.product.EditSettings(percent, title)
-    }
     async GetOrdersByStatus(status){
         return await this.order.GetOrdersByStatus(status)
     }

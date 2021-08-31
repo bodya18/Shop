@@ -5,7 +5,6 @@ const ConnectionModel = require('../model/requests/connection')
 class Role{
 
     constructor(){
-        this.is = false
         this.role = new RoleModel
         this.user = new UserModel
         this.connection = new ConnectionModel

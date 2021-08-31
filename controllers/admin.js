@@ -127,7 +127,7 @@ exports.DeletePermission = async (req, res)=>{
 }
 
 exports.GetSettings = async (req, res)=>{
-    const settings = await main.product.getSettings()
+    const settings = await main.settings.getSettings()
     res.render('settings.hbs', {
         settings,
         title: 'Настройки',
@@ -137,8 +137,54 @@ exports.GetSettings = async (req, res)=>{
     })
 }
 
+exports.GetThisSetting = async (req, res)=>{
+    const settings = await main.settings.getSettingById(req.params.id)
+    let isPercent = 0, isSingleFile = 0, isMultiFile = 0
+    let id = parseInt(req.params.id)
+    switch (id) {
+        case 1:
+            isPercent = true
+            break;
+        case 2:
+            isSingleFile = true
+            break;
+        case 3:
+            isMultiFile = true
+            break;
+        default:
+            break;
+    }
+    res.render('ThisSettings.hbs', {
+        isPercent,
+        isSingleFile,
+        isMultiFile,
+        settings,
+        title: 'Настройки',
+        isAdmin: true,
+        isSetting: true,
+        error: req.flash('error')
+    })
+}
+
 exports.EditSettings = async(req, res)=>{
-    await main.product.EditSettings(req.body.value, req.body.title)
+    let data = ''
+    if(req.files.length && !("value" in req.body)){
+        for (const i in req.files) {
+            if(req.files[i].mimetype === 'image/png' || req.files[i].mimetype === 'image/jpeg' || req.files[i].mimetype === 'image/jpg'){
+                if((req.files.length-1) == i)
+                    data += req.files[i].filename
+                else
+                    data += req.files[i].filename + ','
+            }
+            else{
+                req.flash('error', 'Файлы должны быть формата JPG, JPEG, PNG')
+                return res.redirect(req.headers.referer)
+            }
+        }
+        await main.settings.EditSettings(data, req.body.id)
+    }
+    else
+        await main.settings.EditSettings(req.body.value, req.body.id)
     res.redirect('/admin/settings')
 }
 

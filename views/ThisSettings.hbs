@@ -1,0 +1,34 @@
+<div class="row col col-lg-6">
+    <form action="/admin/settings/set" method="post" enctype="multipart/form-data">
+        
+        <br><br><br><br>
+            {{#if error}}
+                <font color="red">{{error}}</font>
+            {{/if}}
+        <input type="hidden" name="id" value="{{settings.id}}">
+        
+        {{#if isPercent}}
+        <div class="col-lg-6">
+            <p>Введите процент прибыли</p>
+            <input type="number" class="form-control" name="value" value="{{settings.value}}">
+        </div>
+        {{/if}}
+        
+        {{#if isMultiFile}}
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Выберите изображения на слайдер главной страницы</label>
+                <input class="form-control" type="file" id="formFileMultiple" multiple name="value">
+            </div>
+        {{/if}}
+        
+        {{#if isSingleFile}}
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Выберите изображение на шапку сайта</label>
+                <input class="form-control" type="file" id="formFile" name="value">
+            </div>  
+        {{/if}}
+        
+        <br><br>
+        <input type="submit" class="btn btn-success" value="Задать настройку">
+    </form>
+</div>

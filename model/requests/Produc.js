@@ -47,7 +47,8 @@ class Product{
     }
 
     async CreateDimensionProduct(dimension, count, OldPrice, productId){
-        const percent = await pool.settings.findOne({raw:true})
+        const percent = await pool.settings.findOne({where:{id: 1},raw:true})
+        percent.percent = parseInt(percent.percent)
         const NewPrice = OldPrice * (percent.percent / 100 + 1)
         await pool.DimensionProduct.create({
             dimension,
@@ -62,7 +63,7 @@ class Product{
         await pool.DimensionProduct.findAll({where:{productId}, raw: true})
     }
     async UpdateDimensionProduct(id, dimension, count, OldPrice, productId){
-        const percent = await pool.settings.findOne({raw:true})
+        const percent = await pool.settings.findOne({where:{id: 1},raw:true})
         const NewPrice = OldPrice * (percent.percent / 100 + 1)
         await pool.DimensionProduct.update({
             dimension,
@@ -94,15 +95,6 @@ class Product{
         return await pool.Product.findAll({where:{categoryId}, raw: true})
     }
 
-    async getSettings(){
-        return await pool.settings.findAll({raw: true})
-    }
-    async getSettingById(id){
-        return await pool.settings.findAll({where:{id}, raw: true})
-    }
-    async EditSettings(value, title){
-        return await pool.settings.update({value}, {where:{title}})
-    }
     async search(search){
         return await pool.Product.findAll({
             where:{
