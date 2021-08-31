@@ -127,9 +127,9 @@ exports.DeletePermission = async (req, res)=>{
 }
 
 exports.GetSettings = async (req, res)=>{
-    const data = await main.product.getSettings()
+    const settings = await main.product.getSettings()
     res.render('settings.hbs', {
-        percent: data.percent,
+        settings,
         title: 'Настройки',
         isAdmin: true,
         isSetting: true,
@@ -138,7 +138,7 @@ exports.GetSettings = async (req, res)=>{
 }
 
 exports.EditSettings = async(req, res)=>{
-    await main.product.EditSettings(req.body.percent)
+    await main.product.EditSettings(req.body.value, req.body.title)
     res.redirect('/admin/settings')
 }
 

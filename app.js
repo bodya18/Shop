@@ -7,7 +7,7 @@ const path = require('path');
 
 const varMiddleware = require('./middleware/variables')
 const errorHandler = require('./middleware/error')
-const config = require('./middleware/config');
+const config = require('config');
 config.dirname = __dirname
 
 const loginRouter = require('./routes/login')
@@ -31,9 +31,10 @@ const hbs = exphbs.create({
 
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs');
+app.engine('html', require('ejs').renderFile);
+
 app.set('views', 'views')
 app.use(express.static(__dirname))
-
 var options = {
     host: config.host,
     user: 'root',

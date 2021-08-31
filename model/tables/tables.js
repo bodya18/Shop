@@ -143,9 +143,14 @@ const permission = sequelize.define('permissions', {
 }) 
 
 const settings = sequelize.define('settings', {
-  percent:{
-    type: Sequelize.INTEGER,
+  value:{
+    type: Sequelize.STRING,
     allowNull: false
+  },
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
   }
 })
 

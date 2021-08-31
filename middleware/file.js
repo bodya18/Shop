@@ -11,8 +11,23 @@ const fileFilter = (req, file, cb) => {
         cb(null, false);
     }
 }
-
-exports.inFile = inFile
+const filePhotoFilter = (req, file, cb) => {
+    console.log(file);
+    if(file.mimetype === "image/png"|| 
+    file.mimetype === "image/jpg"|| 
+    file.mimetype === "image/jpeg"){
+        cb(null, true);
+        inFile = true
+    }
+    else{
+        cb(null, false);
+    }
+}
+exports.inFile = inFile;
+exports.photo = multer({
+    dest:"files",
+    filePhotoFilter
+});
 exports.upload = multer({
     dest:"files",
     fileFilter

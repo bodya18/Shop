@@ -1,0 +1,354 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+	<!--<![endif]-->
+
+	<head>
+
+		<!-- Basic Page Needs
+	================================================== -->
+		<meta charset="utf-8">
+		<title>Home &ndash; Santorini</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- CSS
+	================================================== -->
+		<link href="/views/santorini5/">
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CMontserrat:400,700' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/flexslider.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/font-awesome.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/weather-icons.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/bootstrap.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/prettyPhoto.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/mmenu.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/jquery-ui-1.10.4.datepicker.min.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/style.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/mediaqueries.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/colors/default.css' rel='stylesheet' type='text/css'>
+
+		<!-- Favicons
+	================================================== -->
+		<link rel="shortcut icon" href="#">
+		<link rel="apple-touch-icon" href="#">
+		<link rel="apple-touch-icon" sizes="72x72" href="#">
+		<link rel="apple-touch-icon" sizes="114x114" href="#">
+
+		<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
+		<style>
+			/*
+		 When implementing this in a CMS, these styles should remain in the head
+		 and use if logic to switch between the .fwslider or alternative
+		 version of the theme (for correct header display). .fwslider or .alt in the body
+		 tag will convert the header display to white background with grey letters,
+		 as in index_alt.kit -- feel free to delete this comment when you have no
+		 use for it
+		*/
+
+			#header {
+				background: url("http://placehold.it/1920x230") no-repeat center top;
+			}
+
+			.fwslider #header {
+				background: none;
+			}
+		</style>
+		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+	</head>
+
+	<body class=" ">
+
+		<div id="mobile-bar">
+			<a class="menu-trigger" href="#mobilemenu"><i class="fa fa-bars"></i></a>
+			<h1 class="mob-title"></h1>
+		</div>
+		<div id="page">
+			<header id="header">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1">
+							
+							<nav class="nav row">
+								<div class="col-sm-5">
+									<ul class="navigation left-nav">
+										<li><a href="/">Главная страница</a></li>
+										<li><a href="listing-4col.html">Listing</a></li>
+										<li><a href="room.html">Single Room</a></li>
+									</ul>
+								</div>
+
+								<div class="col-sm-2">
+									<!-- <h1 class="logo"><a href="index.html"><img src="images/dummy/logo_white.png" alt=""></a></h1> -->
+								</div>
+
+								<div class="col-sm-5">
+									<ul class="navigation right-nav">
+										<li><a href="/login">Войти</a></li>
+										<li><a href="/register">Регистрация</a></li>
+										<li><a href="/logout">Выйти</a></li>
+										<li><a href="/admin">Панель Администрации</a></li>
+									</ul>
+								</div>
+							</nav>
+
+							<div id="mobilemenu">
+								<ul>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="index_alt.html">Home 2</a></li>
+									<li><a href="listing-3col.html">Listing</a></li>
+									<li><a href="listing-4col.html">Listing 4 Columns</a></li>
+									<li><a href="blog.html">Blog</a>
+										<ul>
+											<li><a href="">Sub Item</a></li>
+											<li><a href="">Sub Item</a></li>
+											<li><a href="">Sub Item Longer</a></li>
+											<li><a href="">Sub Item</a></li>
+										</ul>
+									</li>
+									<li><a href="booking.html">Booking Page</a></li>
+									<li><a href="gallery-single.html">Galleries</a></li>
+									<li><a href="contact.html">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- main container -->
+					</div>
+				</div>
+			</header>
+
+			<div id="slider" class="flexslider loading">
+				<ul class="slides">
+					<li style="background: url('http://placehold.it/1920x850') no-repeat center center">
+						<div class="slide-info">
+							<h2 class="slide-title">Live your myth in Greece</h2>
+							<p class="slide-subtitle">from only &dollar;125 / day.</p>
+
+							<a class="btn slide-more" href="">explore.</a>
+						</div>
+					</li>
+					<li style="background: url('http://placehold.it/1920x850') no-repeat center center">
+						<div class="slide-info">
+							<h2 class="slide-title">Live your myth in Greece</h2>
+							<p class="slide-subtitle">from only &dollar;125 / day.</p>
+
+							<a class="btn slide-more" href="">explore.</a>
+						</div>
+					</li>
+					<li style="background: url('http://placehold.it/1920x850') no-repeat center center">
+						<div class="slide-info">
+							<h2 class="slide-title">Live your myth in Greece</h2>
+							<p class="slide-subtitle">from only &dollar;125 / day.</p>
+
+							<a class="btn slide-more" href="">explore.</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- #slider -->
+			
+			<main id="main">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1">
+							<div class="widget-area-1">
+
+								<div class="widget widget_ci_testimonial_widget">
+									<div class="testimonial-wrap">
+										<div class="testimonial-inner">
+											<blockquote>
+
+												<i class="fa fa-quote-left"></i>
+												<p>The best experience ever. Would recommended it everyone. We got married in Santorini, and stayed at Santorini Resort, and it was a dream come true.</p>
+
+												<cite>Peter Daniel &ndash; Travel Magazine</cite>
+											</blockquote>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- .widget-area-1 -->
+
+							<div class="widget-area-2">
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="widget">
+
+											<div class="item">
+												<figure class="item-thumb">
+													<a href="room.html">
+												<img src="http://placehold.it/750x930" alt="Placeholder image" />
+											</a>
+												</figure>
+
+												<div class="item-content">
+													<a class="item-title btn" href="">item title.</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="widget">
+
+											<div class="item">
+												<figure class="item-thumb">
+													<a href="room.html">
+												<img src="http://placehold.it/750x930" alt="Placeholder image" />
+											</a>
+												</figure>
+
+												<div class="item-content">
+													<a class="item-title btn" href="">item title.</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="widget">
+
+											<div class="item">
+												<figure class="item-thumb">
+													<a href="room.html">
+												<img src="http://placehold.it/750x930" alt="Placeholder image" />
+											</a>
+												</figure>
+
+												<div class="item-content">
+													<a class="item-title btn" href="">item title.</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- .widget-area-2 -->
+
+							<div class="widget-area-3">
+								<div class="row">
+									<div class="col-sm-8">
+										<h3 class="widget-title">our blog</h3>
+
+										<article class="entry">
+											<figure class="entry-thumb">
+												<a href="single.html">
+											<img src="http://placehold.it/750x425" alt="Placeholder image" />
+										</a>
+											</figure>
+
+											<h1 class="entry-title"><a href="single.html">Santorini: Five reasons to visit the beautiful Greek island</a></h1>
+											<div class="entry-meta">
+												<span class="entry-categories"><b>Posted Under</b> <a href="">Articles</a>, <a href="">Must Visit</a>, <a
+											href="">Santorini</a></span>
+												<a class="entry-comments" href="single.html#comments">3 Comments</a>
+											</div>
+
+											<div class="entry-excerpt">
+												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda fuga illo laudantium magni sed temporibus. Amet atque aut autem consectetur consequuntur dolorum enim error hic inventore molestiae nisi nostrum numquam optio perspiciatis
+													provident, quae quam quisquam quo similique suscipit veniam veritatis vero. Ab culpa cumque deleniti est explicabo facilis, ipsa itaque magni non officiis placeat provident quidem ratione recusandae reiciendis repellat, repudiandae tempora
+													unde voluptates voluptatibus. Ab aliquid, blanditiis debitis eos eveniet ex incidunt itaque, labore maxime mollitia natus perspiciatis porro provident quidem quis reprehenderit rerum suscipit totam ullam voluptatum.</p>
+											</div>
+										</article>
+									</div>
+
+									<div class="sidebar col-sm-4">
+
+										<div class="widget widget_ci_special_offer_widget">
+											<h3 class="widget-title">special offer</h3>
+											<div class="item">
+												<figure class="item-thumb">
+													<a href="booking.html">
+												<img src="http://placehold.it/750x930" alt="Placeholder image" />
+											</a>
+												</figure>
+
+												<div class="item-content">
+													<h4>Our wedding suite. 50% off. May 5th.</h4>
+													<a class="item-title btn" href="booking.html">book now.</a>
+												</div>
+											</div>
+										</div>
+
+										<aside class="widget widget_ci_social_widget ci-socials group">
+											<h3 class="widget-title">social</h3>
+											<a href="#" class="social-icon" title="Subscribe to our RSS feed."><i class="fa fa-rss"></i></a>
+											<a href="http://www.twitter.com/cssigniter" class="social-icon" title="Follow us on twitter."><i class="fa fa-twitter"></i></a>
+											<a href="http://www.facebook.com/cssigniter" class="social-icon" title="Like us on Facebook."><i class="fa fa-facebook"></i></a>
+											<a href="http://www.dribbble.com/tsiger" class="social-icon" title="See our Dribbble shots."><i class="fa fa-dribbble"></i></a>
+										</aside>
+
+										<div class="widget widget_ci_newsletter_widget">
+											<h3 class="widget-title">newsletter</h3>
+
+											<p>Get explosive offers straight to your inbox and win a free weekend stay!</p>
+											<form class="ci-newsletter" action="/">
+												<input type="email" name="ci_newsletter_email" id="ci_newsletter_email" placeholder="your email">
+												<button type="submit"><i class="fa fa-chevron-right"></i></button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- .widget-area-3 -->
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1">
+							<hr>
+
+							<nav class="nav row">
+								<div class="col-sm-5">
+									<ul class="navigation left-nav">
+										<li><a href="index.html">Home</a></li>
+										<li><a href="index_alt.html">Home 2</a></li>
+										<li><a href="listing-3col.html">Listing</a></li>
+										<li><a href="room.html">Single Room</a></li>
+									</ul>
+								</div>
+
+								<div class="col-sm-2">
+									<div class="logo"><a href="index.html"><img src="/views/santorini5/images/dummy/logo_grey.png" alt=""></a></div>
+								</div>
+
+								<div class="col-sm-5">
+									<ul class="navigation right-nav">
+										<li><a href="blog.html">Blog</a></li>
+										<li><a href="booking.html">Booking</a></li>
+										<li><a href="listing-3col.html">Galleries</a></li>
+										<li><a href="contact.html">Contact</a></li>
+									</ul>
+								</div>
+							</nav>
+							<p class="credits">Made in CSSigniter.com</p>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<!-- #page -->
+
+		<!-- Javascript
+================================================== -->
+		<script type='text/javascript' src='/views/santorini5/js/jquery-1.10.1.min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery-ui-1.10.4.custom.min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/superfish.min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.flexslider-min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.mmenu.min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.dropkick-min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.fitvids.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.prettyPhoto.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/contact.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/scripts.js'></script>
+
+	</body>
+
+</html>

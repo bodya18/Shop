@@ -1,4 +1,3 @@
-// const config = require('../middleware/config')
 const RoleModel = require('../model/requests/role');
 const PermissionModel = require('../model/requests/permission');
 const ConnectionModel = require('../model/requests/connection');

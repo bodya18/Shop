@@ -1,0 +1,376 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+	<!--<![endif]-->
+
+	<head>
+
+		<!-- Basic Page Needs
+	================================================== -->
+		<meta charset="utf-8">
+		<title>Gallery Template &ndash; Santorini</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- CSS
+	================================================== -->
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CMontserrat:400,700' rel='stylesheet' type='text/css'>
+		<link href='css/flexslider.css' rel='stylesheet' type='text/css'>
+		<link href='css/font-awesome.css' rel='stylesheet' type='text/css'>
+		<link href='css/weather-icons.css' rel='stylesheet' type='text/css'>
+		<link href='css/bootstrap.css' rel='stylesheet' type='text/css'>
+		<link href='css/prettyPhoto.css' rel='stylesheet' type='text/css'>
+		<link href='css/mmenu.css' rel='stylesheet' type='text/css'>
+		<link href='css/jquery-ui-1.10.4.datepicker.min.css' rel='stylesheet' type='text/css'>
+		<link href='style.css' rel='stylesheet' type='text/css'>
+		<link href='css/mediaqueries.css' rel='stylesheet' type='text/css'>
+		<link href='colors/default.css' rel='stylesheet' type='text/css'>
+
+		<!-- Favicons
+	================================================== -->
+		<link rel="shortcut icon" href="#">
+		<link rel="apple-touch-icon" href="#">
+		<link rel="apple-touch-icon" sizes="72x72" href="#">
+		<link rel="apple-touch-icon" sizes="114x114" href="#">
+
+		<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
+		<style>
+			/*
+		 When implementing this in a CMS, these styles should remain in the head
+		 and use if logic to switch between the .fwslider or alternative
+		 version of the theme (for correct header display). .fwslider or .alt in the body
+		 tag will convert the header display to white background with grey letters,
+		 as in index_alt.kit -- feel free to delete this comment when you have no
+		 use for it
+		*/
+
+			#header {
+				background: url("http://placehold.it/1920x230") no-repeat center top;
+			}
+
+			.fwslider #header {
+				background: none;
+			}
+		</style>
+		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+	</head>
+
+	<body class=" ">
+
+		<div id="mobile-bar">
+			<a class="menu-trigger" href="#mobilemenu"><i class="fa fa-bars"></i></a>
+			<h1 class="mob-title"></h1>
+		</div>
+		<div id="page">
+			<header id="header">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1">
+							<div class="row pre-head">
+								<div class="col-sm-6">
+									<div id="weather">
+										<i class="ywicon"></i>
+										<span id="ywloc"></span>
+										<span id="ywtem"></span>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<aside id="icl_lang_sel_widget" class="widget icl_languages_selector group">
+										<h3 class="widget-title">Languages</h3>
+										<div id="lang_sel">
+											<ul>
+												<li>
+													<a href="#" class="lang_sel_sel icl-en">
+
+										<img class="iclflag" src="images/flags/en.png" alt="en" title="English">
+										&nbsp;English</a>
+													<ul>
+														<li class="icl-fr">
+															<a href="http://www.cssigniter.com/preview/santorini/fr/">
+													<img class="iclflag" src="images/flags/fr.png" alt="fr" title="Français">&nbsp;
+													Français
+												</a>
+														</li>
+														<li class="icl-de">
+															<a href="http://www.cssigniter.com/preview/santorini/de/">
+													<img class="iclflag" src="images/flags/de.png" alt="de" title="Deutsch">&nbsp;
+													Deutsch
+												</a>
+														</li>
+														<li class="icl-it">
+															<a href="http://www.cssigniter.com/preview/santorini/it/">
+													<img class="iclflag" src="images/flags/it.png" alt="it" title="Italiano">&nbsp;
+													Italiano
+												</a>
+														</li>
+														<li class="icl-ru">
+															<a href="http://www.cssigniter.com/preview/santorini/ru/">
+													<img class="iclflag" src="images/flags/ru.png" alt="ru" title="Русский">&nbsp;
+													Русский
+												</a>
+														</li>
+														<li class="icl-es">
+															<a href="http://www.cssigniter.com/preview/santorini/es/">
+													<img class="iclflag" src="images/flags/es.png" alt="es" title="Español">&nbsp;
+													Español
+												</a>
+														</li>
+														<li class="icl-el">
+															<a href="http://www.cssigniter.com/preview/santorini/el/">
+													<img class="iclflag" src="images/flags/el.png" alt="el" title="Ελληνικα">&nbsp;
+													Ελληνικα
+												</a>
+														</li>
+													</ul>
+
+												</li>
+											</ul>
+										</div>
+									</aside>
+								</div>
+							</div>
+							<!-- .row.pre-head -->
+							<hr/>
+							<nav class="nav row">
+								<div class="col-sm-5">
+									<ul class="navigation left-nav">
+										<li><a href="index.html">Home</a></li>
+										<li><a href="index_alt.html">Home 2</a></li>
+										<li><a href="listing-3col.html">Listing</a>
+											<ul>
+												<li><a href="listing-4col.html">Listing 4 Columns</a></li>
+											</ul>
+										</li>
+										<li><a href="room.html">Single Room</a></li>
+									</ul>
+								</div>
+
+								<div class="col-sm-2">
+									<h1 class="logo"><a href="index.html"><img src="images/dummy/logo_white.png" alt=""></a></h1>
+								</div>
+
+								<div class="col-sm-5">
+									<ul class="navigation right-nav">
+										<li><a href="blog.html">Blog</a>
+											<ul>
+												<li><a href="">Sub Item</a></li>
+												<li><a href="">Multi Level</a>
+													<ul>
+														<li><a href="">Another level</a></li>
+														<li><a href="">Another level</a></li>
+														<li><a href="">Another level</a></li>
+														<li><a href="">Another level</a></li>
+													</ul>
+												</li>
+												<li><a href="">Sub Item</a></li>
+											</ul>
+										</li>
+										<li><a href="booking.html">Booking</a></li>
+										<li><a href="gallery-single.html">Galleries</a></li>
+										<li><a href="contact.html">Contact</a></li>
+									</ul>
+								</div>
+							</nav>
+
+							<div id="mobilemenu">
+								<ul>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="index_alt.html">Home 2</a></li>
+									<li><a href="listing-3col.html">Listing</a></li>
+									<li><a href="listing-4col.html">Listing 4 Columns</a></li>
+									<li><a href="blog.html">Blog</a>
+										<ul>
+											<li><a href="">Sub Item</a></li>
+											<li><a href="">Sub Item</a></li>
+											<li><a href="">Sub Item Longer</a></li>
+											<li><a href="">Sub Item</a></li>
+										</ul>
+									</li>
+									<li><a href="booking.html">Booking Page</a></li>
+									<li><a href="gallery-single.html">Galleries</a></li>
+									<li><a href="contact.html">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- main container -->
+					</div>
+				</div>
+			</header>
+
+			<main id="main">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1 full">
+							<h2 class="page-title">gallery title</h2>
+
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="item">
+										<figure class="item-thumb">
+											<a href="" data-rel="prettyPhoto[pp_gal]">
+			<img src="http://placehold.it/750x930" alt="Placeholder image" />
+			<div class="overlay"><i class="fa fa-search-plus"></i></div>
+		</a>
+										</figure>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="item">
+										<figure class="item-thumb">
+											<a href="" data-rel="prettyPhoto[pp_gal]">
+			<img src="http://placehold.it/750x930" alt="Placeholder image" />
+			<div class="overlay"><i class="fa fa-search-plus"></i></div>
+		</a>
+										</figure>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="item">
+										<figure class="item-thumb">
+											<a href="" data-rel="prettyPhoto[pp_gal]">
+			<img src="http://placehold.it/750x930" alt="Placeholder image" />
+			<div class="overlay"><i class="fa fa-search-plus"></i></div>
+		</a>
+										</figure>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="item">
+										<figure class="item-thumb">
+											<a href="" data-rel="prettyPhoto[pp_gal]">
+			<img src="http://placehold.it/750x930" alt="Placeholder image" />
+			<div class="overlay"><i class="fa fa-search-plus"></i></div>
+		</a>
+										</figure>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="item">
+										<figure class="item-thumb">
+											<a href="" data-rel="prettyPhoto[pp_gal]">
+			<img src="http://placehold.it/750x930" alt="Placeholder image" />
+			<div class="overlay"><i class="fa fa-search-plus"></i></div>
+		</a>
+										</figure>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="item">
+										<figure class="item-thumb">
+											<a href="" data-rel="prettyPhoto[pp_gal]">
+			<img src="http://placehold.it/750x930" alt="Placeholder image" />
+			<div class="overlay"><i class="fa fa-search-plus"></i></div>
+		</a>
+										</figure>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<div class="booking-inpage" style="background: url('http://placehold.it/1920x350') no-repeat center center">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1">
+
+							<form class="b-form group" method="post" action="booking.php">
+								<div class="arrival group">
+									<input type="text" name="arrive" id="arrive" class="datepicker" placeholder="arrive">
+								</div>
+
+								<div class="departure group">
+									<input type="text" name="depart" id="depart" class="datepicker" placeholder="depart">
+								</div>
+
+								<div class="adults group">
+									<select name="guests" id="guests" class="dk">
+							<option selected disabled>adults</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+								</div>
+
+								<div class="room group">
+									<select name="room_select" id="room_select" class="dk">
+							<option selected disabled>room</option>
+							<option value="1">Single</option>
+							<option value="2">Deluxe Double</option>
+							<option value="3">Suite I</option>
+							<option value="4">Suite II</option>
+							<option value="5">King's Suite</option>
+						</select>
+								</div>
+
+								<div class="bookbtn group">
+									<button type="submit">book now</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1">
+							<hr>
+
+							<nav class="nav row">
+								<div class="col-sm-5">
+									<ul class="navigation left-nav">
+										<li><a href="index.html">Home</a></li>
+										<li><a href="index_alt.html">Home 2</a></li>
+										<li><a href="listing-3col.html">Listing</a></li>
+										<li><a href="room.html">Single Room</a></li>
+									</ul>
+								</div>
+
+								<div class="col-sm-2">
+									<div class="logo"><a href="index.html"><img src="images/dummy/logo_grey.png" alt=""></a></div>
+								</div>
+
+								<div class="col-sm-5">
+									<ul class="navigation right-nav">
+										<li><a href="blog.html">Blog</a></li>
+										<li><a href="booking.html">Booking</a></li>
+										<li><a href="listing-3col.html">Galleries</a></li>
+										<li><a href="contact.html">Contact</a></li>
+									</ul>
+								</div>
+							</nav>
+							<p class="credits">Made in CSSigniter.com</p>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<!-- #page -->
+
+		<!-- Javascript
+================================================== -->
+		<script type='text/javascript' src='js/jquery-1.10.1.min.js'></script>
+		<script type='text/javascript' src='js/jquery-ui-1.10.4.custom.min.js'></script>
+		<script type='text/javascript' src='js/superfish.min.js'></script>
+		<script type='text/javascript' src='js/jquery.flexslider-min.js'></script>
+		<script type='text/javascript' src='js/jquery.mmenu.min.js'></script>
+		<script type='text/javascript' src='js/jquery.dropkick-min.js'></script>
+		<script type='text/javascript' src='js/jquery.fitvids.js'></script>
+		<script type='text/javascript' src='js/jquery.prettyPhoto.js'></script>
+		<script type='text/javascript' src='js/contact.js'></script>
+		<script type='text/javascript' src='js/scripts.js'></script>
+
+	</body>
+
+</html>

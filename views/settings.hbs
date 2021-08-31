@@ -1,13 +1,15 @@
 <br><br>
-<div class="row">
-    <form action="/admin/settings/set" method="POST">
-        <div class="col col-lg-6 d-flex">
-            <div class="col-lg-3">
-                <h5>Процент прибыли</h5>
-            </div>
-            <input style="max-width: 100px;" name="percent" type="number" class="form-control" placeholder="Процент прибыли" value="{{percent}}">
+<div class="row col col-lg-6">
+    <ul class="list-group">
+        {{#each settings}}
+            <li class="list-group-item"><h3><a style="color: black;" href="/admin/settings/{{this.id}}">{{this.title}}</a></h3></li>
+        {{/each}}
+    </ul>
+    {{!-- <form action="/admin/aaa" method="POST" enctype="multipart/form-data">
+       <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+            <input name="aaa" class="form-control" type="file" id="formFileMultiple" multiple>
         </div>
-        <br><br>
-        <button type="submit" class="btn btn-success">Изменить настройки</button>
-    </form>
+       <button type="submit" class="btn btn-success">настройки</button>
+    </form> --}}
 </div>

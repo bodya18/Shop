@@ -95,10 +95,13 @@ class Product{
     }
 
     async getSettings(){
-        return await pool.settings.findOne({raw: true})
+        return await pool.settings.findAll({raw: true})
     }
-    async EditSettings(percent){
-        return await pool.settings.update({percent}, {where:{id: 1}})
+    async getSettingById(id){
+        return await pool.settings.findAll({where:{id}, raw: true})
+    }
+    async EditSettings(value, title){
+        return await pool.settings.update({value}, {where:{title}})
     }
     async search(search){
         return await pool.Product.findAll({
