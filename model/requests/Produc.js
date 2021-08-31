@@ -47,9 +47,9 @@ class Product{
     }
 
     async CreateDimensionProduct(dimension, count, OldPrice, productId){
-        const percent = await pool.settings.findOne({where:{id: 1},raw:true})
-        percent.percent = parseInt(percent.percent)
-        const NewPrice = OldPrice * (percent.percent / 100 + 1)
+        const percent = await pool.settings.findOne({where:{_key: 'percent'},raw:true})
+        percent.value = parseInt(percent.value)
+        const NewPrice = OldPrice * (percent.value / 100 + 1)
         await pool.DimensionProduct.create({
             dimension,
             count,

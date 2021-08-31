@@ -105,21 +105,17 @@
 
 							<div id="mobilemenu">
 								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li><a href="index_alt.html">Home 2</a></li>
-									<li><a href="listing-3col.html">Listing</a></li>
-									<li><a href="listing-4col.html">Listing 4 Columns</a></li>
-									<li><a href="blog.html">Blog</a>
-										<ul>
-											<li><a href="">Sub Item</a></li>
-											<li><a href="">Sub Item</a></li>
-											<li><a href="">Sub Item Longer</a></li>
-											<li><a href="">Sub Item</a></li>
-										</ul>
-									</li>
-									<li><a href="booking.html">Booking Page</a></li>
-									<li><a href="gallery-single.html">Galleries</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="/">Главная страница</a></li>
+									<li><a href="listing-4col.html">Listing</a></li>
+									{{#if isAuth}}
+										<li><a href="/logout">Выйти</a></li>
+									{{else}}
+										<li><a href="/login">Войти</a></li>
+										<li><a href="/register">Регистрация</a></li>
+									{{/if}}
+									{{#if isAdministrator}}
+										<li><a href="/admin">Панель Администрации</a></li>
+									{{/if}}
 								</ul>
 							</div>
 						</div>
