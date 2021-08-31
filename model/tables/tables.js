@@ -149,6 +149,10 @@ const settings = sequelize.define('settings', {
   },
   title: {
     type: Sequelize.STRING,
+    allowNull: false
+  },
+  _key: {
+    type: Sequelize.STRING,
     allowNull: false,
     unique: true
   }

@@ -51,7 +51,7 @@
 		*/
 
 			#header {
-				background: url("http://placehold.it/1920x230") no-repeat center top;
+				background: url("/files/{{main_header}}") no-repeat center top;
 				/* background: url("/2.jpg") no-repeat center top; */
 			}
 
@@ -90,10 +90,15 @@
 
 								<div class="col-sm-5">
 									<ul class="navigation right-nav">
-										<li><a href="/login">Войти</a></li>
-										<li><a href="/register">Регистрация</a></li>
-										<li><a href="/logout">Выйти</a></li>
-										<li><a href="/admin">Панель Администрации</a></li>
+										{{#if isAuth}}
+											<li><a href="/logout">Выйти</a></li>
+										{{else}}
+											<li><a href="/login">Войти</a></li>
+											<li><a href="/register">Регистрация</a></li>
+										{{/if}}
+										{{#if isAdministrator}}
+											<li><a href="/admin">Панель Администрации</a></li>
+										{{/if}}
 									</ul>
 								</div>
 							</nav>
@@ -124,31 +129,17 @@
 			</header>
 
 			<div id="slider" class="flexslider loading">
-				<ul class="slides">
-					<li style="background: url('/1.jpg') no-repeat center center">
-						<div class="slide-info">
-							<h2 class="slide-title">Live your myth in Greece</h2>
-							<p class="slide-subtitle">from only &dollar;125 / day.</p>
+				<ul class="slides" id="main_slider">
+					{{#each slider_images}}
+						<li style="background: url('/files/{{this}}') no-repeat center center">
+							{{!-- <div class="slide-info">
+								<h2 class="slide-title">Live your myth in Greece</h2>
+								<p class="slide-subtitle">from only &dollar;125 / day.</p>
 
-							<a class="btn slide-more" href="">explore.</a>
-						</div>
-					</li>
-					<!-- <li style="background: url('http://placehold.it/1920x850') no-repeat center center">
-						<div class="slide-info">
-							<h2 class="slide-title">Live your myth in Greece</h2>
-							<p class="slide-subtitle">from only &dollar;125 / day.</p>
-
-							<a class="btn slide-more" href="">explore.</a>
-						</div>
-					</li>
-					<li style="background: url('http://placehold.it/1920x850') no-repeat center center">
-						<div class="slide-info">
-							<h2 class="slide-title">Live your myth in Greece</h2>
-							<p class="slide-subtitle">from only &dollar;125 / day.</p>
-
-							<a class="btn slide-more" href="">explore.</a>
-						</div>
-					</li> -->
+								<a class="btn slide-more" href="">explore.</a>
+							</div> --}}
+						</li>
+					{{/each}}
 				</ul>
 			</div>
 			<!-- #slider -->
@@ -349,6 +340,7 @@
 		<script type='text/javascript' src='/views/santorini5/js/jquery.prettyPhoto.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/contact.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/scripts.js'></script>
+		<!-- <script type='text/javascript' src='/public/main.js'></script> -->
 
 	</body>
 

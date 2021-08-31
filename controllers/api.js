@@ -12,3 +12,8 @@ exports.Users = async(req, res)=>{
     let data = {roleUser, users}
     res.json(data)
 }
+
+exports.getSettings = async (req, res) =>{
+    let settings = await main.settings.getSettings()
+    res.json(settings)
+}

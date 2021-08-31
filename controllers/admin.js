@@ -140,15 +140,14 @@ exports.GetSettings = async (req, res)=>{
 exports.GetThisSetting = async (req, res)=>{
     const settings = await main.settings.getSettingById(req.params.id)
     let isPercent = 0, isSingleFile = 0, isMultiFile = 0
-    let id = parseInt(req.params.id)
-    switch (id) {
-        case 1:
+    switch (settings._key) {
+        case 'percent':
             isPercent = true
             break;
-        case 2:
+        case 'Main_header':
             isSingleFile = true
             break;
-        case 3:
+        case 'Main_slider':
             isMultiFile = true
             break;
         default:
