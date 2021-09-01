@@ -84,7 +84,9 @@ class Product{
     async GetProductByCategoryId(categoryId){
         return await this.product.GetProductByCategoryId(categoryId)
     }
-
+    async GetProductById(id){
+        return await this.product.GetProductById(id)
+    }
     async GetOrdersByStatus(status){
         return await this.order.GetOrdersByStatus(status)
     }

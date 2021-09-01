@@ -28,7 +28,7 @@ class Product{
 
     async GetProductById(id){
         return await pool.Product
-        .findAll({where:{id}, raw: true })
+        .findOne({where:{id}, raw: true })
         .catch(err=>console.log(err));
     }
 

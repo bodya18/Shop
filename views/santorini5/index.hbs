@@ -158,7 +158,25 @@
 
 							<div class="widget-area-2">
 								<div class="row">
-									<div class="col-sm-4">
+									{{#each top_product}}
+										<div class="col-sm-4">
+											<div class="widget">
+
+												<div class="item">
+													<figure class="item-thumb">
+														<a href="room.html">
+													<img src="/media/{{this.image}}" alt="Placeholder image" />
+												</a>
+													</figure>
+
+													<div class="item-content">
+														<a class="item-title btn" href="">{{this.title}}</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									{{/each}}
+									{{!-- <div class="col-sm-4">
 										<div class="widget">
 
 											<div class="item">
@@ -189,23 +207,7 @@
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="widget">
-
-											<div class="item">
-												<figure class="item-thumb">
-													<a href="room.html">
-												<img src="http://placehold.it/750x930" alt="Placeholder image" />
-											</a>
-												</figure>
-
-												<div class="item-content">
-													<a class="item-title btn" href="">item title.</a>
-												</div>
-											</div>
-										</div>
-									</div>
+									</div> --}}
 								</div>
 							</div>
 							<!-- .widget-area-2 -->

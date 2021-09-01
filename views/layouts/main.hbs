@@ -42,7 +42,10 @@
                 <section class="content">
                 <div class="container-fluid">
                     {{{body}}}
+                    {{#if isProduct}}
+                    {{else}}
                     <script src="/views/AdminLTE-3.1.0/plugins/jquery/jquery.min.js"></script>
+                    {{/if}}
                 </div>
                 </section>
             </div>

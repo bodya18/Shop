@@ -30,7 +30,19 @@
         {{#if isText}}
             <textarea id="editor" name="value">{{settings.value}}</textarea>
         {{/if}}
+        {{#if isProduct}}
+            <label for="id_label_multiple">
+                Выберите товары(3 штуки)
+
+                <select class="js-example-basic-multiple js-states form-control" id="id_label_multiple" name="value" multiple="multiple">
+                    {{#each products}}
+                        <option value="{{this.id}}">{{this.title}}</option>
+                    {{/each}}
+                </select>
+            </label>
+        {{/if}}
         <br><br>
+        <input type="hidden" name="type_value" value="{{settings.type_value}}">
         <input type="submit" class="btn btn-success" value="Задать настройку">
     </form>
 </div>

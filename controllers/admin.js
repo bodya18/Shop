@@ -139,7 +139,7 @@ exports.GetSettings = async (req, res)=>{
 
 exports.GetThisSetting = async (req, res)=>{
     const settings = await main.settings.getSettingById(req.params.id)
-    let isText, isNum, isSingleFile, isMultiFile
+    let isText, isNum, isSingleFile, isMultiFile, isProduct
     switch (settings.type_value) {
         case 1:
             isText = true
@@ -153,11 +153,16 @@ exports.GetThisSetting = async (req, res)=>{
         case 4:
             isMultiFile = true
             break;
+        case 5:
+            var products = await main.product.GetAllProduct()
+            isProduct = true
+            break;
         default:
             break;
     }
     res.render('ThisSettings.hbs', {
-        isText, isNum, isSingleFile, isMultiFile,
+        isText, isNum, isSingleFile, isMultiFile, isProduct,
+        products,
         settings,
         title: 'Настройки',
         isAdmin: true,
@@ -184,7 +189,7 @@ exports.CreateSettings = async(req, res)=>{
 }
 exports.EditSettings = async(req, res)=>{
     let data = ''
-    if(req.files.length && !("value" in req.body)){
+    if(req.files.length && (req.body.type_value == 3 || req.body.type_value == 4)){
         for (const i in req.files) {
             if(req.files[i].mimetype === 'image/png' || req.files[i].mimetype === 'image/jpeg' || req.files[i].mimetype === 'image/jpg'){
                 if((req.files.length-1) == i)
@@ -198,10 +203,21 @@ exports.EditSettings = async(req, res)=>{
             }
         }
         await main.settings.EditSettings(data, req.body.id)
+        return res.redirect('/admin/settings')
     }
-    else
-        await main.settings.EditSettings(req.body.value, req.body.id)
-    res.redirect('/admin/settings')
+    if(req.body.type_value == 5){
+        let tmp = ''
+        for (const i in req.body.value) {
+            if(i == req.body.value.length -1)
+                tmp +=req.body.value[i]    
+            else
+                tmp +=req.body.value[i]+','
+        }
+        await main.settings.EditSettings(tmp, req.body.id)
+        return res.redirect('/admin/settings')
+    }
+    await main.settings.EditSettings(req.body.value, req.body.id)
+    return res.redirect('/admin/settings')
 }
 
 exports.GetUsers = async (req, res)=>{
