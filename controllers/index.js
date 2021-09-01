@@ -1,15 +1,12 @@
 const MainService = require('../services/main')
 const main = new MainService
-exports.GetData = async (req, res)=>{
+
+exports.MainPage = async (req, res)=>{
     let settings = await main.settings.getSettings()
-    let slider_images, main_header, Main_3_top_products, main_bottom_banner, main_hot_product
+    let slider_images, Main_3_top_products, main_bottom_banner, main_hot_product
     for (const i in settings) {
         if (settings[i]._key === 'Main_slider') {
             slider_images = settings[i].value.split(',')
-            continue;
-        }
-        if(settings[i]._key === 'Main_header'){
-            main_header = settings[i].value
             continue;
         }
         if (settings[i]._key === 'Main_3_top_products') {
@@ -21,7 +18,6 @@ exports.GetData = async (req, res)=>{
             continue;
         }
         if (settings[i]._key === 'main_hot_product') {
-            console.log(settings[i]);
             main_hot_product = settings[i].value
             continue;
         }
@@ -34,9 +30,12 @@ exports.GetData = async (req, res)=>{
     res.render('santorini5/index.hbs',{
         title: 'Главная страница',
         slider_images,
-        main_header,
         top_product,
         main_bottom_banner,
         main_hot_product,
     })
+}
+
+exports.SinglePage = async (req, res) => {
+    res.render('santorini5/single.hbs')
 }

@@ -1,0 +1,58 @@
+<div id="mobile-bar">
+    <a class="menu-trigger" href="#mobilemenu"><i class="fa fa-bars"></i></a>
+    <h1 class="mob-title"></h1>
+</div>
+<div id="page">
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    
+                    <nav class="nav row">
+                        <div class="col-sm-5">
+                            <ul class="navigation left-nav">
+                                <li><a href="/">Главная страница</a></li>
+                                <li><a href="listing-4col.html">Listing</a></li>
+                                <li><a href="/single/room.html">Single Room</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <!-- <h1 class="logo"><a href="index.html"><img src="images/dummy/logo_white.png" alt=""></a></h1> -->
+                        </div>
+
+                        <div class="col-sm-5">
+                            <ul class="navigation right-nav">
+                                {{#if isAuth}}
+                                    <li><a href="/logout">Выйти</a></li>
+                                {{else}}
+                                    <li><a href="/login">Войти</a></li>
+                                    <li><a href="/register">Регистрация</a></li>
+                                {{/if}}
+                                {{#if isAdministrator}}
+                                    <li><a href="/admin">Панель Администрации</a></li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div id="mobilemenu">
+                        <ul>
+                            <li><a href="/">Главная страница</a></li>
+                            <li><a href="listing-4col.html">Listing</a></li>
+                            {{#if isAuth}}
+                                <li><a href="/logout">Выйти</a></li>
+                            {{else}}
+                                <li><a href="/login">Войти</a></li>
+                                <li><a href="/register">Регистрация</a></li>
+                            {{/if}}
+                            {{#if isAdministrator}}
+                                <li><a href="/admin">Панель Администрации</a></li>
+                            {{/if}}
+                        </ul>
+                    </div>
+                </div>
+                <!-- main container -->
+            </div>
+        </div>
+    </header>

@@ -9,5 +9,24 @@
     <link rel="stylesheet" href="/views/AdminLTE-3.1.0/dist/css/adminlte.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/styles.css">
+    <style>
+        /*
+        When implementing this in a CMS, these styles should remain in the head
+        and use if logic to switch between the .fwslider or alternative
+        version of the theme (for correct header display). .fwslider or .alt in the body
+        tag will convert the header display to white background with grey letters,
+        as in index_alt.kit -- feel free to delete this comment when you have no
+        use for it
+    */
+
+        #header {
+            background: url("/files/{{main_header}}") no-repeat center top;
+            /* background: url("/2.jpg") no-repeat center top; */
+        }
+
+        .fwslider #header {
+            background: none;
+        }
+    </style>
     <title>{{title}}</title>
 </head>

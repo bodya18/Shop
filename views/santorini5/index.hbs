@@ -16,7 +16,6 @@
 
 		<!-- CSS
 	================================================== -->
-		<link href="/views/santorini5/">
 		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CMontserrat:400,700' rel='stylesheet' type='text/css'>
 		<link href='/views/santorini5/css/flexslider.css' rel='stylesheet' type='text/css'>
 		<link href='/views/santorini5/css/font-awesome.css' rel='stylesheet' type='text/css'>
@@ -40,90 +39,13 @@
 	<script src="js/html5shiv.js"></script>
 	<![endif]-->
 
-		<style>
-			/*
-		 When implementing this in a CMS, these styles should remain in the head
-		 and use if logic to switch between the .fwslider or alternative
-		 version of the theme (for correct header display). .fwslider or .alt in the body
-		 tag will convert the header display to white background with grey letters,
-		 as in index_alt.kit -- feel free to delete this comment when you have no
-		 use for it
-		*/
-
-			#header {
-				background: url("/files/{{main_header}}") no-repeat center top;
-				/* background: url("/2.jpg") no-repeat center top; */
-			}
-
-			.fwslider #header {
-				background: none;
-			}
-		</style>
+		
 		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 	</head>
 
 	<body class=" ">
-
-		<div id="mobile-bar">
-			<a class="menu-trigger" href="#mobilemenu"><i class="fa fa-bars"></i></a>
-			<h1 class="mob-title"></h1>
-		</div>
-		<div id="page">
-			<header id="header">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-10 col-lg-offset-1">
-							
-							<nav class="nav row">
-								<div class="col-sm-5">
-									<ul class="navigation left-nav">
-										<li><a href="/">Главная страница</a></li>
-										<li><a href="listing-4col.html">Listing</a></li>
-										<li><a href="room.html">Single Room</a></li>
-									</ul>
-								</div>
-
-								<div class="col-sm-2">
-									<!-- <h1 class="logo"><a href="index.html"><img src="images/dummy/logo_white.png" alt=""></a></h1> -->
-								</div>
-
-								<div class="col-sm-5">
-									<ul class="navigation right-nav">
-										{{#if isAuth}}
-											<li><a href="/logout">Выйти</a></li>
-										{{else}}
-											<li><a href="/login">Войти</a></li>
-											<li><a href="/register">Регистрация</a></li>
-										{{/if}}
-										{{#if isAdministrator}}
-											<li><a href="/admin">Панель Администрации</a></li>
-										{{/if}}
-									</ul>
-								</div>
-							</nav>
-
-							<div id="mobilemenu">
-								<ul>
-									<li><a href="/">Главная страница</a></li>
-									<li><a href="listing-4col.html">Listing</a></li>
-									{{#if isAuth}}
-										<li><a href="/logout">Выйти</a></li>
-									{{else}}
-										<li><a href="/login">Войти</a></li>
-										<li><a href="/register">Регистрация</a></li>
-									{{/if}}
-									{{#if isAdministrator}}
-										<li><a href="/admin">Панель Администрации</a></li>
-									{{/if}}
-								</ul>
-							</div>
-						</div>
-						<!-- main container -->
-					</div>
-				</div>
-			</header>
-
+		{{>header}}
 			<div id="slider" class="flexslider loading">
 				<ul class="slides" id="main_slider">
 					{{#each slider_images}}
@@ -164,13 +86,14 @@
 
 												<div class="item">
 													<figure class="item-thumb">
-														<a href="room.html">
-													<img src="/media/{{this.image}}" alt="Placeholder image" />
-												</a>
+														<a href="/single/{{this.id}}">
+															<img src="/media/{{this.image}}" alt="Placeholder image" />
+															<!--<img src="http://placehold.it/750x930" alt="Placeholder image" />-->
+														</a>
 													</figure>
 
 													<div class="item-content">
-														<a class="item-title btn" href="">{{this.title}}</a>
+														<a class="item-title btn" href="/single/{{this.id}}">{{this.title}}</a>
 													</div>
 												</div>
 											</div>
@@ -230,13 +153,13 @@
 											<h3 class="widget-title">special offer</h3>
 											<div class="item">
 												<figure class="item-thumb">
-													<a href="">
+													<a href="/single/{{main_hot_product.id}}">
 														<img src="/media/{{main_hot_product.image}}" alt="Placeholder image" />
 													</a>
 												</figure>
 
 												<div class="item-content">
-													<a class="item-title btn" href="">{{main_hot_product.title}}</a>
+													<a class="item-title btn" href="/single/{{main_hot_product.id}}">{{main_hot_product.title}}</a>
 												</div>
 											</div>
 										</div>
@@ -267,40 +190,7 @@
 				</div>
 			</main>
 
-			<footer id="footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-10 col-lg-offset-1">
-							<hr>
-
-							<nav class="nav row">
-								<div class="col-sm-5">
-									<ul class="navigation left-nav">
-										<li><a href="index.html">Home</a></li>
-										<li><a href="index_alt.html">Home 2</a></li>
-										<li><a href="listing-3col.html">Listing</a></li>
-										<li><a href="room.html">Single Room</a></li>
-									</ul>
-								</div>
-
-								<div class="col-sm-2">
-									<div class="logo"><a href="index.html"><img src="/views/santorini5/images/dummy/logo_grey.png" alt=""></a></div>
-								</div>
-
-								<div class="col-sm-5">
-									<ul class="navigation right-nav">
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="booking.html">Booking</a></li>
-										<li><a href="listing-3col.html">Galleries</a></li>
-										<li><a href="contact.html">Contact</a></li>
-									</ul>
-								</div>
-							</nav>
-							<p class="credits">Made in CSSigniter.com</p>
-						</div>
-					</div>
-				</div>
-			</footer>
+			{{>footer }}
 		</div>
 		<!-- #page -->
 
