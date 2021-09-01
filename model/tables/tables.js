@@ -144,8 +144,7 @@ const permission = sequelize.define('permissions', {
 
 const settings = sequelize.define('settings', {
   value:{
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   title: {
     type: Sequelize.STRING,
@@ -155,6 +154,10 @@ const settings = sequelize.define('settings', {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true
+  },
+  type_value: {
+    type: Sequelize.INTEGER,
+    allowNull:false
   }
 })
 

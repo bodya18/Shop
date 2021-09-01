@@ -7,7 +7,7 @@
             {{/if}}
         <input type="hidden" name="id" value="{{settings.id}}">
         
-        {{#if isPercent}}
+        {{#if isNum}}
         <div class="col-lg-6">
             <p>Введите процент прибыли</p>
             <input type="number" class="form-control" name="value" value="{{settings.value}}">
@@ -27,12 +27,10 @@
                 <input class="form-control" type="file" id="formFile" name="value">
             </div>  
         {{/if}}
-        {{#if isTextEdit}}
+        {{#if isText}}
             <textarea id="editorMin" name="value">{{settings.value}}</textarea>
         {{/if}}
         <br><br>
         <input type="submit" class="btn btn-success" value="Задать настройку">
     </form>
 </div>
-<script src="/public/ckeditor5-build-classic/ckeditor.js"></script>
-<script src="/public/ckeditor.js"></script>

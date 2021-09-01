@@ -139,28 +139,25 @@ exports.GetSettings = async (req, res)=>{
 
 exports.GetThisSetting = async (req, res)=>{
     const settings = await main.settings.getSettingById(req.params.id)
-    let isPercent, isSingleFile, isMultiFile, isTextEdit 
-    switch (settings._key) {
-        case 'percent':
-            isPercent = true
+    let isText, isNum, isSingleFile, isMultiFile
+    switch (settings.type_value) {
+        case 1:
+            isText = true
             break;
-        case 'Main_header':
+        case 2:
+            isNum = true
+            break;
+        case 3:
             isSingleFile = true
             break;
-        case 'Main_slider':
+        case 4:
             isMultiFile = true
-            break;
-        case 'Main_quote':
-            isTextEdit = true
             break;
         default:
             break;
     }
     res.render('ThisSettings.hbs', {
-        isPercent,
-        isSingleFile,
-        isMultiFile,
-        isTextEdit,
+        isText, isNum, isSingleFile, isMultiFile,
         settings,
         title: 'Настройки',
         isAdmin: true,
@@ -168,7 +165,23 @@ exports.GetThisSetting = async (req, res)=>{
         error: req.flash('error')
     })
 }
-
+exports.GetCreateSetting = async (req, res)=>{
+    res.render('CreateSettings.hbs', {
+        title: 'Создание настроек',
+        isAdmin: true,
+        isCreateSetting: true,
+        error: req.flash('error'),
+        good: req.flash('good')
+    })
+}
+exports.CreateSettings = async(req, res)=>{
+    let err = await main.settings.create(req.body.title, req.body._key, req.body.Type_settings)
+    if(err)
+        req.flash('error', err)
+    else
+        req.flash('good', 'Настройка успешно создана')
+    return res.redirect(req.headers.referer)
+}
 exports.EditSettings = async(req, res)=>{
     let data = ''
     if(req.files.length && !("value" in req.body)){

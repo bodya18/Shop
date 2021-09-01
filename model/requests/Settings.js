@@ -14,6 +14,16 @@ class Settings {
     async EditSettings(value, id){
         return await pool.settings.update({value}, {where:{id}})
     }
+    async getSettingByKey(_key){
+        return await pool.settings.findOne({where:{_key}, raw: true})
+    }
+    async create(title, _key, type_value){
+        await pool.settings.create({
+            title,
+            _key,
+            type_value
+        })
+    }
 }
 
 module.exports = Settings

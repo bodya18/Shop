@@ -1,0 +1,29 @@
+<br><br>
+<div class="row">
+    <div class="col">
+        <div class="col-lg-4">
+            {{#if error}}
+                <font color='red'>{{error}}</font>
+            {{/if}}
+            {{#if good}}
+                <font color='lime'>{{good}}</font>
+            {{/if}}
+            <form action="/admin/create/settings" method="post">
+                <label for="vlupidol" class="form-label">Выберите тип данных, содержащихся в нстройках</label>
+                <select class="form-select" name="Type_settings" id="vlupidol">
+                    <option value="1">Текст</option>
+                    <option value="2">Число</option>
+                    <option value="3">Одно изображение</option>
+                    <option value="4">Несколько изображений</option>
+                </select>
+                <br>
+                <label for="form_key" class="form-label">Введите уникальный ключ настройки</label>
+                <input class="form-control" type="text" id="form_key" name="_key">
+                <br>
+                <label for="form_title" class="form-label">Введите название настройки</label>
+                <input class="form-control" type="text" id="form_title" name="title"><br><br>
+                <input class="btn btn-success" type="submit" value="Создать настройки">
+            </form>
+        </div>
+    </div>
+</div>

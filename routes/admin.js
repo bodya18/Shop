@@ -8,6 +8,7 @@ const file = require('../middleware/file')
 
 router.get('/', isAuth,   isAdmin, adminControllerr.GetStartPage)
 
+router.get('/create/settings', isAuth,   isAdmin, adminControllerr.GetCreateSetting)
 router.get('/settings', isAuth,   isAdmin, adminControllerr.GetSettings)
 router.get('/settings/:id', isAuth, isAdmin, adminControllerr.GetThisSetting)
 
@@ -34,6 +35,7 @@ router.post('/orders/set/:id', isAuth,   isAdmin, adminControllerr.SetOrder)
 router.post('/orders/create', isAuth,   isAdmin, adminControllerr.CreateOrder)
 
 router.post('/settings/set', isAuth,   isAdmin, urlencodedParser, file.photo.array("value"), adminControllerr.EditSettings)
+router.post('/create/settings', isAuth,   isAdmin, urlencodedParser, adminControllerr.CreateSettings)
 
 router.post('/updateFromUser', isAuth,   isAdmin, urlencodedParser, adminControllerr.updateFromUser)
 router.post('/roles/delete/:roleId', isAuth,   isAdmin, adminControllerr.DeleteRole)

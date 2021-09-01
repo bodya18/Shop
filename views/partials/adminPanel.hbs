@@ -189,6 +189,19 @@
                         </a>
                     {{/if}}
                 </li>
+                <li class="nav-item">
+                    {{#if isCreateSetting}}
+                        <a href="/admin/create/settings" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Создание настроек</p>
+                        </a>
+                    {{else}}
+                        <a href="/admin/create/settings" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Создание настроек</p>
+                        </a>
+                    {{/if}}
+                </li>
                 <li style="position:fixed;bottom:10px;" class="nav-item">
                     <a href="/" class="nav-link">
                         <i class="fas fa-door-open nav-icon"></i>
