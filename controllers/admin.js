@@ -206,8 +206,13 @@ exports.EditSettings = async(req, res)=>{
         return res.redirect('/admin/settings')
     }
     if(req.body.type_value == 5){
+        if(typeof req.body.value == 'string'){
+            await main.settings.EditSettings(req.body.value, req.body.id)
+            return res.redirect('/admin/settings')
+        }
         let tmp = ''
         for (const i in req.body.value) {
+            console.log(i, req.body.value.length);
             if(i == req.body.value.length -1)
                 tmp +=req.body.value[i]    
             else
