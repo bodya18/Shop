@@ -59,8 +59,8 @@ class Product{
         })
         .catch(err=>console.log(err));
     }
-    async GetDimensionProducts(productId){
-        await pool.DimensionProduct.findAll({where:{productId}, raw: true})
+    async GetDimensionProductByProductId(productId){
+        return await pool.DimensionProduct.findAll({where:{productId}, raw: true})
     }
     async UpdateDimensionProduct(id, dimension, count, OldPrice, productId){
         const percent = await pool.settings.findOne({where:{id: 1},raw:true})

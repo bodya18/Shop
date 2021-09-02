@@ -78,6 +78,9 @@ class Product{
     async GetAllDimensionProducts(){
         return await this.product.GetAllDimensionProducts()
     }
+    async GetDimensionProductByProductId(productId){
+        return await this.product.GetDimensionProductByProductId(productId)
+    }
     async GetAllCategories(){
         return await this.product.GetAllCategories()
     }
@@ -94,10 +97,6 @@ class Product{
         return await this.order.GetOrdersByUserId(userId)
     }
     async CreateOrder(number, address, DimensionProductId, userId){
-        if(address.length<5)
-            return 'Введите настоящий адресс'
-        if(number.length<9)
-            return 'Введите настоящий номер'
         if(userId)
             await this.order.CreateOrder(number, address, DimensionProductId, userId)
         else

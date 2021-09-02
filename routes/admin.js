@@ -32,7 +32,7 @@ router.post('/orders/repeat/:id', isAuth,   isAdmin, adminControllerr.RepeatOrde
 router.post('/orders/delete/:id', isAuth,   isAdmin, adminControllerr.DeleteOrder)
 router.post('/orders/good/:id', isAuth,   isAdmin, adminControllerr.DoneOrder)
 router.post('/orders/set/:id', isAuth,   isAdmin, adminControllerr.SetOrder)
-router.post('/orders/create', isAuth,   isAdmin, adminControllerr.CreateOrder)
+// router.post('/orders/create', isAuth,   isAdmin, adminControllerr.CreateOrder)
 
 router.post('/settings/set', isAuth,   isAdmin, urlencodedParser, file.photo.array("value"), adminControllerr.EditSettings)
 router.post('/create/settings', isAuth,   isAdmin, urlencodedParser, adminControllerr.CreateSettings)

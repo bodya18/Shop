@@ -17,3 +17,36 @@ addEventListener('load', ()=>{
     })
     request.send()
 })
+
+document.getElementById('create_order').addEventListener('click', (e)=>{
+    e.preventDefault()
+    radio = document.getElementsByName('DimensionProductId')
+    let DimensionProductId = null
+    for (const i in radio) {
+        if(radio[i].checked)
+            DimensionProductId = radio[i].value
+    }
+    let address = document.getElementById('address').value
+    let number = document.getElementById('number').value
+    if(!DimensionProductId){
+        document.getElementById('error_order').innerHTML = '' 
+        document.getElementById('error_order').innerHTML = "Выберите размер товара"
+        return
+    }
+    if(number.length < 6){
+        document.getElementById('error_order').innerHTML = '' 
+        document.getElementById('error_order').innerHTML = "Введите настоящий номер"
+        return
+    }
+    if(address.length < 6){
+        document.getElementById('error_order').innerHTML = '' 
+        document.getElementById('error_order').innerHTML = "Введите настоящий адрес"
+        return
+    }
+    $('#exampleModalCenter').modal('hide');
+    let data = JSON.stringify({DimensionProductId, address, number})
+    let request = new XMLHttpRequest
+    request.open("POST", "/product/create/orders")
+    request.setRequestHeader("Content-Type", "application/json")
+    request.send(data)
+})

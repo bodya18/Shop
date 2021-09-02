@@ -42,9 +42,12 @@ exports.SinglePage = async (req, res) => {
         return res.render('404.hbs',{title: 'Ошибка'})
     let settings = await main.settings.getSettingsByKey('main_hot_product')
     let hot_product = await main.product.GetProductById(settings.value)
+    let dimension = await main.product.GetDimensionProductByProductId(req.params.id)
     res.render('santorini5/single.hbs', {
         title: product.title,
         hot_product,
-        product
+        product,
+        dimension,
+        error: req.flash('error')
     })
 }

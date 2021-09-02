@@ -65,12 +65,60 @@
 
 										<div class="entry-content">
 											<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores culpa debitis distinctio dolor fugiat, ipsam, laudantium libero mollitia omnis praesentium quia rem.</strong></p>
+											
+											<table class="table">
+												<tr>
+													<th>Размеры</th> <th>Цена</th> <th>Колличество</th>
+												</tr>
+												{{#each dimension}}
+													<tr>
+														<td>{{this.dimension}}</td> <td>{{this.NewPrice}} руб.</td> <td>{{#if this.count}}{{this.count}}{{else}}<font color='red'>Нет в наличии</font>{{/if}}</td>
+													</tr>
+												{{/each}}
+											</table>
+											<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Заказать</button>
+											<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered" role="document">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLongTitle">Заказ товара</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
+															<font color="red" id="error_order"></font>
+															<table class="table">
+																<tr>
+																	<th></th> <th>Размеры</th> <th>Цена</th> <th>Колличество</th>
+																</tr>
+																{{#each dimension}}
+																	{{#if this.count}}
+																	<tr>
+																		<td><input type="radio" name="DimensionProductId" value="{{this.id}}"></td> 
+																		<td>{{this.dimension}}</td> 
+																		<td>{{this.NewPrice}} руб.</td> 
+																		<td>{{this.count}}</td>
+																	</tr>
+																	{{else}}
+																	{{/if}}
+																{{/each}}
+															</table>
+															<input type="text" id="address" name="address" placeholder="Адресс доставки"><br><br>
+															<input type="text" id="number" name="number" placeholder="Номер телефона">
+														</div>
+														<div class="modal-footer">
+															<input type="submit" id="create_order" class="btn btn-primary" value="Заказать товар">
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 
-										<div id="comments">
+										{{!-- <div id="comments">
 											<div class="post-comments">
 												<h3>
-													<span>3 Comments</span>
+													<span>Комментарии</span>
 												</h3>
 
 												<ol id="comment-list">
@@ -123,8 +171,8 @@
 													</div>
 												</div>
 												<!-- #form-wrapper -->
-											</section>
-										</div>
+											</section> 
+										</div>--}}
 									</article>
 								</div>
 
