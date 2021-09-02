@@ -1,8 +1,8 @@
 <div align='center'><br><br>
-    <h3>Придумайте новый пароль</h3><br>
     {{#if error}}
         <font color='red'>{{error}}</font><br><br><br><br><br><br>
     {{else}}
+    <h3>Придумайте новый пароль</h3><br>
     <form method="POST" action="/login/newPass">
         <div class="col-sm-3">
             <input type="hidden" value="{{token}}" name="token">
@@ -12,5 +12,4 @@
         </div>
     </form>
     {{/if}} 
-
 </div>

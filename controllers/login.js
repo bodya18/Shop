@@ -19,8 +19,8 @@ exports.loginLogic = async(req,res) => {
     if(!req.body) return res.sendStatus(400)
     const UserData = await main.user.loginLogic(req.body.email, req.body.password)
     if (!UserData.isAuth) {
-        req.flash('error', UserData.error)
-        return res.redirect(`/login`)
+        res.json(UserData)
+        return
     }
     
     req.session.user = UserData.user
@@ -35,8 +35,8 @@ exports.loginLogic = async(req,res) => {
         if(err){
             throw err
         }
-        res.redirect(`/`)
     })
+    res.json(UserData)
 }
 
 exports.Accept = async (req,res) => {
@@ -54,7 +54,6 @@ exports.recovery = async (req, res) => {
 
 exports.recoveryPass = async (req, res) =>{
     const token = await main.user.recovery(req.body.email)
-    res.redirect('/')
     mail.recoveryPass(req.body.email, token)
 }
 

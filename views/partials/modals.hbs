@@ -1,0 +1,69 @@
+{{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+  Launch demo modal
+</button> --}}
+
+<!-- loginModal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLongTitle">Войти</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="login-body" class="modal-body">
+        <font id="login-error" color='red'></font>
+        <input name="email" type="email" id="email-user" class="form-control" placeholder="email">
+        <input name="password" type="password" id="password-user" min="6" max="32" class="form-control" placeholder="Пароль">
+        <a class="unselectable" style="cursor: pointer" id="Forgot-pass"> <!--href="/login/recoveryPass"--> 
+            Забыли пароль?
+        </a>
+      </div>
+      <div id="login-footer" align="center" class="modal-footer">
+        <input id="login-user" type="submit" class="button" value="Войти">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /loginModal -->
+
+<!-- RegisterModal -->
+<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="RegisterModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="RegisterLongTitle">Регистрация</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <font id="register-error" color='red'></font>
+        <input name="email" type="email" class="form-control" placeholder="email">
+        <input name="name" type="text" class="form-control" placeholder="Имя">
+        <input name="password" type="password" min="6" max="32" class="form-control" placeholder="Пароль">
+        <input name="repeat" type="password" min="6" max="32" class="form-control" placeholder="Пароль еще раз">
+      </div>
+      <div align="center" class="modal-footer">
+        <input id="register-user" type="submit" class="button" value="Зарегистрироваться">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /RegisterModal -->
+
+{{!-- <div align='center'>
+    <form method="POST" action="/login">
+        <div class="col-sm-3">
+            <input name="email" type="email" class="form-control" placeholder="email">
+            <input name="password" type="password" min="6" max="32" class="form-control" placeholder="Пароль">
+            <br>
+            <input type="submit" class="btn btn-outline-success" value="Войти">
+        </div>
+    </form>
+    <a align="center" href="/login/recoveryPass">
+        Забыли пароль?
+    </a>
+
+</div> --}}
