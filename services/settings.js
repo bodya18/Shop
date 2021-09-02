@@ -11,11 +11,14 @@ class Settings {
     async getSettingById(id){
         return await this.settings.getSettingById(id);
     }
+    async getSettingsByKey(_key){
+        return await this.settings.getSettingsByKey(_key)
+    }
     async EditSettings(value, id){
         return await this.settings.EditSettings(value, id)
     }
     async create(title, _key, type_value){
-        let data = await this.settings.getSettingByKey(_key)
+        let data = await this.settings.getSettingsByKey(_key)
         if(data)
             return 'Настройка с данным ключем уже существует'
         await this.settings.create(title, _key, type_value)

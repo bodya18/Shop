@@ -11,11 +11,11 @@ class Settings {
     async getSettingById(id){
         return await pool.settings.findOne({where:{id}, raw: true})
     }
+    async getSettingsByKey(_key){
+        return await pool.settings.findOne({where:{_key}, raw: true})
+    }
     async EditSettings(value, id){
         return await pool.settings.update({value}, {where:{id}})
-    }
-    async getSettingByKey(_key){
-        return await pool.settings.findOne({where:{_key}, raw: true})
     }
     async create(title, _key, type_value){
         await pool.settings.create({

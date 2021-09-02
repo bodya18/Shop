@@ -37,5 +37,14 @@ exports.MainPage = async (req, res)=>{
 }
 
 exports.SinglePage = async (req, res) => {
-    res.render('santorini5/single.hbs')
+    let product = await main.product.GetProductById(req.params.id)
+    if(!product)
+        return res.render('404.hbs',{title: 'Ошибка'})
+    let settings = await main.settings.getSettingsByKey('main_hot_product')
+    let hot_product = await main.product.GetProductById(settings.value)
+    res.render('santorini5/single.hbs', {
+        title: product.title,
+        hot_product,
+        product
+    })
 }

@@ -51,43 +51,20 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-1">
-							<h2 class="page-title">our blog</h2>
-
 							<div class="row">
 								<div class="col-sm-8">
 									<article class="entry">
 										<figure class="entry-thumb">
-											<a title="hello there this is a caption" href="http://www.cssigniter.com/sample_content/sample_image.jpg" data-rel="prettyPhoto">
-									<img src="http://placehold.it/750x425" alt="Placeholder image" />
-								</a>
+											<a href="/media/{{product.image}}" data-rel="prettyPhoto">
+												<img src="/media/{{product.image}}" style="min-width: 100%;" alt="Placeholder image" />
+												<!--http://placehold.it/750x425-->
+											</a>
 										</figure>
 
-										<h1 class="entry-title">Santorini: Five reasons to visit the beautiful Greek island</h1>
-										<div class="entry-meta">
-											<span class="entry-categories"><b>Posted Under</b> <a href="">Articles</a>, <a href="">Must Visit</a>, <a
-			href="">Santorini</a></span>
-											<a class="entry-comments" href="single.kit#comments">3 Comments</a>
-										</div>
+										<h1 class="entry-title">{{product.title}}</h1>
 
 										<div class="entry-content">
 											<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores culpa debitis distinctio dolor fugiat, ipsam, laudantium libero mollitia omnis praesentium quia rem.</strong></p>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda fuga illo laudantium magni sed temporibus. Amet atque aut autem consectetur consequuntur dolorum enim error hic inventore molestiae nisi nostrum numquam optio perspiciatis
-												provident, quae quam quisquam quo similique suscipit veniam veritatis vero. Ab culpa cumque deleniti est explicabo facilis, ipsa itaque magni non officiis placeat provident quidem ratione recusandae reiciendis repellat, repudiandae tempora
-												unde voluptates voluptatibus. Ab aliquid, blanditiis debitis eos eveniet ex incidunt itaque, labore maxime mollitia natus perspiciatis porro provident quidem quis reprehenderit rerum suscipit totam ullam voluptatum.</p>
-											<h2>H2 Title</h2>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, eligendi excepturi nemo praesentium sapiente soluta tempore ullam. Architecto consequuntur culpa debitis error explicabo libero perferendis quisquam quo, rem sint tempora
-												vero!</p>
-
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cumque exercitationem harum laudantium maiores officia provident quaerat tempore tenetur voluptatibus! Adipisci deleniti, ipsum itaque modi neque obcaecati perspiciatis praesentium
-												quos recusandae repellat! Aliquid at dicta dolore eius eos et, illum impedit ipsum libero magni modi nihil odit provident quidem rerum sed totam ullam unde voluptatibus voluptatum!</p>
-
-											<h3>H3 Title</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, cupiditate earum, eius et facere facilis impedit labore natus non perspiciatis quaerat ratione reiciendis repudiandae sapiente sed tempora vero? Accusamus accusantium adipisci
-												unde voluptatem! Iste, sapiente voluptas? Animi dolores ex quia quis quos?</p>
-
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, fugiat inventore labore porro sed sint voluptas voluptatum! Aut dignissimos dolore enim iusto magnam maxime modi nesciunt quisquam reprehenderit sint? Animi at doloremque eveniet
-												explicabo fugiat, impedit in incidunt inventore ipsam iure nobis officiis optio, quos ratione repellendus sapiente voluptas! A doloribus fuga maiores nisi nobis.</p>
-
 										</div>
 
 										<div id="comments">
@@ -109,47 +86,11 @@
 																	<p>
 																		Lorem ipsum dolor sit amet, consectetur adipisicing elit. A corporis debitis dicta doloribus ea fuga iste labore natus neque officia perferendis perspiciatis quas quis rem sapiente, ullam velit veritatis vitae.
 																	</p>
-																	<a class='comment-reply-link' href=''>Reply</a>
 																</div>
 															</div>
 
 														</div>
 													</li>
-
-													<li class="comment ">
-														<div class="comment-text group">
-															<div class="wrap">
-																<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar' height='50' width='50' />
-																<div class="comment-copy">
-																	<p class="comment-meta">
-																		<a href='' class='url'>John Doe</a> October 30, 2013 3:45 am
-																	</p>
-																	<p>
-																		Lorem ipsum dolor sit amet, consectetur adipisicing elit. A corporis debitis dicta doloribus ea fuga iste labore natus neque officia perferendis perspiciatis quas quis rem sapiente, ullam velit veritatis vitae.
-																	</p>
-																	<a class='comment-reply-link' href=''>Reply</a>
-																</div>
-															</div>
-														</div>
-													</li>
-
-													<li class="comment ">
-														<div class="comment-text group">
-															<div class="wrap">
-																<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar' height='50' width='50' />
-																<div class="comment-copy">
-																	<p class="comment-meta">
-																		<a href='' class='url'>John Doe</a> October 30, 2013 3:45 am
-																	</p>
-																	<p>
-																		Lorem ipsum dolor sit amet, consectetur adipisicing elit. A corporis debitis dicta doloribus ea fuga iste labore natus neque officia perferendis perspiciatis quas quis rem sapiente, ullam velit veritatis vitae.
-																	</p>
-																	<a class='comment-reply-link' href=''>Reply</a>
-																</div>
-															</div>
-														</div>
-													</li>
-													<!-- #comment-## -->
 												</ol>
 
 											</div>
@@ -159,32 +100,23 @@
 												<div id="form-wrapper" class="group">
 													<div class="post-form">
 														<h3 id="reply-title" class="comments">
-															<span>Have your say</span>
+															<span>Добавить комментарий</span>
 														</h3>
 														<div class="wrap">
 															<form action="/" method="post" id="commentform">
 																<p>
-																	<label for="author">Name:
-								<span class="required">*</span>
-							</label>
+																	<label for="author">
+																		Имя:
+																		<span class="required">*</span>
+																	</label>
 																	<input type="text" class="input-text" id="author" name="author" value="" aria-required='true' />
 																</p>
 																<p>
-																	<label for="email">Email:
-								<span class="required">*</span>
-							</label>
-																	<input type="text" class="input-text" id="email" name="email" value="" aria-required='true' />
-																</p>
-																<p>
-																	<label for="url">Website:</label>
-																	<input type="text" class="input-text" id="url" name="url" value="" />
-																</p>
-																<p>
-																	<label for="comment">Comment:</label>
+																	<label for="comment">Комментарий:</label>
 																	<textarea cols="5" rows="5" id="comment" name="comment" aria-required="true"></textarea>
 																</p>
 																<p>
-																	<input type="submit" class="button" name="submit" id="submit" value="submit" />
+																	<input type="submit" class="button" id="submit" value="Комментировать" />
 																</p>
 															</form>
 														</div>
@@ -203,84 +135,38 @@
 											<h3 class="widget-title">special offer</h3>
 											<div class="item">
 												<figure class="item-thumb">
-													<a href="booking.html">
-												<img src="http://placehold.it/750x930" alt="Placeholder image" />
+													<a href="/single/{{hot_product.id}}">
+												<img src="/media/{{hot_product.image}}" alt="Placeholder image" /><!--http://placehold.it/750x930-->
 											</a>
 												</figure>
 
 												<div class="item-content">
-													<h4>Our wedding suite. 50% off. May 5th.</h4>
-													<a class="item-title btn" href="booking.html">book now.</a>
+													<h4>{{hot_product.title}}</h4>
+													<a class="item-title btn" href="/single/{{hot_product.id}}">Просмотреть товар</a>
 												</div>
 											</div>
-										</div>
-
-										<aside class="widget widget_ci_social_widget ci-socials group">
-											<h3 class="widget-title">social</h3>
-											<a href="#" class="social-icon" title="Subscribe to our RSS feed."><i class="fa fa-rss"></i></a>
-											<a href="http://www.twitter.com/cssigniter" class="social-icon" title="Follow us on twitter."><i class="fa fa-twitter"></i></a>
-											<a href="http://www.facebook.com/cssigniter" class="social-icon" title="Like us on Facebook."><i class="fa fa-facebook"></i></a>
-											<a href="http://www.dribbble.com/tsiger" class="social-icon" title="See our Dribbble shots."><i class="fa fa-dribbble"></i></a>
-										</aside>
-
-										<div class="widget widget_ci_newsletter_widget">
-											<h3 class="widget-title">newsletter</h3>
-
-											<p>Get explosive offers straight to your inbox and win a free weekend stay!</p>
-											<form class="ci-newsletter" action="/">
-												<input type="email" name="ci_newsletter_email" id="ci_newsletter_email" placeholder="your email">
-												<button type="submit"><i class="fa fa-chevron-right"></i></button>
-											</form>
 										</div>
 
 										<div class="widget widget_ci_testimonial_widget">
 											<div class="testimonial-wrap">
 												<div class="testimonial-inner">
 													<blockquote>
-
 														<i class="fa fa-quote-left"></i>
-														<p>The best experience ever. Would recommended it everyone. We got married in Santorini, and stayed at Santorini Resort, and it was a dream come true.</p>
-
-														<cite>Peter Daniel &ndash; Travel Magazine</cite>
+														<div id="single_quote"></div>
 													</blockquote>
 												</div>
 											</div>
 										</div>
 
 										<aside class="widget widget_search group">
-											<h3 class="widget-title">search</h3>
+											<h3 class="widget-title">поиск</h3>
 
-											<form action="/" method="get" role="search" class="searchform">
+											<form action="/search" method="Post" role="search" class="searchform">
 												<div>
-													<label for="s" class="screen-reader-text">Search for:</label>
-													<input type="text" id="s" name="s" value="" placeholder="search">
+													<input type="text" id="s" name="search" value="" placeholder="поиск">
 													<button class="searchsubmit" type="submit"><i class="fa fa-search"></i></button>
 												</div>
 											</form>
-										</aside>
-
-										<aside class="widget widget_ci_flickr_widget group">
-											<h3 class="widget-title">flickr</h3>
-											<div class="f group">
-												<div class="flickr_badge_image">
-													<a href="#"><img src="http://farm8.staticflickr.com/7137/7521748724_45bb48910a_s.jpg" alt="A photo on Flickr" title="Coffee &amp; drinks" height="75" width="75"></a>
-												</div>
-												<div class="flickr_badge_image">
-													<a href="#"><img src="http://farm8.staticflickr.com/7137/7521748724_45bb48910a_s.jpg" alt="A photo on Flickr" title="Coffee &amp; drinks" height="75" width="75"></a>
-												</div>
-												<div class="flickr_badge_image">
-													<a href="#"><img src="http://farm8.staticflickr.com/7137/7521748724_45bb48910a_s.jpg" alt="A photo on Flickr" title="Coffee &amp; drinks" height="75" width="75"></a>
-												</div>
-												<div class="flickr_badge_image">
-													<a href="#"><img src="http://farm8.staticflickr.com/7137/7521748724_45bb48910a_s.jpg" alt="A photo on Flickr" title="Coffee &amp; drinks" height="75" width="75"></a>
-												</div>
-												<div class="flickr_badge_image">
-													<a href="#"><img src="http://farm8.staticflickr.com/7137/7521748724_45bb48910a_s.jpg" alt="A photo on Flickr" title="Coffee &amp; drinks" height="75" width="75"></a>
-												</div>
-												<div class="flickr_badge_image">
-													<a href="#"><img src="http://farm8.staticflickr.com/7137/7521748724_45bb48910a_s.jpg" alt="A photo on Flickr" title="Coffee &amp; drinks" height="75" width="75"></a>
-												</div>
-											</div>
 										</aside>
 									</div>
 								</div>
@@ -289,51 +175,6 @@
 					</div>
 				</div>
 			</main>
-
-			<div class="booking-inpage" style="background: url('http://placehold.it/1920x350') no-repeat center center">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-10 col-lg-offset-1">
-
-							<form class="b-form group" method="post" action="booking.php">
-								<div class="arrival group">
-									<input type="text" name="arrive" id="arrive" class="datepicker" placeholder="arrive">
-								</div>
-
-								<div class="departure group">
-									<input type="text" name="depart" id="depart" class="datepicker" placeholder="depart">
-								</div>
-
-								<div class="adults group">
-									<select name="guests" id="guests" class="dk">
-							<option selected disabled>adults</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-								</div>
-
-								<div class="room group">
-									<select name="room_select" id="room_select" class="dk">
-							<option selected disabled>room</option>
-							<option value="1">Single</option>
-							<option value="2">Deluxe Double</option>
-							<option value="3">Suite I</option>
-							<option value="4">Suite II</option>
-							<option value="5">King's Suite</option>
-						</select>
-								</div>
-
-								<div class="bookbtn group">
-									<button type="submit">book now</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-
 			{{>footer }}
 		</div>
 		<!-- #page -->
@@ -350,7 +191,7 @@
 		<script type='text/javascript' src='/views/santorini5/js/jquery.prettyPhoto.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/contact.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/scripts.js'></script>
-
+		<script src="/public/single.js"></script>
 	</body>
 
 </html>
