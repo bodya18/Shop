@@ -6,7 +6,7 @@ const jsonParser = express.json()
 
 // router.get('/', loginController.GetLogin)
 router.get('/accept/:token', loginController.Accept)
-router.get('/recoveryPass', loginController.recovery)
+// router.get('/recoveryPass', loginController.recovery)
 router.get('/recovery/:token', loginController.NewPass)
 
 router.post('/newPass', urlencodedParser, loginController.SetNewPass)

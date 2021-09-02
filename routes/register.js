@@ -1,10 +1,10 @@
-const {Router} = require('express')
-const router = Router()
-const urlencodedParser = require('../middleware/urlencodedParser')
+const express = require('express')
+const router = express.Router()
 const registrController = require('../controllers/register')
+const jsonParser = express.json()
 
-router.get('/', registrController.GetRegister)
+// router.get('/', registrController.GetRegister)
 
-router.post('/', urlencodedParser, registrController.registerLogic)
+router.post('/', jsonParser, registrController.registerLogic)
 
 module.exports = router

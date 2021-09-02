@@ -20,8 +20,8 @@ exports.registerLogic = async (req,res) => {
     const UserData = await main.user.registerLogic(req.body.email, req.body.name, req.body.password, req.body.repeat)
 
     if (!UserData.isAuth) {
-        req.flash('error', UserData.error)
-        return res.redirect(`/register`)
+        res.json(UserData)
+        return
     }
     req.session.Perm = []
     req.session.user = UserData.user
@@ -32,8 +32,7 @@ exports.registerLogic = async (req,res) => {
         if(err){
             throw err
         }
-        res.redirect(`/`)
         mail.acceptAcc(UserData.user.token, UserData.user.email)
     })
-
+    res.json(UserData)
 }
