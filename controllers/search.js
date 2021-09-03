@@ -22,6 +22,7 @@ exports.g_search = async (req, res) =>{
             page
         })
     }else{
+
         return res.render('404.hbs', {
             title: "Ошибка, страница не найдена!"
         })

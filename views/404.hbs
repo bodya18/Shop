@@ -52,8 +52,68 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-1">
-                            <h2>Страница не найдена!</h2>
+                            <h1>Страница не найдена!</h1>
+                            <div class="widget-area-2"><br>
+                                <h3>Вам возможно будет интересно</h3>
+								<div class="row">
+									{{#each top_product}}
+										<div class="col-sm-4">
+											<div class="widget">
 
+												<div class="item">
+													<figure class="item-thumb">
+														<a href="/single/{{this.id}}">
+															<img src="/media/{{this.image}}" alt="Placeholder image" />
+															<!--<img src="http://placehold.it/750x930" alt="Placeholder image" />
+															<img src="https://www.wallpapertip.com/wmimgs/242-2426030_image.jpg" >
+															-->
+														</a>
+													</figure>
+
+													<div class="item-content">
+														<a class="item-title btn" href="/single/{{this.id}}">{{this.title}}</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									{{/each}}
+								</div>
+							</div>
+
+							<div class="widget-area-3">
+								<div class="row">
+									<div class="col-sm-8">
+										<h3 class="widget-title">our blog</h3>
+
+										<article class="entry">
+											<figure class="entry-thumb">
+												<a href="">
+												<img src="/files/{{main_bottom_banner}}" alt="Placeholder image"/>{{!-- 750x425 --}}
+												</a>
+											</figure>
+											<div id="Main_bottom_text"></div>
+										</article>
+									</div>
+
+									<div class="sidebar col-sm-4">
+
+										<div class="widget widget_ci_special_offer_widget">
+											<h3 class="widget-title">special offer</h3>
+											<div class="item">
+												<figure class="item-thumb">
+													<a href="/single/{{main_hot_product.id}}">
+														<img src="/media/{{main_hot_product.image}}" alt="Placeholder image" />
+													</a>
+												</figure>
+
+												<div class="item-content">
+													<a class="item-title btn" href="/single/{{main_hot_product.id}}">{{main_hot_product.title}}</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -75,7 +135,7 @@
 		<script type='text/javascript' src='/views/santorini5/js/jquery.prettyPhoto.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/contact.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/scripts.js'></script>
-		<script type='text/javascript' src='/public/main.js'></script>
+		<script type='text/javascript' src='/public/404.js'></script>
 
 	</body>
 

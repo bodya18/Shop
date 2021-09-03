@@ -6,16 +6,25 @@ addEventListener('load', ()=>{
     let page = document.getElementById('search_page').value
     page = parseInt(page)
     div.insertAdjacentHTML('beforeend', `<a href="/search/${page-1}/${search}">&laquo;</a>`)
-    
     if(page<5){
-        for (let i = 1; i <= 6; i++) {
-            if(page === i)
-                div.insertAdjacentHTML('beforeend', `<a class="active" href="/search/${i}/${search}">${i}</a>`)
-            else
-                div.insertAdjacentHTML('beforeend', `<a href="/search/${i}/${search}">${i}</a>`)
+        if(CountPages > 6){
+            for (let i = 1; i <= 6; i++) {
+                if(page === i)
+                    div.insertAdjacentHTML('beforeend', `<a class="active" href="/search/${i}/${search}">${i}</a>`)
+                else
+                    div.insertAdjacentHTML('beforeend', `<a href="/search/${i}/${search}">${i}</a>`)
+            }
+            div.insertAdjacentHTML('beforeend', `<a> . . . . . </a>`)
+            div.insertAdjacentHTML('beforeend', `<a href="/search/${CountPages}/${search}">${CountPages}</a>`)
         }
-        div.insertAdjacentHTML('beforeend', `<a> . . . . . </a>`)
-        div.insertAdjacentHTML('beforeend', `<a href="/search/${CountPages}/${search}">${CountPages}</a>`)
+        else{
+            for (let i = 1; i <= CountPages; i++) {
+                if(page === i)
+                    div.insertAdjacentHTML('beforeend', `<a class="active" href="/search/${i}/${search}">${i}</a>`)
+                else
+                    div.insertAdjacentHTML('beforeend', `<a href="/search/${i}/${search}">${i}</a>`)
+            }
+        }
     }
     else{
         div.insertAdjacentHTML('beforeend', `<a href="/search/1/${search}">1</a>`)
