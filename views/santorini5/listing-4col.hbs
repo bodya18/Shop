@@ -104,8 +104,11 @@
 		<script type='text/javascript' src='/views/santorini5/js/jquery.prettyPhoto.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/contact.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/scripts.js'></script>
-		<script type='text/javascript' src='/public/listening.js'></script>
-
+		{{#if isAllProd}}
+			<script type='text/javascript' src='/public/listeningAllProd.js'></script>
+		{{else}}
+			<script type='text/javascript' src='/public/listening.js'></script>
+		{{/if}}
 	</body>
 
 </html>

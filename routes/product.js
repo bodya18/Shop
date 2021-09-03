@@ -5,6 +5,6 @@ const urlencodedParser = require('../middleware/urlencodedParser')
 const jsonParser = express.json()
 
 router.post('/create/orders', jsonParser, productController.p_createOrder)
-// router.get('/create/orders', productController.g_createOrder)
+router.get('/list/:page', productController.g_all_prod)
 
 module.exports = router
