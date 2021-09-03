@@ -5,18 +5,19 @@ exports.p_search = async (req, res) =>{
     if (req.body.search === '') {
         return res.redirect(req.header(`Referer`))
     }
-    res.redirect(`/search/${req.body.search}`)
+    res.redirect(`/search/${req.body.page}/${req.body.search}`)
 }
 
 exports.g_search = async (req, res) =>{
     let products = await main.product.search(req.params.search)
-    console.log(products);
-    // news = news.slice(0,10)
-    // let isMore = false
-    // if(news.length === 10)
-    //     isMore = true
-    res.render('search.hbs',{
+    let countPages = Math.ceil(products.length/16)
+    let page = req.params.page
+    products = products.slice(16*(page-1),16*(page))
+    res.render('santorini5/listing-4col.hbs',{
         title: req.params.search,
-        // isMore
+        search: req.params.search,
+        products,
+        countPages,
+        page
     })
 }

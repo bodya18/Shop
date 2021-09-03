@@ -1,0 +1,111 @@
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+	<!--<![endif]-->
+
+	<head>
+
+		<!-- Basic Page Needs
+	================================================== -->
+		<meta charset="utf-8">
+		<title>Listing Template &ndash; Santorini</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- CSS
+	================================================== -->
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CMontserrat:400,700' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/flexslider.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/font-awesome.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/weather-icons.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/bootstrap.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/prettyPhoto.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/mmenu.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/jquery-ui-1.10.4.datepicker.min.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/style.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/css/mediaqueries.css' rel='stylesheet' type='text/css'>
+		<link href='/views/santorini5/colors/default.css' rel='stylesheet' type='text/css'>
+
+		<!-- Favicons
+	================================================== -->
+		<link rel="shortcut icon" href="#">
+		<link rel="apple-touch-icon" href="#">
+		<link rel="apple-touch-icon" sizes="72x72" href="#">
+		<link rel="apple-touch-icon" sizes="114x114" href="#">
+
+		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+	</head>
+
+	<body class=" ">
+		{{>header }}
+			<input type="hidden" id="search_req" value="{{search}}">
+			<input type="hidden" id="search_CountPages" value="{{countPages}}">
+			<input type="hidden" id="search_page" value="{{page}}">
+			<main id="main">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1 full">
+							<h2 class="page-title">{{search}}</h2>
+
+							<div class="row">
+								{{#each products}}
+									<div class="col-md-3 col-sm-6">
+
+										<div class="item">
+											<figure class="item-thumb">
+												<a href="/single/{{this.id}}">
+													<img src="/media/{{this.image}}" alt="Placeholder image" />
+												</a>
+											</figure>
+
+											<div class="item-content">
+												<a class="item-title btn" href="/single/{{this.id}}">{{this.title}}</a>
+												<p class="item-sub"><!--Всего за {{this.newPrice}}руб.--></p>
+											</div>
+										</div>
+									</div>
+								{{/each}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+<br><br>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-10 col-lg-offset-1">
+						{{!-- пагинация --}}
+						<div id="paginationLists" class="pagination"></div>
+						{{!-- <ul>
+							{{#each countPages}}
+								<li><a href="/search/1/{{search}}">!</a></li>
+							{{/each}}
+						</ul> --}}
+					</div>
+				</div>
+			</div>
+
+			{{>footer }}
+		</div>
+		<!-- #page -->
+
+		<!-- Javascript
+================================================== -->
+		<script type='text/javascript' src='/views/santorini5/js/jquery-1.10.1.min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery-ui-1.10.4.custom.min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/superfish.min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.flexslider-min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.mmenu.min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.dropkick-min.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.fitvids.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/jquery.prettyPhoto.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/contact.js'></script>
+		<script type='text/javascript' src='/views/santorini5/js/scripts.js'></script>
+		<script type='text/javascript' src='/public/listening.js'></script>
+
+	</body>
+
+</html>
