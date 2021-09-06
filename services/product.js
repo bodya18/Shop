@@ -102,6 +102,9 @@ class Product{
         else
             await this.order.CreateOrder(number, address, DimensionProductId)
     }
+    async EditOrder(number, address, OrderId){
+        await this.order.EditOrder(number, address, OrderId)
+    }
     async DeleteOrder(id){
         await this.order.DeleteOrder(id)
     }

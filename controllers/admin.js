@@ -299,10 +299,10 @@ exports.RepeatOrder = async(req, res)=>{
     await main.product.UpdateOrderStatus(1, req.params.id)
     res.redirect(req.headers.referer)
 }
-// exports.CreateOrder = async(req, res)=>{
-//     await main.product.CreateOrder(req.body.number, req.body.address, req.body.DimensionProductId)
-//     res.redirect('/')
-// }
+exports.EditOrder = async(req, res)=>{
+    await main.product.EditOrder(req.body.number, req.body.address, req.body.orderId)
+    res.redirect(req.headers.referer)
+}
 
 exports.ParseData = async (req, res)=>{
     let data = await main.product.ParseData(req.file)

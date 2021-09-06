@@ -67,6 +67,9 @@ class Order{
     async UpdateStatus(status, id){
         await pool._order.update({status},{where:{id}})
     }
+    async EditOrder(number, address, id){
+        await pool._order.update({number, address},{where:{id}})
+    }
 
 }
 module.exports = Order

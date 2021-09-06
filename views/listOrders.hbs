@@ -9,16 +9,21 @@
         </tr>
         {{#each orders}}
             <tr> 
-                <td><h5>{{this.title}}</h5></td>
-                <td><h5>{{this.dimension}}</h5></td>
-                <td><h5>{{this.NewPrice}}</h5></td>
-                <td><h5>{{this.address}}</h5></td>
-                <td><h5>{{this.number}}</h5></td>
-
+                <form action="/admin/orders/edit" method="POST">
+                    <td><h5>{{this.title}}</h5></td>
+                    <td><h5>{{this.dimension}}</h5></td>
+                    <td><h5>{{this.NewPrice}}</h5></td>
+                    <td><h5><input type="text" class="form-control" name="address" value="{{this.address}}"></h5></td>
+                    <td><h5><input type="text" class="form-control" name="number" value="{{this.number}}"></h5></td>
+                    <td>
+                        <input type="hidden" name="orderId" value="{{this.id}}">
+                        <input type="submit" class="btn btn-warning" value="Редактировать заказ">
+                    </td>
+                </form>
                 {{#if @root.isDoneOrder}}
                     <td>
                         <form action="/admin/orders/repeat/{{this.id}}" method="POST">
-                            <input type="submit" class="btn btn-warning" value="Перевести в первую стадию обработки">
+                            <input type="submit" class="btn btn-info" value="Перевести в первую стадию обработки">
                         </form>
                     </td>
                 {{else}}
