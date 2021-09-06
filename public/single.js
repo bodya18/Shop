@@ -44,11 +44,13 @@ document.getElementById('create_order').addEventListener('click', (e)=>{
         return
     }
     $('#exampleModalCenter').modal('hide');
-    let good = document.querySelector('.goods-ordered')
-    good.style.display="block"
-    setTimeout(() => {
-        good.style.display="none"
-    }, 5000);
+    swal({
+        position: 'top-end',
+        type: 'success',
+        title: 'Товар успешно заказан',
+        showConfirmButton: false,
+        timer: 1500
+      })
     let data = JSON.stringify({DimensionProductId, address, number})
     let request = new XMLHttpRequest
     request.open("POST", "/product/create/orders")

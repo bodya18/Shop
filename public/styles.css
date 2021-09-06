@@ -30,13 +30,3 @@ color: white;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
-
-.goods-ordered{
-  display: none;
-  text-align:center;
-  background:chartreuse;
-  position: fixed;
-  top:0; 
-  left:42%; 
-  z-index:1200;
-}
