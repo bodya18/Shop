@@ -7,7 +7,7 @@ const path = require('path');
 
 const varMiddleware = require('./middleware/variables')
 const errorHandler = require('./middleware/error')
-const config = require('config');
+const config = require('./middleware/config');
 config.dirname = __dirname
 
 const loginRouter = require('./routes/login')
@@ -19,13 +19,13 @@ const apiRouter = require('./routes/api')
 const profileRouter = require('./routes/user');
 const searchRouter = require('./routes/search');
 const productRouter = require('./routes/product');
-
 const app = express()
 
 const hbs = exphbs.create({
     defaultLayout: 'main',
     layoutsDir: path.join(__dirname, "views/layouts"),
     extname: 'hbs',
+    partialsDir: path.join(__dirname, "views/partials"),
     helpers: require('./utils/hbs-helper')
 })
 
@@ -64,4 +64,4 @@ app.use('/register', registerRouter)
 
 app.use(errorHandler)
 
-app.listen(config.port)
+app.listen(8000)

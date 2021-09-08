@@ -1,7 +1,7 @@
 const xlsx = require('node-xlsx').default;
 const AdmZip = require('adm-zip');
 var fs = require('fs');
-const config = require('config');
+const config = require('../middleware/config');
 const productModel = require('../model/requests/Produc');
 const orderModel = require('../model/requests/order');
 

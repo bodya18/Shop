@@ -1,18 +1,7 @@
 const Main = require('../services/main')
 const mail = require('../middleware/nodemailer')
 
-exports.GetRegister = (req,res) => {
-    if(req.session.isAuthenticated)
-        return res.redirect('/')
-    else{
-        res.render('register.hbs', {
-            title: 'Регистрация',
-            error: req.flash('error'),
-            isRegister: true
-        })
-    }
-    
-}
+
 
 exports.registerLogic = async (req,res) => {
     if(!req.body) return res.sendStatus(400)

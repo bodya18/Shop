@@ -1,11 +1,12 @@
 const Main = require('../services/main');
 const main = new Main
+const config = require("../middleware/config");
 
 exports.GetUser =async (req, res)=>{
     const user = await main.user.GetUser(req.params.id)
     let is = false
     if(!user)
-        return res.render('noUser.hbs')
+        return res.render(config.dirname+'/views/noUser.hbs')
     if (req.params.id == req.session.user.id) {
         is = true
     }
@@ -35,7 +36,7 @@ exports.GetUser =async (req, res)=>{
             }
         }
         const orders = await main.product.GetOrdersByUserId(req.params.id)
-        return res.render('profile.hbs', {
+        return res.render(config.dirname+'/views/profile.hbs', {
             users: user, 
             title: 'Профиль',
             SelectRoles: a,

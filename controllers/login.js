@@ -1,19 +1,7 @@
 const Main = require('../services/main')
 const main = new Main
 const mail = require('../middleware/nodemailer');
-
-exports.GetLogin = (req,res) => {
-    if(req.session.isAuthenticated)
-        return res.redirect('/')
-    else{
-        res.render('login.hbs', {
-            title: 'Вход',
-            error: req.flash('error'),
-            isLogin: true
-        })
-    }
-    
-}
+const config = require("../middleware/config");
 
 exports.loginLogic = async(req,res) => {
     if(!req.body) return res.sendStatus(400)
@@ -47,7 +35,7 @@ exports.Accept = async (req,res) => {
 exports.recovery = async (req, res) => {
     if(req.session.isAuthenticated)
         return res.redirect('/')
-    return res.render('recovery.hbs',{
+    return res.render(config.dirname+'/views/recovery.hbs',{
         title: 'Забыли пароль?'
     })
 }
@@ -61,7 +49,7 @@ exports.NewPass = async (req, res) =>{
     if(req.session.isAuthenticated)
         return res.redirect('/')
     const error = await main.user.NewPass(req.params.token)
-    res.render('NewPass',{
+    res.render(config.dirname+'/views/NewPass',{
         title: 'Восстановления пароля',
         error,
         token: req.params.token

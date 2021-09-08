@@ -1,23 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-{{> head}}
+{{>head}}
 <body>
-    {{!-- <a href="/"><button class="btn btn-dark">Главная</button></a>
-    {{#if isAuth}}
-        <a href="/logout"><button class="btn btn-dark">Выйти</button></a>
-    {{else}}
-        <a href="/login"><button class="btn btn-dark">Войти</button></a>
-        <a href="/register"><button class="btn btn-dark">Регистрация</button></a>
-    {{/if}}
-    {{#if isAdministrator}}
-        <a href="/admin"><button class="btn btn-dark">Админ панель</button></a>
-    {{/if}}
-    <div class="form-outline">
-        <form action="/search" method="POST">
-            <input type="search" style="max-width: 200px;" name="search" class="form-control" placeholder="Поиск по сайту"
-            aria-label="Search" />
-        </form>
-    </div> --}}
     {{#if isAdmin}}
         <div class="wrapper">
             <aside class="main-sidebar sidebar-dark-primary elevation-4 admin-panel">
