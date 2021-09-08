@@ -10,15 +10,6 @@ const errorHandler = require('./middleware/error')
 const config = require('./middleware/config');
 config.dirname = __dirname
 
-const loginRouter = require('./routes/login')
-const registerRouter = require('./routes/register')
-const logoutRouter = require('./routes/logout')
-const indexRouter = require('./routes/index');
-const adminRouter = require('./routes/admin');
-const apiRouter = require('./routes/api')
-const profileRouter = require('./routes/user');
-const searchRouter = require('./routes/search');
-const productRouter = require('./routes/product');
 const app = express()
 
 const hbs = exphbs.create({
@@ -52,16 +43,11 @@ app.use(session({
 app.use(flash())
 app.use(varMiddleware)
 
-app.use('/', indexRouter)
-app.use('/api', apiRouter)
-app.use('/admin', adminRouter)
-app.use('/login', loginRouter)
-app.use('/product', productRouter)
-app.use('/search', searchRouter)
-app.use('/logout', logoutRouter)
-app.use('/profile', profileRouter)
-app.use('/register', registerRouter)
-
-app.use(errorHandler)
+var glob = require("glob")
+glob(config.dirname + "/routes/*.js", options, function (er, files) {
+    for (const i in files)
+        app.use('/', require(files[i]))
+    app.use(errorHandler)
+})
 
 app.listen(config.port)

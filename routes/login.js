@@ -4,11 +4,11 @@ const urlencodedParser = require('../middleware/urlencodedParser')
 const loginController = require('../controllers/login')
 const jsonParser = express.json()
 
-router.get('/accept/:token', loginController.Accept)
-router.get('/recovery/:token', loginController.NewPass)
+router.get('/login/accept/:token', loginController.Accept)
+router.get('/login/recovery/:token', loginController.NewPass)
 
-router.post('/newPass', urlencodedParser, loginController.SetNewPass)
-router.post('/recovery', jsonParser, loginController.recoveryPass)
-router.post('/', jsonParser, loginController.loginLogic)
+router.post('/login/newPass', urlencodedParser, loginController.SetNewPass)
+router.post('/login/recovery', jsonParser, loginController.recoveryPass)
+router.post('/login', jsonParser, loginController.loginLogic)
 
 module.exports = router

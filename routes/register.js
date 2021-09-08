@@ -3,6 +3,6 @@ const router = express.Router()
 const registrController = require('../controllers/register')
 const jsonParser = express.json()
 
-router.post('/', jsonParser, registrController.registerLogic)
+router.post('/register', jsonParser, registrController.registerLogic)
 
 module.exports = router
