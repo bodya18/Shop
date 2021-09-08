@@ -33,6 +33,19 @@
                                 {{/if}}
                             </ul>
                         </div>
+                        <form action="/search" method="Post" role="search" class="searchform">
+                            <div>
+                                <input type="hidden" name="page" value="1">
+                                <input type="text" id="s" name="search" value="" style="background-color: aliceblue;" placeholder="поиск">
+                                <button class="searchsubmit" type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                            <select class="col-lg-4 form-select main-search" name="categoryId">
+                                <option selected value="-1">Все категории</option>
+                                {{#each categories}}
+                                    <option value='{{this.id}}'>{{this.title}}</option>
+                                {{/each}}
+                            </select>
+                        </form>
                     </nav>
 
                     <div id="mobilemenu">

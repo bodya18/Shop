@@ -5,7 +5,7 @@ const userController = require('../controllers/user')
 const isAuth = require('../middleware/auth')
 const isAdmin = require('../middleware/isAdmin')
 
-router.get('/profile/:id', isAuth, userController.GetUser)
+router.get('/profile/:id', isAuth, isAdmin, userController.GetUser)
 
 router.post('/profile/delete', isAuth, isAdmin, urlencodedParser, userController.Delete)
 

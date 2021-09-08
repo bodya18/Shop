@@ -107,6 +107,12 @@ class Product{
             raw:true
         })
     }
+    async searchCategory(categoryId){
+        return await pool.Product.findAll({
+            where:{categoryId},
+            raw:true
+        })
+    }
     async update(id, title, article){
         await pool.Product.update({title, article}, {where:{id}})
     }

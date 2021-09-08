@@ -1617,12 +1617,12 @@ button[type=submit].searchsubmit {
   line-height: 0;
   padding: 3px 11px 2px;
   position: absolute;
-  right: 0;
-  top: 0;
+  /* right: 0;
+  top: 0; */
   height: 100%;
-  border: none;
+  /* border: none; */
   background: none;
-  color: #6D6E71 !important;
+  /* color: #6D6E71 !important; */
 }
 
 /* WIDGET: #Flickr

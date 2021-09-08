@@ -14,5 +14,6 @@ module.exports = async function(req, res, next) {
             break;
         }
     }
+    res.locals.categories = await main.product.GetAllCategories()
     next()
 }

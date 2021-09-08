@@ -44,6 +44,7 @@
 			<input type="hidden" id="search_req" value="{{search}}">
 			<input type="hidden" id="search_CountPages" value="{{countPages}}">
 			<input type="hidden" id="search_page" value="{{page}}">
+			<input type="hidden" id="categoryId" value="{{categoryId}}">
 			<main id="main">
 				<div class="container">
 					<div class="row">
@@ -107,7 +108,11 @@
 		{{#if isAllProd}}
 			<script type='text/javascript' src='/public/listeningAllProd.js'></script>
 		{{else}}
-			<script type='text/javascript' src='/public/listening.js'></script>
+			{{#if isCategorySearch}}
+				<script type='text/javascript' src='/public/listeningCategory.js'></script>
+			{{else}}
+				<script type='text/javascript' src='/public/listening.js'></script>
+			{{/if}}
 		{{/if}}
 	</body>
 

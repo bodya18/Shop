@@ -28,8 +28,12 @@
                     {{{body}}}
                     {{#if isProduct}}
                     {{else}}
-                        <script src="/views/AdminLTE-3.1.0/plugins/jquery/jquery.min.js"></script>
+                        {{#if isUserP}}
+                        {{else}}
+                            <script src="/views/AdminLTE-3.1.0/plugins/jquery/jquery.min.js"></script>
+                        {{/if}}
                     {{/if}}
+                    
                 </div>
                 </section>
             </div>
@@ -38,7 +42,6 @@
         {{>modals}}
         {{{body}}}
     {{/if}}
-
     {{>scripts}}
 </body>
 </html>

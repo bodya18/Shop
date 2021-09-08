@@ -43,6 +43,9 @@ exports.GetUser =async (req, res)=>{
             NonSelectRoles: SelectRoles.roles,
             RoleUser,
             orders,
+            isAdmin:true,
+            isUsers:true,
+            isUserP:true,
             thisUserId: req.params.id,
             roles: roles.roles,
             isUsers: true

@@ -114,6 +114,9 @@ class Product{
     async search(search){
         return await this.product.search(search)
     }
+    async searchCategory(categoryId){
+        return await this.product.searchCategory(categoryId)
+    }
 }
 
 module.exports = Product
