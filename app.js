@@ -64,4 +64,4 @@ app.use('/register', registerRouter)
 
 app.use(errorHandler)
 
-app.listen(8000)
+app.listen(config.port)
