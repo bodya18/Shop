@@ -141,30 +141,41 @@ exports.GetSettings = async (req, res)=>{
 exports.GetThisSetting = async (req, res)=>{
     const settings = await main.settings.getSettingById(req.params.id)
     let isText, isNum, isSingleFile, isMultiFile, isProduct
-    switch (settings.type_value) {
-        case 1:
-            isText = true
-            break;
-        case 2:
-            isNum = true
-            break;
-        case 3:
-            isSingleFile = true
-            break;
-        case 4:
-            isMultiFile = true
-            break;
-        case 5:
-            var products = await main.product.GetAllProduct()
-            isProduct = true
-            break;
-        default:
-            break;
+    if (settings._key === 'SEO') {
+        var isSeo = true
+        var value = JSON.parse(settings.value)
+        var og_title = value.og_title
+        var og_description = value.og_description
     }
-    res.render(config.dirname+'/views/ThisSettings.hbs', {
+    else{
+        switch (settings.type_value) {
+            case 1:
+                isText = true
+                break;
+            case 2:
+                isNum = true
+                break;
+            case 3:
+                isSingleFile = true
+                break;
+            case 4:
+                isMultiFile = true
+                break;
+            case 5:
+                var products = await main.product.GetAllProduct()
+                isProduct = true
+                break;
+            default:
+                break;
+        }
+    }
+    return res.render(config.dirname+'/views/ThisSettings.hbs', {
         isText, isNum, isSingleFile, isMultiFile, isProduct,
         products,
+        og_title,
+        og_description,
         settings,
+        isSeo,
         title: 'Настройки',
         isAdmin: true,
         isSetting: true,
@@ -189,6 +200,10 @@ exports.CreateSettings = async(req, res)=>{
     return res.redirect(req.headers.referer)
 }
 exports.EditSettings = async(req, res)=>{
+    if ('og_title' in req.body) {
+        await main.settings.EditSettings(JSON.stringify({og_title: req.body.og_title, og_description: req.body.og_description}), req.body.id)
+        return res.redirect('/admin/settings')
+    }
     let data = ''
     if(req.files.length && (req.body.type_value == 3 || req.body.type_value == 4)){
         for (const i in req.files) {

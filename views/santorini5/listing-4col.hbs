@@ -105,13 +105,16 @@
 		<script type='text/javascript' src='/views/santorini5/js/jquery.prettyPhoto.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/contact.js'></script>
 		<script type='text/javascript' src='/views/santorini5/js/scripts.js'></script>
-		{{#if isAllProd}}
-			<script type='text/javascript' src='/public/listeningAllProd.js'></script>
+		{{#if noneProduct}}
 		{{else}}
-			{{#if isCategorySearch}}
-				<script type='text/javascript' src='/public/listeningCategory.js'></script>
+			{{#if isAllProd}}
+				<script type='text/javascript' src='/public/listeningAllProd.js'></script>
 			{{else}}
-				<script type='text/javascript' src='/public/listening.js'></script>
+				{{#if isCategorySearch}}
+					<script type='text/javascript' src='/public/listeningCategory.js'></script>
+				{{else}}
+					<script type='text/javascript' src='/public/listening.js'></script>
+				{{/if}}
 			{{/if}}
 		{{/if}}
 	</body>

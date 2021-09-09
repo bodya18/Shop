@@ -21,6 +21,14 @@ exports.g_search = async (req, res) =>{
     }else{
         var products = await main.product.search(req.params.search)
     }
+    if(products.length===0){
+        return res.render(config.dirname+'/views/santorini5/listing-4col.hbs',{
+            title: req.params.search,
+            search: "Ничего не найдено",
+            noneProduct:true,
+            categoryId
+        })
+    }
     let countPages = Math.ceil(products.length/16)
     let page = parseInt(req.params.page)
     if(page <= countPages && page>0){

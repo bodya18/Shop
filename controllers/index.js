@@ -22,6 +22,12 @@ exports.MainPage = async (req, res)=>{
             main_hot_product = settings[i].value
             continue;
         }
+        if (settings[i]._key === 'SEO') {
+            let value = JSON.parse(settings[i].value)
+            var og_title = value.og_title
+            var og_description = value.og_description
+            continue;
+        }
     }
     main_hot_product = await main.product.GetProductById(main_hot_product)
     let top_product = []
@@ -31,6 +37,8 @@ exports.MainPage = async (req, res)=>{
     res.render(config.dirname+'/views/santorini5/index.hbs',{
         title: 'Главная страница',
         slider_images,
+        og_description,
+        og_title,
         top_product,
         main_bottom_banner,
         main_hot_product,
@@ -73,6 +81,7 @@ exports.SinglePage = async (req, res) => {
     res.render(config.dirname+'/views/santorini5/single.hbs', {
         title: product.title,
         hot_product,
+        og_title: product.title,
         product,
         dimension,
         error: req.flash('error')

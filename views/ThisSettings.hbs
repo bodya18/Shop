@@ -41,6 +41,18 @@
                 </select>
             </label>
         {{/if}}
+        {{#if isSeo}}
+            <div class="row">
+                <div class="col col-lg-6">
+                    <label for="og_title" class="form-label">og:title</label>
+                    <input type="text" class="form-control" id="og_title" name="og_title" value="{{og_title}}">
+                </div>
+                <div class="col col col-lg-6">
+                    <label for="og_description" class="form-label">og:description</label>
+                    <textarea name="og_description" class="form-control" id="og_description" rows="10">{{og_description}}</textarea>
+                </div>
+            </div>
+        {{/if}}
         <br><br>
         <input type="hidden" name="type_value" value="{{settings.type_value}}">
         <input type="submit" class="btn btn-success" value="Задать настройку">
