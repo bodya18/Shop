@@ -3,7 +3,9 @@ const exphbs = require('express-handlebars')
 const session = require('express-session')
 const SessionStore = require('express-mysql-session')
 const flash = require('connect-flash')
+const cookieParser = require('cookie-parser')
 const path = require('path');
+var glob = require("glob")
 
 const varMiddleware = require('./middleware/variables')
 const errorHandler = require('./middleware/error')
@@ -39,11 +41,10 @@ app.use(session({
     saveUninitialized: false,
     store: new SessionStore(options)
 }))
-
+app.use(cookieParser(config.cookieSecret))
 app.use(flash())
 app.use(varMiddleware)
 
-var glob = require("glob")
 glob(config.dirname + "/routes/*.js", options, function (er, files) {
     for (const i in files)
         app.use('/', require(files[i]))

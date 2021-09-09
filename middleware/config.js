@@ -3,5 +3,6 @@ module.exports = {
     host: "localhost",
     port: 8000,
     sessionSecretKey: "secret",
-    site: "http://shop.loc:8000"
+    site: "http://shop.loc:8000",
+    cookieSecret: 'cookie-parser'
 }
