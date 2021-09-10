@@ -228,7 +228,6 @@ exports.EditSettings = async(req, res)=>{
         }
         let tmp = ''
         for (const i in req.body.value) {
-            console.log(i, req.body.value.length);
             if(i == req.body.value.length -1)
                 tmp +=req.body.value[i]    
             else

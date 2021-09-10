@@ -12,7 +12,6 @@ const fileFilter = (req, file, cb) => {
     }
 }
 const filePhotoFilter = (req, file, cb) => {
-    console.log(file);
     if(file.mimetype === "image/png"|| 
     file.mimetype === "image/jpg"|| 
     file.mimetype === "image/jpeg"){
