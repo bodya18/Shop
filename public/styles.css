@@ -38,4 +38,12 @@ color: white;
     height: 2.9em;
     right: 40px;
     width: auto;
+    max-width: 320px;
+}
+
+@media (max-width: 767px) {
+  .main-search{
+      top: 47px;
+      right: auto;
+  }
 }
