@@ -12,7 +12,7 @@ module.exports = async function(req, res, next) {
 
     if('data' in req.cookies){
         res.locals.main_header = req.cookies.data.main_header
-    }else{            
+    }else{           
         let settings = await main.settings.getSettings()
         for (const i in settings) {
             if(settings[i]._key === 'Main_header'){
@@ -21,7 +21,13 @@ module.exports = async function(req, res, next) {
             }
         }
     }
-    res.locals.categories = await main.product.GetAllCategories()
-
+     
+    if (typeof localStorage === "undefined" || localStorage === null) {
+        var LocalStorage = require('node-localstorage').LocalStorage;
+        localStorage = new LocalStorage('./scratch');
+        let categories = await main.product.GetAllCategories()
+        localStorage.setItem('categories', JSON.stringify(categories));
+    }
+    localStorage.getItem('categories') !== null ? res.locals.categories = JSON.parse(localStorage.getItem('categories')) : res.locals.categories = await main.product.GetAllCategories()
     next()
 }
