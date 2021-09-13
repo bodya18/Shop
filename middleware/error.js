@@ -1,5 +1,4 @@
 const Main = require("../services/main")
-const config = require("./config")
 const main = new Main
 
 module.exports = async function (req, res, next) {
@@ -23,7 +22,7 @@ module.exports = async function (req, res, next) {
     let top_product = []
     for (const i in Main_3_top_products)
     top_product[i] = await main.product.GetProductById(Main_3_top_products[i])
-    res.status(404).render(config.dirname+'/views/404.hbs',{
+    res.status(404).render(process.env.dirname+'/views/404.hbs',{
         title: "Ошибка, страница не найдена!",
         top_product,
         main_bottom_banner,

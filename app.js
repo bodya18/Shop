@@ -6,11 +6,10 @@ const flash = require('connect-flash')
 const cookieParser = require('cookie-parser')
 const path = require('path');
 var glob = require("glob")
-
+require('dotenv').config()
 const varMiddleware = require('./middleware/variables')
 const errorHandler = require('./middleware/error')
-const config = require('./middleware/config');
-config.dirname = __dirname
+process.env.dirname = __dirname
 
 const app = express()
 
@@ -29,26 +28,26 @@ app.engine('html', require('ejs').renderFile);
 app.set('views', 'views')
 app.use(express.static(__dirname))
 var options = {
-    host: config.host,
+    host: process.env.host,
     user: 'root',
     password: 'ZAQwsxz1.',
     database: 'shop'
 }
 
 app.use(session({
-    secret: config.sessionSecretKey,
+    secret: process.env.sessionSecretKey,
     resave: false,
     saveUninitialized: false,
     store: new SessionStore(options)
 }))
-app.use(cookieParser(config.cookieSecret))
+app.use(cookieParser(process.env.cookieSecret))
 app.use(flash())
 app.use(varMiddleware)
 
-glob(config.dirname + "/routes/*.js", options, function (er, files) {
+glob(process.env.dirname + "/routes/*.js", options, function (err, files) {
     for (const i in files)
         app.use('/', require(files[i]))
     app.use(errorHandler)
 })
 
-app.listen(config.port)
+app.listen(process.env.port)

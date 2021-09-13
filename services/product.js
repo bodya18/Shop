@@ -1,7 +1,6 @@
 const xlsx = require('node-xlsx').default;
 const AdmZip = require('adm-zip');
 var fs = require('fs');
-const config = require('../middleware/config');
 const productModel = require('../model/requests/Produc');
 const orderModel = require('../model/requests/order');
 
@@ -15,10 +14,10 @@ class Product{
         if(!filedata){
             return {perm: false, error: 'Файл должен быть разшерением .xlsx или .xls'}
         }
-        const workSheetsFromFile = xlsx.parse(`${config.dirname}/${filedata.path}`);
-        var zip = new AdmZip(`${config.dirname}/${filedata.path}`);
-        zip.extractEntryTo("xl/media/", `${config.dirname}/media`, /*maintainEntryPath*/false, /*overwrite*/true);
-        fs.unlink(`${config.dirname}/${filedata.path}`, (err)=>{
+        const workSheetsFromFile = xlsx.parse(`${process.env.dirname}/${filedata.path}`);
+        var zip = new AdmZip(`${process.env.dirname}/${filedata.path}`);
+        zip.extractEntryTo("xl/media/", `${process.env.dirname}/media`, /*maintainEntryPath*/false, /*overwrite*/true);
+        fs.unlink(`${process.env.dirname}/${filedata.path}`, (err)=>{
             if(err) throw err;
         })
         return {perm: true, data: workSheetsFromFile[0].data}
@@ -47,7 +46,7 @@ class Product{
                 let product = await this.product.GetProductByTitile(data[i][0])
                 if(!product.length){
                     while (true) {
-                        var stats = fs.lstatSync(`${config.dirname}/media/image${img}.png`);
+                        var stats = fs.lstatSync(`${process.env.dirname}/media/image${img}.png`);
                         if(stats.size > 1000)
                             break;
                         else img++

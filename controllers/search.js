@@ -1,6 +1,5 @@
 const Main = require("../services/main")
 const main = new Main
-const config = require("../middleware/config");
 
 exports.p_search = async (req, res) =>{
     if(req.body.categoryId != -1){
@@ -22,7 +21,7 @@ exports.g_search = async (req, res) =>{
         var products = await main.product.search(req.params.search)
     }
     if(products.length===0){
-        return res.render(config.dirname+'/views/santorini5/listing-4col.hbs',{
+        return res.render(process.env.dirname+'/views/santorini5/listing-4col.hbs',{
             title: req.params.search,
             search: "Ничего не найдено",
             noneProduct:true,
@@ -33,7 +32,7 @@ exports.g_search = async (req, res) =>{
     let page = parseInt(req.params.page)
     if(page <= countPages && page>0){
         products = products.slice(16*(page-1),16*(page))
-        return res.render(config.dirname+'/views/santorini5/listing-4col.hbs',{
+        return res.render(process.env.dirname+'/views/santorini5/listing-4col.hbs',{
             title: req.params.search,
             search: req.params.search,
             products,
@@ -63,7 +62,7 @@ exports.g_search = async (req, res) =>{
         let top_product = []
         for (const i in Main_3_top_products)
         top_product[i] = await main.product.GetProductById(Main_3_top_products[i])
-        res.status(404).render(config.dirname+'/views/404.hbs',{
+        res.status(404).render(process.env.dirname+'/views/404.hbs',{
             title: "Ошибка, страница не найдена!",
             top_product,
             main_bottom_banner,

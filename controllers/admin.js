@@ -1,9 +1,8 @@
 const Main = require("../services/main")
 const main = new Main;
-const config = require("../middleware/config");
 
 exports.GetStartPage = async (req, res)=>{
-    res.render(config.dirname+'/views/adminIndex.hbs', {
+    res.render(process.env.dirname+'/views/adminIndex.hbs', {
         title: 'Панель администрации',
         isAdmin: true,
         error: req.flash('error'),
@@ -13,7 +12,7 @@ exports.GetStartPage = async (req, res)=>{
 }
 
 exports.GetCreateRole = async (req, res) =>{
-    res.render(config.dirname+'/views/CreateRole.hbs', {
+    res.render(process.env.dirname+'/views/CreateRole.hbs', {
         title: 'Создание роли',
         isAdmin: true,
         isRoleCreate: true,
@@ -35,7 +34,7 @@ exports.CreateRole = async (req, res) => {
 
 exports.GetRoles = async (req,res) => {
     const roles = await main.role.GetRoles()
-    res.render(config.dirname+'/views/roles.hbs', {
+    res.render(process.env.dirname+'/views/roles.hbs', {
         roles,
         title: 'Список ролей',
         isAdmin: true,
@@ -56,7 +55,7 @@ exports.CreatePermission = async (req, res) => {
 
 exports.GetPermissions = async (req,res) => {
     const permissions = await main.permission.GetPermissions()
-    res.render(config.dirname+'/views/permissions.hbs', {
+    res.render(process.env.dirname+'/views/permissions.hbs', {
         permissions,
         title: 'Список разрешений',
         isAdmin: true,
@@ -65,7 +64,7 @@ exports.GetPermissions = async (req,res) => {
 }
 
 exports.GetCreatePermission = async (req, res) =>{
-    res.render(config.dirname+'/views/CreatePermission.hbs', {
+    res.render(process.env.dirname+'/views/CreatePermission.hbs', {
         title: 'Создание разрешений',
         isAdmin: true,
         isPermissionCreate: true,
@@ -76,7 +75,7 @@ exports.GetCreatePermission = async (req, res) =>{
 exports.GetGivePermission = async (req, res) => {
     const permissions = await main.permission.GetPermissions()
     const roles = await main.role.GetRoles()
-    res.render(config.dirname+'/views/GivePermission.hbs', {
+    res.render(process.env.dirname+'/views/GivePermission.hbs', {
         roles, 
         permissions, 
         title: 'Выдача разрешения',
@@ -98,7 +97,7 @@ exports.GivePermission = async (req, res) =>{
 exports.GetGiveRole = async (req, res) => {
     const users = await main.user.GetUsers()
     const roles = await main.role.GetRoles()
-    res.render(config.dirname+'/views/GiveRole.hbs', {
+    res.render(process.env.dirname+'/views/GiveRole.hbs', {
         roles, 
         users, 
         title: 'Выдача ролей',
@@ -129,7 +128,7 @@ exports.DeletePermission = async (req, res)=>{
 
 exports.GetSettings = async (req, res)=>{
     const settings = await main.settings.getSettings()
-    res.render(config.dirname+'/views/settings.hbs', {
+    res.render(process.env.dirname+'/views/settings.hbs', {
         settings,
         title: 'Настройки',
         isAdmin: true,
@@ -169,7 +168,7 @@ exports.GetThisSetting = async (req, res)=>{
                 break;
         }
     }
-    return res.render(config.dirname+'/views/ThisSettings.hbs', {
+    return res.render(process.env.dirname+'/views/ThisSettings.hbs', {
         isText, isNum, isSingleFile, isMultiFile, isProduct,
         products,
         og_title,
@@ -183,7 +182,7 @@ exports.GetThisSetting = async (req, res)=>{
     })
 }
 exports.GetCreateSetting = async (req, res)=>{
-    res.render(config.dirname+'/views/CreateSettings.hbs', {
+    res.render(process.env.dirname+'/views/CreateSettings.hbs', {
         title: 'Создание настроек',
         isAdmin: true,
         isCreateSetting: true,
@@ -249,7 +248,7 @@ exports.GetUsers = async (req, res)=>{
         isMore = true
     }
         
-    res.render(config.dirname+'/views/listUsers.hbs', {
+    res.render(process.env.dirname+'/views/listUsers.hbs', {
         users,
         roleUser,
         isMore,
@@ -261,7 +260,7 @@ exports.GetUsers = async (req, res)=>{
 
 exports.GetNewOrders = async(req, res)=>{
     const orders = await main.product.GetOrdersByStatus(1)
-    res.render(config.dirname+'/views/listOrders.hbs', {
+    res.render(process.env.dirname+'/views/listOrders.hbs', {
         isNewOrder: true,
         title: 'Не обработанные заказы',
         orders,
@@ -271,7 +270,7 @@ exports.GetNewOrders = async(req, res)=>{
 
 exports.GetOldOrders = async(req, res)=>{
     const orders = await main.product.GetOrdersByStatus(2)
-    res.render(config.dirname+'/views/listOrders.hbs', {
+    res.render(process.env.dirname+'/views/listOrders.hbs', {
         isOldOrder: true,
         title: 'Заказы, ожидающие доставку',
         orders,
@@ -287,7 +286,7 @@ exports.GetDoneOrders = async(req, res)=>{
         orders = orders.splice(0, 100)
         isMore = true
     }
-    res.render(config.dirname+'/views/listOrders.hbs', {
+    res.render(process.env.dirname+'/views/listOrders.hbs', {
         isDoneOrder: true,
         title: 'Доставленные заказы',
         orders,

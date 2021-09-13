@@ -1,4 +1,3 @@
-const config = require("../middleware/config");
 const Main = require("../services/main");
 const main = new Main
 
@@ -10,7 +9,7 @@ exports.p_createOrder = async (req, res)=>{
     res.redirect(req.headers.referer)
 }
 exports.g_createOrder = async (req, res)=>{
-    res.render(config.dirname+'/views/CreateOrder.hbs', {
+    res.render(process.env.dirname+'/views/CreateOrder.hbs', {
         isAdmin:true,
         isCreateOrder: true,
         title: 'Создание заказа',
@@ -23,7 +22,7 @@ exports.g_all_prod = async (req, res) =>{
     let page = parseInt(req.params.page)
     if(page <= countPages && page > 0){
         products = products.slice(16*(page-1),16*(page))
-        return res.render(config.dirname+'/views/santorini5/listing-4col.hbs',{
+        return res.render(process.env.dirname+'/views/santorini5/listing-4col.hbs',{
             title: 'Все продукты',
             search: 'Все продукты',
             products,
@@ -52,7 +51,7 @@ exports.g_all_prod = async (req, res) =>{
         let top_product = []
         for (const i in Main_3_top_products)
         top_product[i] = await main.product.GetProductById(Main_3_top_products[i])
-        res.status(404).render(config.dirname+'/views/404.hbs',{
+        res.status(404).render(process.env.dirname+'/views/404.hbs',{
             title: "Ошибка, страница не найдена!",
             top_product,
             main_bottom_banner,

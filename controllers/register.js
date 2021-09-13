@@ -1,8 +1,6 @@
 const Main = require('../services/main')
 const mail = require('../middleware/nodemailer')
 
-
-
 exports.registerLogic = async (req,res) => {
     if(!req.body) return res.sendStatus(400)
     const main = new Main

@@ -1,4 +1,3 @@
-const config = require('../middleware/config')
 const MainService = require('../services/main')
 const main = new MainService
 
@@ -34,7 +33,7 @@ exports.MainPage = async (req, res)=>{
     for (const i in Main_3_top_products)
         top_product[i] = await main.product.GetProductById(Main_3_top_products[i])
 
-    res.render(config.dirname+'/views/santorini5/index.hbs',{
+    res.render(process.env.dirname+'/views/santorini5/index.hbs',{
         title: 'Главная страница',
         slider_images,
         og_description,
@@ -68,7 +67,7 @@ exports.SinglePage = async (req, res) => {
         let top_product = []
         for (const i in Main_3_top_products)
         top_product[i] = await main.product.GetProductById(Main_3_top_products[i])
-        res.status(404).render(config.dirname+'/views/404.hbs',{
+        res.status(404).render(process.env.dirname+'/views/404.hbs',{
             title: "Ошибка, страница не найдена!",
             top_product,
             main_bottom_banner,
@@ -78,7 +77,7 @@ exports.SinglePage = async (req, res) => {
     let settings = await main.settings.getSettingsByKey('main_hot_product')
     let hot_product = await main.product.GetProductById(settings.value)
     let dimension = await main.product.GetDimensionProductByProductId(req.params.id)
-    res.render(config.dirname+'/views/santorini5/single.hbs', {
+    res.render(process.env.dirname+'/views/santorini5/single.hbs', {
         title: product.title,
         hot_product,
         og_title: product.title,
