@@ -1,6 +1,5 @@
 const MainService = require('../services/main')
 const main = new MainService
-console.log(123212);
 
 exports.MainPage = async (req, res)=>{
     let settings = await main.settings.getSettings()
