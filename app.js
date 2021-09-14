@@ -29,9 +29,9 @@ app.set('views', 'views')
 app.use(express.static(__dirname))
 var options = {
     host: process.env.host,
-    user: 'root',
-    password: 'ZAQwsxz1.',
-    database: 'shop'
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 }
 
 app.use(session({
