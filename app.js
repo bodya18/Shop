@@ -33,7 +33,7 @@ var options = {
     password: process.env.DB_PASS,
     database: process.env.DB_NAME
 }
-
+console.log("HELL");
 app.use(session({
     secret: process.env.sessionSecretKey,
     resave: false,
