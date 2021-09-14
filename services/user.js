@@ -34,16 +34,6 @@ class User{
         return await this.user.GetUsers()
     }
 
-    async EditPost(name, id){
-        if(name.length < 1)
-            return 'Имя должно быть длиннее 1-го символа'
-        try {
-            this.user.edit(id, name)
-        } catch {
-            this.user.edit(id, name)
-        }
-    }
-
     async deleteUser(id, sessionId, permission){
         if(sessionId === id){
             await this.user.delete(id)
