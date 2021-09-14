@@ -1,8 +1,8 @@
 const MainService = require('../services/main')
 const main = new MainService
+console.log(123212);
 
 exports.MainPage = async (req, res)=>{
-    console.log(123212);
     let settings = await main.settings.getSettings()
     let slider_images, Main_3_top_products, main_bottom_banner, main_hot_product
     for (const i in settings) {
