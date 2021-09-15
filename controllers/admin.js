@@ -204,6 +204,7 @@ exports.EditSettings = async(req, res)=>{
         return res.redirect('/admin/settings')
     }
     let data = ''
+    console.log(req.files);
     if(req.files.length && (req.body.type_value == 3 || req.body.type_value == 4)){
         for (const i in req.files) {
             if(req.files[i].mimetype === 'image/png' || req.files[i].mimetype === 'image/jpeg' || req.files[i].mimetype === 'image/jpg'){
@@ -213,10 +214,12 @@ exports.EditSettings = async(req, res)=>{
                     data += req.files[i].filename + ','
             }
             else{
+                console.log('Файлы должны быть формата JPG, JPEG, PNG');
                 req.flash('error', 'Файлы должны быть формата JPG, JPEG, PNG')
                 return res.redirect(req.headers.referer)
             }
         }
+        console.log(data, req.body.id);
         await main.settings.EditSettings(data, req.body.id)
         return res.redirect('/admin/settings')
     }
