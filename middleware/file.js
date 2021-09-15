@@ -14,7 +14,6 @@ const fileFilter = (req, file, cb) => {
     }
 }
 let dest = process.env.dirname+"/files/"
-console.log(dest);
 exports.upload = multer({
     dest
 });
