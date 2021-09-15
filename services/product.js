@@ -15,10 +15,11 @@ class Product{
         filedata.mimetype === "application/vnd.ms-excel")){
             return {perm: false, error: 'Файл должен быть разшерением .xlsx или .xls'}
         }
-        const workSheetsFromFile = xlsx.parse(`${process.env.dirname}/${filedata.path}`);
-        var zip = new AdmZip(`${process.env.dirname}/${filedata.path}`);
+        console.log(filedata.path);
+        const workSheetsFromFile = xlsx.parse(`${filedata.path}`);
+        var zip = new AdmZip(`${filedata.path}`);
         zip.extractEntryTo("xl/media/", `${process.env.dirname}/media`, /*maintainEntryPath*/false, /*overwrite*/true);
-        fs.unlink(`${process.env.dirname}/${filedata.path}`, (err)=>{
+        fs.unlink(`${filedata.path}`, (err)=>{
             if(err) throw err;
         })
         return {perm: true, data: workSheetsFromFile[0].data}
