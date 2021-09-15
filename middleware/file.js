@@ -10,7 +10,6 @@ const fileFilter = (req, file, cb) => {
         cb(null, true);
     }
     else{
-        console.log(12312);
         cb(null, false);
     }
 }
