@@ -6,7 +6,7 @@ const flash = require('connect-flash')
 const cookieParser = require('cookie-parser')
 const path = require('path');
 var glob = require("glob")
-require('dotenv').config()
+require('dotenv').config({path: `${__dirname}/.env`})
 const varMiddleware = require('./middleware/variables')
 const errorHandler = require('./middleware/error')
 process.env.dirname = __dirname
