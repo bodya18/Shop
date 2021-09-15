@@ -11,10 +11,10 @@ class Product{
     }
 
     async ParseData(filedata){
-        if(!filedata || (filedata.mimetype !== "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || 
-        filedata.mimetype !== "application/vnd.ms-excel")){
+        if(!filedata || (filedata.mimetype != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || 
+        filedata.mimetype != "application/vnd.ms-excel")){
             console.log('Файл должен быть разшерением .xlsx или .xls');
-            console.log(filedata.mimetype);
+            console.log(filedata.mimetype != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filedata.mimetype, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             return {perm: false, error: 'Файл должен быть разшерением .xlsx или .xls'}
         }
         const workSheetsFromFile = xlsx.parse(`${process.env.dirname}/${filedata.path}`);
