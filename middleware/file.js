@@ -28,6 +28,6 @@ exports.photo = multer({
     filePhotoFilter
 });
 exports.upload = multer({
-    dest:"files",
+    dest:`${process.env.dirname}/files`,
     fileFilter
 });
