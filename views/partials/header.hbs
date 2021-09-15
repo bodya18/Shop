@@ -23,13 +23,13 @@
                         <div class="col-sm-5">
                             <ul class="navigation right-nav">
                                 {{#if isAuth}}
-                                    <li><a href="/logout">Выйти</a></li>
+                                    <li><a class="a-header" href="/logout">Выйти</a></li>
                                 {{else}}
-                                    <li><a data-toggle="modal" data-target="#loginModal">Войти</a></li>
-                                    <li><a data-toggle="modal" data-target="#RegisterModal">Регистрация</a></li>
+                                    <li><a class="a-header" data-toggle="modal" data-target="#loginModal">Войти</a></li>
+                                    <li><a class="a-header" data-toggle="modal" data-target="#RegisterModal">Регистрация</a></li>
                                 {{/if}}
                                 {{#if isAdministrator}}
-                                    <li><a href="/admin">Панель Администрации</a></li>
+                                    <li><a class="a-header" href="/admin">Панель Администрации</a></li>
                                 {{/if}}
                             </ul>
                         </div>

@@ -41,6 +41,11 @@ color: white;
     max-width: 320px;
 }
 
+.a-header{
+  font-weight: 700;
+  font-size: revert;
+}
+
 @media (max-width: 767px) {
   .main-search{
       top: 47px;
