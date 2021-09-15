@@ -27,6 +27,7 @@ app.engine('html', require('ejs').renderFile);
 
 app.set('views', 'views')
 app.use(express.static(__dirname))
+console.log(process.env.DB_USER, process.env.DB_PASS, process.env.DB_NAME);
 var options = {
     host: process.env.host,
     user: process.env.DB_USER,
