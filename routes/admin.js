@@ -34,7 +34,7 @@ router.post('/admin/orders/good/:id', isAuth,   isAdmin, adminControllerr.DoneOr
 router.post('/admin/orders/set/:id', isAuth,   isAdmin, adminControllerr.SetOrder)
 router.post('/admin/orders/edit', isAuth,   isAdmin, urlencodedParser, adminControllerr.EditOrder)
 
-router.post('/admin/settings/set', isAuth,   isAdmin, urlencodedParser, file.photo.array("value"), adminControllerr.EditSettings)
+router.post('/admin/settings/set', isAuth,   isAdmin, urlencodedParser, file.upload.array("value"), adminControllerr.EditSettings)
 router.post('/admin/create/settings', isAuth,   isAdmin, urlencodedParser, adminControllerr.CreateSettings)
 
 router.post('/admin/updateFromUser', isAuth,   isAdmin, urlencodedParser, adminControllerr.updateFromUser)

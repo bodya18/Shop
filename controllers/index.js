@@ -2,8 +2,7 @@ const MainService = require('../services/main')
 const main = new MainService
 
 exports.MainPage = async (req, res)=>{
-    let settings = await main.settings.getSettings()
-    console.log(settings);
+    let settings = await main.settings.getSettings()    
     let slider_images, Main_3_top_products, main_bottom_banner, main_hot_product
     for (const i in settings) {
         if (settings[i]._key === 'Main_slider') {
