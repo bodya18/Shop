@@ -15,7 +15,6 @@ class Product{
         filedata.mimetype === "application/vnd.ms-excel")){
             return {perm: false, error: 'Файл должен быть разшерением .xlsx или .xls'}
         }
-        console.log(filedata.path);
         const workSheetsFromFile = xlsx.parse(`${filedata.path}`);
         var zip = new AdmZip(`${filedata.path}`);
         zip.extractEntryTo("xl/media/", `${process.env.dirname}/media`, /*maintainEntryPath*/false, /*overwrite*/true);
